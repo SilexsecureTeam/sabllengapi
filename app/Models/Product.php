@@ -7,41 +7,60 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    use HasFactory  ;
+    use HasFactory;
 
     protected $fillable = [
+        'category_id',
+        'brand_id',
+        'supplier_id',
         'name',
-        'slug',
-        'description',
-        'price',
-        'discounted_price',
-        'tax_included',
-        'expiration_start',
-        'expiration_end',
-        'stock_quantity',
-        'unlimited',
-        'stock_status',
-        'customize',
-        'colors',
         'images',
+        'description',
+        'cost_price',
+        'tax_rate',
+        'cost_inc_tax',
+        'sale_price_inc_tax',
+        'is_variable_price',
+        'margin_perc',
+        'tax_exempt_eligible',
+        'rr_price',
+        'bottle_deposit_item_name',
+        'barcode',
+        'size',
+        'colours',
+        'product_code',
+        'age_restriction',
     ];
 
     protected $casts = [
-        'tax_included' => 'boolean',
-        'unlimited' => 'boolean',
-        'customize' => 'boolean',
-        'colors' => 'array',  // auto-cast JSON to array
-        'images' => 'array',  // auto-cast JSON to array
+        'size' => 'array',
+        'colours' => 'array',
+        'images' => 'array',
+        'is_variable_price' => 'boolean',
+        'tax_exempt_eligible' => 'boolean',
+        'cost_price' => 'decimal:2',
+        'cost_inc_tax' => 'decimal:2',
+        'sale_price_inc_tax' => 'decimal:2',
+        'rr_price' => 'decimal:2',
     ];
 
-    // Example relations if you already have categories/tags pivot tables
-    public function categories()
+    public function category()
     {
-        return $this->belongsToMany(Category::class);
+        return $this->belongsTo(Category::class);
     }
 
-    public function tags()
+    public function supplier()
     {
-        return $this->belongsToMany(Tag::class);
+        return $this->belongsTo(Supplier::class);
+    }
+
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class);
+    }
+
+    public function images()
+    {
+        return $this->hasMany(ProductImage::class);
     }
 }

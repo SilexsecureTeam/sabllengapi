@@ -22,6 +22,7 @@ return new class extends Migration
             $table->json('coordinates')->nullable(); // x,y values for fine-grained movement
             $table->timestamps();
         });
+        
     }
 
     /**
@@ -29,6 +30,11 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('customizations');
+        Schema::table('customizations', function (Blueprint $table) {
+            $table->dropForeign(['product_id']);
+            $table->dropForeign(['user_id']);
+            $table->dropColumn('product_id');
+            $table->dropColumn('user_id');
+        });
     }
 };

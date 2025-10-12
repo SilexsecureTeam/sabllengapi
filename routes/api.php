@@ -17,6 +17,7 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::post('importInventory', [ImportInventoryController::class, 'import']);
+Route::post('importProduct', [ImportInventoryController::class, 'importProduct']);
 
 // authentication flow
 // routes/api.php
