@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Storage;
 class ProductController extends Controller
 {
 
-     public function index()
+    public function index()
     {
         $products = Product::with(['category', 'brand', 'supplier'])->paginate(10);
 
@@ -20,31 +20,33 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-       
         $validated = $request->validate([
+            'category_id' => 'nullable|exists:categories,id',
+            'brand_id' => 'nullable|exists:brands,id',
+            'supplier_id' => 'nullable|exists:suppliers,id',
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'price' => 'required|numeric',
-            'discounted_price' => 'nullable|numeric',
-            'tax_included' => 'required|boolean',
-            'expiration_start' => 'nullable|date',
-            'expiration_end' => 'nullable|date|after_or_equal:expiration_start',
-            'stock_quantity' => 'nullable|integer',
-            'unlimited' => 'required|boolean',
-            'stock_status' => 'nullable|string|in:In Stock,Out of Stock',
-            'categories' => 'nullable|array',
-            'categories.*' => 'integer|exists:categories,id',
-            'tags' => 'nullable|array',
-            'tags.*' => 'integer|exists:tags,id',
-            'colors' => 'nullable|array',
-            'colors.*' => 'string',
-            'customize' => 'required|boolean',
+            'cost_price' => 'nullable|numeric',
+            'tax_rate' => 'nullable|string',
+            'tax_rate_value' => 'nullable|numeric',
+            'cost_inc_tax' => 'nullable|numeric',
+            'sale_price_inc_tax' => 'nullable|numeric',
+            'is_variable_price' => 'boolean',
+            'margin_perc' => 'nullable|numeric',
+            'tax_exempt_eligible' => 'boolean',
+            'rr_price' => 'nullable|numeric',
+            'bottle_deposit_item_name' => 'nullable|string|max:255',
+            'barcode' => 'nullable|string|max:255|unique:products,barcode',
+            'size' => 'nullable|array',
+            'colours' => 'nullable|array',
+            'product_code' => 'nullable|string|max:255|unique:products,product_code',
+            'age_restriction' => 'nullable|integer',
+            'customize' => 'boolean',
             'images' => 'nullable|array',
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048'
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048',
         ]);
 
-        //  dd('test');
-        // Handle images with incremental IDs
+        // Handle image uploads
         $imagesData = [];
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $index => $image) {
@@ -56,12 +58,10 @@ class ProductController extends Controller
             }
         }
 
-       
-
-        // Handle colors with incremental IDs
+        // Handle colors with IDs
         $colorsData = [];
-        if (!empty($validated['colors'])) {
-            foreach ($validated['colors'] as $index => $color) {
+        if (!empty($validated['colours'])) {
+            foreach ($validated['colours'] as $index => $color) {
                 $colorsData[] = [
                     'id' => $index + 1,
                     'value' => $color
@@ -71,40 +71,39 @@ class ProductController extends Controller
 
         // Create product
         $product = Product::create([
+            'category_id' => $validated['category_id'] ?? null,
+            'brand_id' => $validated['brand_id'] ?? null,
+            'supplier_id' => $validated['supplier_id'] ?? null,
             'name' => $validated['name'],
-            'slug' => Str::slug($validated['name']),
             'description' => $validated['description'] ?? null,
-            'price' => $validated['price'],
-            'discounted_price' => $validated['discounted_price'] ?? null,
-            'tax_included' => $validated['tax_included'],
-            'expiration_start' => $validated['expiration_start'] ?? null,
-            'expiration_end' => $validated['expiration_end'] ?? null,
-            'stock_quantity' => $validated['unlimited'] ? null : ($validated['stock_quantity'] ?? 0),
-            'unlimited' => $validated['unlimited'],
-            'stock_status' => $validated['stock_status'],
-            'customize' => $validated['customize'],
-            'colors' => $colorsData ?: null,
             'images' => $imagesData ?: null,
+            'cost_price' => $validated['cost_price'] ?? null,
+            'tax_rate' => $validated['tax_rate'] ?? null,
+            'tax_rate_value' => $validated['tax_rate_value'] ?? 0.00,
+            'cost_inc_tax' => $validated['cost_inc_tax'] ?? null,
+            'sale_price_inc_tax' => $validated['sale_price_inc_tax'] ?? null,
+            'is_variable_price' => $validated['is_variable_price'] ?? false,
+            'margin_perc' => $validated['margin_perc'] ?? null,
+            'tax_exempt_eligible' => $validated['tax_exempt_eligible'] ?? false,
+            'rr_price' => $validated['rr_price'] ?? null,
+            'bottle_deposit_item_name' => $validated['bottle_deposit_item_name'] ?? null,
+            'barcode' => $validated['barcode'] ?? null,
+            'size' => $validated['size'] ?? null,
+            'colours' => $colorsData ?: null,
+            'product_code' => $validated['product_code'] ?? null,
+            'age_restriction' => $validated['age_restriction'] ?? null,
+            'customize' => $validated['customize'] ?? false,
         ]);
-
-        // Attach categories and tags
-        if (isset($validated['categories'])) {
-            $product->categories()->sync($validated['categories']);
-        }
-
-        if (isset($validated['tags'])) {
-            $product->tags()->sync($validated['tags']);
-        }
 
         return response()->json([
             'message' => 'Product created successfully',
-            'product' => $product->load('categories', 'tags')
+            'product' => $product->load('category', 'brand', 'supplier')
         ], 201);
     }
 
     public function show($id)
     {
-        $product = Product::with(['categories', 'tags'])->findOrFail($id);
+        $product = Product::with(['category', 'brand', 'supplier'])->findOrFail($id);
 
         return response()->json($product, 200);
     }
@@ -117,31 +116,35 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
 
         $validated = $request->validate([
+            'category_id' => 'nullable|exists:categories,id',
+            'brand_id' => 'nullable|exists:brands,id',
+            'supplier_id' => 'nullable|exists:suppliers,id',
             'name' => 'sometimes|string|max:255',
             'description' => 'nullable|string',
-            'price' => 'sometimes|numeric',
-            'discounted_price' => 'nullable|numeric',
-            'tax_included' => 'sometimes|boolean',
-            'expiration_start' => 'nullable|date',
-            'expiration_end' => 'nullable|date|after_or_equal:expiration_start',
-            'stock_quantity' => 'nullable|integer',
-            'unlimited' => 'sometimes|boolean',
-            'stock_status' => 'nullable|string|in:In Stock,Out of Stock',
-            'categories' => 'nullable|array',
-            'categories.*' => 'integer|exists:categories,id',
-            'tags' => 'nullable|array',
-            'tags.*' => 'integer|exists:tags,id',
-            'colors' => 'nullable|array',
-            'colors.*' => 'string',
+            'cost_price' => 'nullable|numeric',
+            'tax_rate' => 'nullable|string',
+            'tax_rate_value' => 'nullable|numeric',
+            'cost_inc_tax' => 'nullable|numeric',
+            'sale_price_inc_tax' => 'nullable|numeric',
+            'is_variable_price' => 'sometimes|boolean',
+            'margin_perc' => 'nullable|numeric',
+            'tax_exempt_eligible' => 'sometimes|boolean',
+            'rr_price' => 'nullable|numeric',
+            'bottle_deposit_item_name' => 'nullable|string|max:255',
+            'barcode' => 'nullable|string|max:255|unique:products,barcode,' . $product->id,
+            'size' => 'nullable|array',
+            'colours' => 'nullable|array',
+            'product_code' => 'nullable|string|max:255|unique:products,product_code,' . $product->id,
+            'age_restriction' => 'nullable|integer',
             'customize' => 'sometimes|boolean',
             'images' => 'nullable|array',
             'images.*' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048'
         ]);
 
-        // Handle images
+        // 🖼️ Handle images
         $imagesData = $product->images ?? [];
         if ($request->hasFile('images')) {
-            foreach ($request->file('images') as $index => $image) {
+            foreach ($request->file('images') as $image) {
                 $path = $image->store('products', 'public');
                 $imagesData[] = [
                     'id' => count($imagesData) + 1,
@@ -150,10 +153,10 @@ class ProductController extends Controller
             }
         }
 
-        // Handle colors
+        // 🎨 Handle colours
         $colorsData = [];
-        if (!empty($validated['colors'])) {
-            foreach ($validated['colors'] as $index => $color) {
+        if (!empty($validated['colours'])) {
+            foreach ($validated['colours'] as $index => $color) {
                 $colorsData[] = [
                     'id' => $index + 1,
                     'value' => $color
@@ -161,22 +164,35 @@ class ProductController extends Controller
             }
         }
 
-        $product->update(array_merge($validated, [
-            'slug' => isset($validated['name']) ? Str::slug($validated['name']) : $product->slug,
-            'colors' => $colorsData ?: $product->colors,
+        // 💾 Update product
+        $product->update([
+            'category_id' => $validated['category_id'] ?? $product->category_id,
+            'brand_id' => $validated['brand_id'] ?? $product->brand_id,
+            'supplier_id' => $validated['supplier_id'] ?? $product->supplier_id,
+            'name' => $validated['name'] ?? $product->name,
+            'description' => $validated['description'] ?? $product->description,
+            'cost_price' => $validated['cost_price'] ?? $product->cost_price,
+            'tax_rate' => $validated['tax_rate'] ?? $product->tax_rate,
+            'tax_rate_value' => $validated['tax_rate_value'] ?? $product->tax_rate_value,
+            'cost_inc_tax' => $validated['cost_inc_tax'] ?? $product->cost_inc_tax,
+            'sale_price_inc_tax' => $validated['sale_price_inc_tax'] ?? $product->sale_price_inc_tax,
+            'is_variable_price' => $validated['is_variable_price'] ?? $product->is_variable_price,
+            'margin_perc' => $validated['margin_perc'] ?? $product->margin_perc,
+            'tax_exempt_eligible' => $validated['tax_exempt_eligible'] ?? $product->tax_exempt_eligible,
+            'rr_price' => $validated['rr_price'] ?? $product->rr_price,
+            'bottle_deposit_item_name' => $validated['bottle_deposit_item_name'] ?? $product->bottle_deposit_item_name,
+            'barcode' => $validated['barcode'] ?? $product->barcode,
+            'size' => $validated['size'] ?? $product->size,
+            'colours' => !empty($colorsData) ? $colorsData : $product->colours,
+            'product_code' => $validated['product_code'] ?? $product->product_code,
+            'age_restriction' => $validated['age_restriction'] ?? $product->age_restriction,
+            'customize' => $validated['customize'] ?? $product->customize,
             'images' => $imagesData,
-        ]));
-
-        if (isset($validated['categories'])) {
-            $product->categories()->sync($validated['categories']);
-        }
-        if (isset($validated['tags'])) {
-            $product->tags()->sync($validated['tags']);
-        }
+        ]);
 
         return response()->json([
             'message' => 'Product updated successfully',
-            'product' => $product->load('categories', 'tags')
+            'product' => $product->fresh(['category', 'brand', 'supplier'])
         ], 200);
     }
 
@@ -187,15 +203,16 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
 
-        // Delete product images from storage
-        if ($product->images) {
+        // 🖼️ Delete product images from storage
+        if ($product->images && is_array($product->images)) {
             foreach ($product->images as $image) {
-                Storage::disk('public')->delete($image['path']);
+                if (isset($image['path'])) {
+                    Storage::disk('public')->delete($image['path']);
+                }
             }
         }
 
-        $product->categories()->detach();
-        $product->tags()->detach();
+        // 💾 Delete the product record
         $product->delete();
 
         return response()->json([
