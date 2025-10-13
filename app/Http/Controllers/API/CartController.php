@@ -34,8 +34,8 @@ class CartController extends Controller
         // Check if item already exists in cart with same attributes
         $item = CartItem::where('cart_id', $cart->id)
             ->where('product_id', $validated['product_id'])
-            ->where('color', $validated['color'])
-            ->where('customization_id', $validated['customization_id'])
+            ->where('color', $validated['color'] ?? null)
+            ->where('customization_id', $validated['customization_id'] ?? null)
             ->first();
 
         if ($item) {
@@ -54,11 +54,14 @@ class CartController extends Controller
 
         return response()->json([
             'message' => 'Item added to cart successfully',
-            'data'    => $item->load('customization')
+            'data' => $item->load([
+                'product.category',
+                'product.brand',
+                'product.images',
+                'customization'
+            ])
         ], 201);
     }
-
-  
     /**
      * Merge guest cart into the authenticated user's cart
      */

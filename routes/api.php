@@ -35,7 +35,7 @@ Route::get('/categories/{category}', [CategoryController::class, 'show'])->name(
 Route::post('/cart/add', [CartController::class, 'addToCart']);
 
 //product
-Route::get('/products', [ProductController::class, 'index']);        
+Route::get('/products', [ProductController::class, 'index']);
 Route::get('/products/{id}', [ProductController::class, 'show']);
 
 // authenticated user
@@ -49,7 +49,7 @@ Route::middleware('auth:sanctum')->group(function () {
     //products
     Route::post('/products', [ProductController::class, 'store']);
     Route::patch('/products/{id}', [ProductController::class, 'update']);
-Route::delete('/products/{id}', [ProductController::class, 'destroy']); 
+    Route::delete('/products/{id}', [ProductController::class, 'destroy']);
 
     // add to cart
     Route::post('/customizations', [CustomizationController::class, 'store']);
