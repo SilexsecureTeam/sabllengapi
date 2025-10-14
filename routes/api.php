@@ -6,6 +6,8 @@ use App\Http\Controllers\API\CategoryController;
 use App\Http\Controllers\API\CustomizationController;
 use App\Http\Controllers\API\ProductController;
 use App\Http\Controllers\Import\ImportInventoryController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\StaffController;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\Middleware;
@@ -33,6 +35,10 @@ Route::get('/categories/{category}', [CategoryController::class, 'show'])->name(
 
 // add to cart
 Route::post('/cart/add', [CartController::class, 'addToCart']);
+Route::get('/cart', [CartController::class, 'getCart']);
+Route::delete('/cart/items/{id}', [CartController::class, 'removeItem']);
+Route::patch('/cart/items/{id}', [CartController::class, 'updateItem']);
+
 
 //product
 Route::get('/products', [ProductController::class, 'index']);
@@ -54,4 +60,16 @@ Route::middleware('auth:sanctum')->group(function () {
     // add to cart
     Route::post('/customizations', [CustomizationController::class, 'store']);
     Route::post('/cart/merge', [CartController::class, 'mergeCart']);
+
+    // checkout
+    Route::post('/checkout', [OrderController::class, 'checkout']);
+    Route::get('/verify-payment/{reference}/{order_reference}', [PaymentController::class, 'PaystackCallback']);
 });
+
+/**ADMIN ROUTES */
+// Route::middleware(['auth:sanctum', 'is_admin'])->group(function () {
+//     Route::get('/coupons', [CouponController::class, 'index']);
+//     Route::post('/coupons', [CouponController::class, 'store']);
+//     Route::put('/coupons/{id}', [CouponController::class, 'update']);
+//     Route::delete('/coupons/{id}', [CouponController::class, 'destroy']);
+// });
