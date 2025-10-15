@@ -69,4 +69,29 @@ class PaymentController extends Controller
             'order' => $order->load('items.product'),
         ]);
     }
+
+    public function userTransactions(Request $request)
+    {
+        // Ensure user is authenticated
+        $user = $request->user();
+
+        if (!$user) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Unauthorized'
+            ], 401);
+        }
+
+        // Fetch user's transactions
+        $transactions = Transaction::with(['order'])
+            ->where('user_id', $user->id)
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        return response()->json([
+            'status' => true,
+            'message' => 'Transactions retrieved successfully',
+            'data' => $transactions
+        ], 200);
+    }
 }
