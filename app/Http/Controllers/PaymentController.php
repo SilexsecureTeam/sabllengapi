@@ -11,7 +11,7 @@ class PaymentController extends Controller
 {
     public function PaystackCallback($reference, $order_reference)
     {
-        // ✅ Verify transaction with Paystack
+        
         $verifyUrl = "https://api.paystack.co/transaction/verify/{$reference}";
         $response = Http::withToken(config('services.paystack.secret_key'))->get($verifyUrl)->json();
 
@@ -22,12 +22,10 @@ class PaymentController extends Controller
         $data = $response['data'];
         $status = $data['status'];
 
-        // ✅ Proceed only if Paystack confirms success
         if ($status !== 'success') {
             return response()->json(['error' => 'Payment not successful'], 400);
         }
 
-        // ✅ Check that the order exists and matches both reference + order_reference
         $order = Order::where('reference', $reference)
             ->where('order_reference', $order_reference)
             ->first();
@@ -36,16 +34,15 @@ class PaymentController extends Controller
             return response()->json(['error' => 'Order not found or reference mismatch'], 404);
         }
 
-        // ✅ Update order details
         $order->update([
             'status' => 'paid',
             'payment_method' => $data['channel'] ?? 'paystack',
             'tax_amount' => $order->tax_amount ?? 0,
-            'total' => $data['amount'] / 100, // Convert from kobo
+            'total' => $data['amount'] / 100,
             'reference' => $reference,
         ]);
 
-        // ✅ Log or update transaction record
+        
         Transaction::updateOrCreate(
             ['reference' => $reference],
             [

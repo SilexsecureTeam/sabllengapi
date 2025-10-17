@@ -18,7 +18,7 @@ class AuthController extends Controller
         // ✅ Let Laravel handle validation normally
         $request->validate([
             'name' => 'required|string',
-            'username' => 'required|string|unique:users',
+            'username'=> 'nullable|string|unique:users,username,',
             'email' => 'required|email|unique:users',
             'phone' => 'required|string|unique:users',
             'password' => 'required|string|min:6|confirmed',

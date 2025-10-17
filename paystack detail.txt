@@ -1,0 +1,4 @@
+Paystack Details.
+
+sk_test_6bd4328aadfc3cd9c7613634e8e4f72cfb72be11
+pk_test_d17c3742438812219bd0eb9c090fdec88a83f1f4
