@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
             $table->string('session_id')->nullable(); // for guest checkout
             $table->string('order_reference')->unique();
-            $table->string('reference')->unique()->nullable(); //for paystack
+            // $table->string('reference')->unique()->nullable(); //for paystack
             $table->decimal('subtotal', 12, 2)->default(0);
             $table->decimal('delivery_fee', 12, 2)->default(0);
             $table->decimal('total', 12, 2)->default(0);

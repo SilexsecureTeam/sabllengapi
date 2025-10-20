@@ -67,7 +67,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user/transactions', [PaymentController::class, 'userTransactions']);
     
 });
-Route::get('/verify-payment/{reference}/{order_reference}', [PaymentController::class, 'PaystackCallback']);
+Route::get('/verify-payment/{reference}', [PaymentController::class, 'PaystackCallback']);
 
 /**ADMIN ROUTES */
 // Route::middleware(['auth:sanctum', 'is_admin'])->group(function () {
