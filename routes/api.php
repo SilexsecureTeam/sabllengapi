@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\Admin\AdminDashController;
 use App\Http\Controllers\API\Auth\AuthController;
 use App\Http\Controllers\API\CartController;
 use App\Http\Controllers\API\CategoryController;
@@ -46,6 +47,32 @@ Route::get('/products/{id}', [ProductController::class, 'show']);
 
 // authenticated user
 Route::middleware('auth:sanctum')->group(function () {
+
+    // add to cart
+    Route::post('/customizations', [CustomizationController::class, 'store']);
+    Route::post('/cart/merge', [CartController::class, 'mergeCart']);
+
+    // checkout
+    Route::post('/checkout', [OrderController::class, 'checkout']);
+
+    Route::get('/user/transactions', [PaymentController::class, 'userTransactions']);
+});
+Route::get('/verify-payment/{reference}/{order_reference}', [PaymentController::class, 'PaystackCallback']);
+
+/**ADMIN ROUTES */
+// Route::middleware(['auth:sanctum', 'is_admin'])->group(function () {
+//     Route::get('/coupons', [CouponController::class, 'index']);
+//     Route::post('/coupons', [CouponController::class, 'store']);
+//     Route::put('/coupons/{id}', [CouponController::class, 'update']);
+//     Route::delete('/coupons/{id}', [CouponController::class, 'destroy']);
+// });
+
+// admin login
+Route::post('/admin/login', [AdminDashController::class, 'login']);
+Route::post('/admin/verify-otp', [AdminDashController::class, 'verifyOtp']);
+Route::post('/admin/otp/resend', [AdminDashController::class, 'resendOtp']);
+
+Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/staff', [StaffController::class, 'store'])->name('staff.store');
     //categories
     Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
@@ -56,23 +83,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/products', [ProductController::class, 'store']);
     Route::patch('/products/{id}', [ProductController::class, 'update']);
     Route::delete('/products/{id}', [ProductController::class, 'destroy']);
-
-    // add to cart
-    Route::post('/customizations', [CustomizationController::class, 'store']);
-    Route::post('/cart/merge', [CartController::class, 'mergeCart']);
-
-    // checkout
-    Route::post('/checkout', [OrderController::class, 'checkout']);
-    
-    Route::get('/user/transactions', [PaymentController::class, 'userTransactions']);
-    
+    Route::get('/admin/orders', [AdminDashController::class, 'listOrders']);
 });
-Route::get('/verify-payment/{reference}', [PaymentController::class, 'PaystackCallback']);
-
-/**ADMIN ROUTES */
-// Route::middleware(['auth:sanctum', 'is_admin'])->group(function () {
-//     Route::get('/coupons', [CouponController::class, 'index']);
-//     Route::post('/coupons', [CouponController::class, 'store']);
-//     Route::put('/coupons/{id}', [CouponController::class, 'update']);
-//     Route::delete('/coupons/{id}', [CouponController::class, 'destroy']);
-// });

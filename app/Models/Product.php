@@ -29,6 +29,7 @@ class Product extends Model
         'size',
         'colours',
         'product_code',
+        'customize',
         'age_restriction',
     ];
 
@@ -36,6 +37,7 @@ class Product extends Model
         'size' => 'array',
         'colours' => 'array',
         'images' => 'array',
+        'customize' => 'boolean',
         'is_variable_price' => 'boolean',
         'tax_exempt_eligible' => 'boolean',
         'cost_price' => 'decimal:2',

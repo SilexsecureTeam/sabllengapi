@@ -13,7 +13,7 @@ class Order extends Model
         'user_id',
         'session_id',
         'order_reference',
-        // 'reference',
+        'reference',
         'subtotal',
         'delivery_fee',
         'total',

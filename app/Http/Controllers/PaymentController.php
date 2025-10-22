@@ -9,64 +9,63 @@ use Illuminate\Support\Facades\Http;
 
 class PaymentController extends Controller
 {
-    public function PaystackCallback($reference)
-{
-    // Verify transaction with Paystack
-    $verifyUrl = "https://api.paystack.co/transaction/verify/{$reference}";
-    $response = Http::withToken(config('services.paystack.secret_key'))->get($verifyUrl)->json();
+    public function PaystackCallback($reference, $order_reference)
+    {
 
-    if (!$response['status']) {
-        return response()->json(['error' => $response['message']], 400);
-    }
+        $verifyUrl = "https://api.paystack.co/transaction/verify/{$reference}";
+        $response = Http::withToken(config('services.paystack.secret_key'))->get($verifyUrl)->json();
 
-    $data = $response['data'];
-    $status = $data['status'];
+        if (!$response['status']) {
+            return response()->json(['error' => $response['message']], 400);
+        }
 
-    if ($status !== 'success') {
-        return response()->json(['error' => 'Payment not successful'], 400);
-    }
+        $data = $response['data'];
+        $status = $data['status'];
 
-    // Find order using the same reference stored when initializing the payment
-    $order = Order::where('reference', $reference)->first();
+        if ($status !== 'success') {
+            return response()->json(['error' => 'Payment not successful'], 400);
+        }
 
-    if (!$order) {
-        return response()->json(['error' => 'Order not found or reference mismatch'], 404);
-    }
+        $order = Order::where('reference', $reference)
+            ->where('order_reference', $order_reference)
+            ->first();
 
-    // Update the order as paid
-    $order->update([
-        'status' => 'paid',
-        'payment_method' => $data['channel'] ?? 'paystack',
-        'tax_amount' => $order->tax_amount ?? 0,
-        'total' => $data['amount'] / 100,
-        
-    ]);
+        if (!$order) {
+            return response()->json(['error' => 'Order not found or reference mismatch'], 404);
+        }
 
-    // Log or update transaction
-    Transaction::updateOrCreate(
-        ['reference' => $reference],
-        [
-            'user_id' => $order->user_id,
-            'order_id' => $order->id,
-            'amount' => $data['amount'] / 100,
-            'currency' => $data['currency'],
+        $order->update([
+            'status' => 'paid',
+            'payment_method' => $data['channel'] ?? 'paystack',
+            'tax_amount' => $order->tax_amount ?? 0,
+            'total' => $data['amount'] / 100,
+            'reference' => $reference,
+        ]);
+
+
+        Transaction::updateOrCreate(
+            ['reference' => $reference],
+            [
+                'user_id' => $order->user_id,
+                'order_id' => $order->id,
+                'amount' => $data['amount'] / 100,
+                'currency' => $data['currency'],
+                'status' => $status,
+                'payment_channel' => $data['channel'],
+                'gateway_response' => $data['gateway_response'],
+                'paid_at' => $data['paid_at'],
+                'authorization_code' => $data['authorization']['authorization_code'] ?? null,
+                'customer_email' => $data['customer']['email'] ?? null,
+                'transaction_data' => $data,
+            ]
+        );
+
+        return response()->json([
+            'message' => 'Payment verified successfully',
             'status' => $status,
-            'payment_channel' => $data['channel'],
-            'gateway_response' => $data['gateway_response'],
-            'paid_at' => $data['paid_at'],
-            'authorization_code' => $data['authorization']['authorization_code'] ?? null,
-            'customer_email' => $data['customer']['email'] ?? null,
-            'transaction_data' => $data,
-        ]
-    );
-
-    return response()->json([
-        'message' => 'Payment verified successfully',
-        'status' => $status,
-        'order' => $order->load('items.product'),
-    ]);
-}
-
+            'order' => $order->load('items.product'),
+        ]);
+    }
 
     public function userTransactions(Request $request)
     {
