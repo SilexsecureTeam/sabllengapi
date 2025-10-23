@@ -31,6 +31,8 @@ Route::post('/verify-code', [AuthController::class, 'verifyCode']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/password/forgot', [AuthController::class, 'sendResetLink'])
     ->name('password.forgot');
+Route::post('/password/reset', [AuthController::class, 'resetPassword'])
+    ->name('password.reset');
 
 //show category for users
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
