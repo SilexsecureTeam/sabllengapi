@@ -26,8 +26,7 @@ class PaymentController extends Controller
             return response()->json(['error' => 'Payment not successful'], 400);
         }
 
-        $order = Order::where('reference', $reference)
-            ->where('order_reference', $order_reference)
+        $order = Order::where('order_reference', $order_reference)
             ->first();
 
         if (!$order) {

@@ -1,0 +1,6060 @@
+{
+    "states": [
+        {
+            "state_name": "Abia",
+            "lgas": [
+                {
+                    "lga_name": "Aba North",
+                    "places": [
+                        "Aba Central",
+                        "Osusu",
+                        "Umuola",
+                        "Ogbor Hill",
+                        "Ngwa Road"
+                    ]
+                },
+                {
+                    "lga_name": "Aba South",
+                    "places": [
+                        "Arochukwu Road",
+                        "Ngwa Market",
+                        "Uratta Road",
+                        "Ariaria"
+                    ]
+                },
+                {
+                    "lga_name": "Arochukwu",
+                    "places": [
+                        "Obuohia",
+                        "Umuagu",
+                        "Ututu",
+                        "Okposi",
+                        "Ndiagu"
+                    ]
+                },
+                {
+                    "lga_name": "Bende",
+                    "places": [
+                        "Bende Town",
+                        "Uzuakoli",
+                        "Amachi",
+                        "Alayi",
+                        "Igbere"
+                    ]
+                },
+                {
+                    "lga_name": "Ikwuano",
+                    "places": [
+                        "Ibere",
+                        "Oboro",
+                        "Ngodo",
+                        "Mgboko",
+                        "Oloko"
+                    ]
+                },
+                {
+                    "lga_name": "Isiala Ngwa North",
+                    "places": [
+                        "Nkporo",
+                        "Ohanze",
+                        "Umuoha",
+                        "Arochukwu Road"
+                    ]
+                },
+                {
+                    "lga_name": "Isiala Ngwa South",
+                    "places": [
+                        "Aba Urban",
+                        "Umuahia Road",
+                        "Ngwa Junction"
+                    ]
+                },
+                {
+                    "lga_name": "Isuikwuato",
+                    "places": [
+                        "Ariam/Usaka",
+                        "Amaba",
+                        "Ovim",
+                        "Otampa"
+                    ]
+                },
+                {
+                    "lga_name": "Obi Ngwa",
+                    "places": [
+                        "Umuokwor",
+                        "Umuchieze",
+                        "Isiala Ngwa Market"
+                    ]
+                },
+                {
+                    "lga_name": "Ohafia",
+                    "places": [
+                        "Ohafia Town",
+                        "Arochukwu Road",
+                        "Isuochi",
+                        "Ekeukwu"
+                    ]
+                },
+                {
+                    "lga_name": "Osisioma",
+                    "places": [
+                        "Osisioma Junction",
+                        "Umuocha",
+                        "Ngwa Road"
+                    ]
+                },
+                {
+                    "lga_name": "Ugwunagbo",
+                    "places": [
+                        "Ariam",
+                        "Obingwa",
+                        "Ngwa Road"
+                    ]
+                },
+                {
+                    "lga_name": "Ukwa East",
+                    "places": [
+                        "Ekebe",
+                        "Onuobi",
+                        "Ndiagu",
+                        "Nkporo"
+                    ]
+                },
+                {
+                    "lga_name": "Ukwa West",
+                    "places": [
+                        "Ohambele",
+                        "Osusu",
+                        "Umuokwara"
+                    ]
+                },
+                {
+                    "lga_name": "Umuahia North",
+                    "places": [
+                        "Umuahia Town",
+                        "Arochukwu Road",
+                        "Azueke",
+                        "Ndiagu"
+                    ]
+                },
+                {
+                    "lga_name": "Umuahia South",
+                    "places": [
+                        "Ariaria",
+                        "Ngwa Road",
+                        "Omagwa"
+                    ]
+                }
+            ]
+        },
+        {
+            "state_name": "Adamawa",
+            "lgas": [
+                {
+                    "lga_name": "Demsa",
+                    "places": [
+                        "Demsa Town",
+                        "Lau",
+                        "Mubi Road"
+                    ]
+                },
+                {
+                    "lga_name": "Fufore",
+                    "places": [
+                        "Fufore Town",
+                        "Lamurde",
+                        "Gurin"
+                    ]
+                },
+                {
+                    "lga_name": "Ganye",
+                    "places": [
+                        "Ganye Town",
+                        "Bali",
+                        "Kpotti"
+                    ]
+                },
+                {
+                    "lga_name": "Girei",
+                    "places": [
+                        "Girei Town",
+                        "Jimeta",
+                        "Lamido"
+                    ]
+                },
+                {
+                    "lga_name": "Gombi",
+                    "places": [
+                        "Gombi Town",
+                        "Bolewa",
+                        "Biu"
+                    ]
+                },
+                {
+                    "lga_name": "Guyuk",
+                    "places": [
+                        "Guyuk Town",
+                        "Lamurde",
+                        "Maiha"
+                    ]
+                },
+                {
+                    "lga_name": "Hong",
+                    "places": [
+                        "Hong Town",
+                        "Mubi Road",
+                        "Bali"
+                    ]
+                },
+                {
+                    "lga_name": "Jada",
+                    "places": [
+                        "Jada Town",
+                        "Numan Road",
+                        "Lamurde"
+                    ]
+                },
+                {
+                    "lga_name": "Lamurde",
+                    "places": [
+                        "Lamurde Town",
+                        "Ganye",
+                        "Guyuk"
+                    ]
+                },
+                {
+                    "lga_name": "Madagali",
+                    "places": [
+                        "Madagali Town",
+                        "Mubi Road",
+                        "Bajabure"
+                    ]
+                },
+                {
+                    "lga_name": "Maiha",
+                    "places": [
+                        "Maiha Town",
+                        "Guyuk",
+                        "Mubi Road"
+                    ]
+                },
+                {
+                    "lga_name": "Mayo-Belwa",
+                    "places": [
+                        "Mayo-Belwa Town",
+                        "Jimeta",
+                        "Bali"
+                    ]
+                },
+                {
+                    "lga_name": "Michika",
+                    "places": [
+                        "Michika Town",
+                        "Lamurde",
+                        "Hong"
+                    ]
+                },
+                {
+                    "lga_name": "Mubi North",
+                    "places": [
+                        "Mubi Town",
+                        "Jimeta",
+                        "Lamurde"
+                    ]
+                },
+                {
+                    "lga_name": "Mubi South",
+                    "places": [
+                        "Mubi Town South",
+                        "Lamurde",
+                        "Jimeta"
+                    ]
+                },
+                {
+                    "lga_name": "Numan",
+                    "places": [
+                        "Numan Town",
+                        "Jimeta",
+                        "Lamurde"
+                    ]
+                },
+                {
+                    "lga_name": "Shelleng",
+                    "places": [
+                        "Shelleng Town",
+                        "Bali",
+                        "Lamurde"
+                    ]
+                },
+                {
+                    "lga_name": "Song",
+                    "places": [
+                        "Song Town",
+                        "Jimeta",
+                        "Lamurde"
+                    ]
+                },
+                {
+                    "lga_name": "Toungo",
+                    "places": [
+                        "Toungo Town",
+                        "Lamurde",
+                        "Jimeta"
+                    ]
+                },
+                {
+                    "lga_name": "Yola North",
+                    "places": [
+                        "Jimeta",
+                        "Yola Town",
+                        "Lamurde"
+                    ]
+                },
+                {
+                    "lga_name": "Yola South",
+                    "places": [
+                        "Yola Town South",
+                        "Jimeta",
+                        "Lamurde"
+                    ]
+                }
+            ]
+        },
+        {
+            "state_name": "Akwa Ibom",
+            "lgas": [
+                {
+                    "lga_name": "Abak",
+                    "places": [
+                        "Abak Town",
+                        "Ikot Ekpene Road",
+                        "Ikot Idem Udo",
+                        "Ikot Okoro"
+                    ]
+                },
+                {
+                    "lga_name": "Eastern Obolo",
+                    "places": [
+                        "Ataba",
+                        "Okoroete",
+                        "Iko",
+                        "Ebighi"
+                    ]
+                },
+                {
+                    "lga_name": "Eket",
+                    "places": [
+                        "Eket Town",
+                        "Okon",
+                        "Idua",
+                        "Afaha Offot"
+                    ]
+                },
+                {
+                    "lga_name": "Esit Eket",
+                    "places": [
+                        "Esit Eket Town",
+                        "Ikot Abasi",
+                        "Ikot Ukpong",
+                        "Ikot Ebom"
+                    ]
+                },
+                {
+                    "lga_name": "Essien Udim",
+                    "places": [
+                        "Ikot Ekpene Road",
+                        "Ikot Ebo",
+                        "Ikot Abasi",
+                        "Nduetong"
+                    ]
+                },
+                {
+                    "lga_name": "Etim Ekpo",
+                    "places": [
+                        "Etim Ekpo Town",
+                        "Ikot Obio Nta",
+                        "Ikot Udo",
+                        "Utu Etok"
+                    ]
+                },
+                {
+                    "lga_name": "Etinan",
+                    "places": [
+                        "Etinan Town",
+                        "Ikot Ekpene Road",
+                        "Ikot Inyang",
+                        "Ikot Abasi"
+                    ]
+                },
+                {
+                    "lga_name": "Ibeno",
+                    "places": [
+                        "Ibeno Town",
+                        "Atabrikang",
+                        "Okobo",
+                        "Ikot Ibeno"
+                    ]
+                },
+                {
+                    "lga_name": "Ibesikpo Asutan",
+                    "places": [
+                        "Ibesikpo Town",
+                        "Ikot Ekpene Road",
+                        "Ikot Udo Abia"
+                    ]
+                },
+                {
+                    "lga_name": "Ibiono-Ibom",
+                    "places": [
+                        "Ibiono Town",
+                        "Ikot Ekpene Road",
+                        "Ikot Abasi",
+                        "Uyo Road"
+                    ]
+                },
+                {
+                    "lga_name": "Ikono",
+                    "places": [
+                        "Ikono Town",
+                        "Ikot Okoro",
+                        "Ikot Ekpene Road",
+                        "Ikot Abasi"
+                    ]
+                },
+                {
+                    "lga_name": "Ikot Abasi",
+                    "places": [
+                        "Ikot Abasi Town",
+                        "Ibeno",
+                        "Uko",
+                        "Ikot Ekpene Road"
+                    ]
+                },
+                {
+                    "lga_name": "Ikot Ekpene",
+                    "places": [
+                        "Ikot Ekpene Town",
+                        "Ikot Abasi",
+                        "Ikot Udo",
+                        "Ikot Okoro"
+                    ]
+                },
+                {
+                    "lga_name": "Ini",
+                    "places": [
+                        "Ini Town",
+                        "Ikot Ekpene Road",
+                        "Ikot Udo",
+                        "Ikot Abasi"
+                    ]
+                },
+                {
+                    "lga_name": "Itu",
+                    "places": [
+                        "Itu Town",
+                        "Ikot Ekpene Road",
+                        "Ikot Udo",
+                        "Ikot Abasi"
+                    ]
+                },
+                {
+                    "lga_name": "Mbo",
+                    "places": [
+                        "Mbo Town",
+                        "Ikot Abasi",
+                        "Ikot Ekpene Road",
+                        "Uya Oron"
+                    ]
+                },
+                {
+                    "lga_name": "Mkpat-Enin",
+                    "places": [
+                        "Mkpat-Enin Town",
+                        "Ikot Ekpene Road",
+                        "Ikot Abasi",
+                        "Ikot Udo"
+                    ]
+                },
+                {
+                    "lga_name": "Nsit-Atai",
+                    "places": [
+                        "Nsit Town",
+                        "Ikot Ekpene Road",
+                        "Ikot Abasi"
+                    ]
+                },
+                {
+                    "lga_name": "Nsit-Ibom",
+                    "places": [
+                        "Nsit-Ibom Town",
+                        "Ikot Ekpene Road",
+                        "Ikot Abasi",
+                        "Ikot Udo"
+                    ]
+                },
+                {
+                    "lga_name": "Nsit-Ubium",
+                    "places": [
+                        "Nsit-Ubium Town",
+                        "Ikot Ekpene Road",
+                        "Ikot Abasi",
+                        "Ikot Udo"
+                    ]
+                },
+                {
+                    "lga_name": "Obot Akara",
+                    "places": [
+                        "Obot Akara Town",
+                        "Ikot Ekpene Road",
+                        "Ikot Abasi",
+                        "Ikot Udo"
+                    ]
+                },
+                {
+                    "lga_name": "Okobo",
+                    "places": [
+                        "Okobo Town",
+                        "Ikot Abasi",
+                        "Ikot Ekpene Road",
+                        "Idua"
+                    ]
+                },
+                {
+                    "lga_name": "Onna",
+                    "places": [
+                        "Onna Town",
+                        "Ibeno",
+                        "Ikot Abasi",
+                        "Okoroete"
+                    ]
+                },
+                {
+                    "lga_name": "Oron",
+                    "places": [
+                        "Oron Town",
+                        "Okobo",
+                        "Idua",
+                        "Afaha Offot"
+                    ]
+                },
+                {
+                    "lga_name": "Oruk Anam",
+                    "places": [
+                        "Oruk Town",
+                        "Ikot Ekpene Road",
+                        "Ikot Abasi",
+                        "Ikot Udo"
+                    ]
+                },
+                {
+                    "lga_name": "Udung-Uko",
+                    "places": [
+                        "Udung-Uko Town",
+                        "Ikot Ekpene Road",
+                        "Ikot Abasi",
+                        "Idua"
+                    ]
+                },
+                {
+                    "lga_name": "Ukanafun",
+                    "places": [
+                        "Ukanafun Town",
+                        "Ikot Ekpene Road",
+                        "Ikot Abasi",
+                        "Ikot Udo"
+                    ]
+                },
+                {
+                    "lga_name": "Uruan",
+                    "places": [
+                        "Uruan Town",
+                        "Ikot Ekpene Road",
+                        "Ikot Abasi",
+                        "Ikot Udo"
+                    ]
+                },
+                {
+                    "lga_name": "Urue-Offong/Oruko",
+                    "places": [
+                        "Urue-Offong Town",
+                        "Ikot Ekpene Road",
+                        "Ikot Abasi",
+                        "Ikot Udo"
+                    ]
+                },
+                {
+                    "lga_name": "Uyo",
+                    "places": [
+                        "Uyo Town",
+                        "Itam",
+                        "Ikot Ekpene Road",
+                        "Ikot Abasi"
+                    ]
+                }
+            ]
+        },
+        {
+            "state_name": "Bauchi",
+            "lgas": [
+                {
+                    "lga_name": "Alkaleri",
+                    "places": [
+                        "Alkaleri Town",
+                        "Bauchi Road",
+                        "Katagum",
+                        "Dangaladima"
+                    ]
+                },
+                {
+                    "lga_name": "Bauchi",
+                    "places": [
+                        "Bauchi Town",
+                        "Jos Road",
+                        "Gadau",
+                        "Tafawa Balewa Road"
+                    ]
+                },
+                {
+                    "lga_name": "Bogoro",
+                    "places": [
+                        "Bogoro Town",
+                        "Bauchi Road",
+                        "Katagum"
+                    ]
+                },
+                {
+                    "lga_name": "Damban",
+                    "places": [
+                        "Damban Town",
+                        "Bauchi Road",
+                        "Katagum"
+                    ]
+                },
+                {
+                    "lga_name": "Darazo",
+                    "places": [
+                        "Darazo Town",
+                        "Bauchi Road",
+                        "Katagum"
+                    ]
+                },
+                {
+                    "lga_name": "Dass",
+                    "places": [
+                        "Dass Town",
+                        "Bauchi Road",
+                        "Katagum"
+                    ]
+                },
+                {
+                    "lga_name": "Ganjuwa",
+                    "places": [
+                        "Ganjuwa Town",
+                        "Bauchi Road",
+                        "Katagum"
+                    ]
+                },
+                {
+                    "lga_name": "Giade",
+                    "places": [
+                        "Giade Town",
+                        "Bauchi Road",
+                        "Katagum"
+                    ]
+                },
+                {
+                    "lga_name": "Itas/Gadau",
+                    "places": [
+                        "Itas Town",
+                        "Gadau Town",
+                        "Katagum"
+                    ]
+                },
+                {
+                    "lga_name": "Jama'are",
+                    "places": [
+                        "Jama'are Town",
+                        "Bauchi Road",
+                        "Katagum"
+                    ]
+                },
+                {
+                    "lga_name": "Katagum",
+                    "places": [
+                        "Katagum Town",
+                        "Azare",
+                        "Bauchi Road"
+                    ]
+                },
+                {
+                    "lga_name": "Shira",
+                    "places": [
+                        "Shira Town",
+                        "Bauchi Road",
+                        "Katagum"
+                    ]
+                },
+                {
+                    "lga_name": "Tafawa Balewa",
+                    "places": [
+                        "Tafawa Balewa Town",
+                        "Bauchi Road",
+                        "Katagum"
+                    ]
+                },
+                {
+                    "lga_name": "Toro",
+                    "places": [
+                        "Toro Town",
+                        "Bauchi Road",
+                        "Katagum"
+                    ]
+                },
+                {
+                    "lga_name": "Warji",
+                    "places": [
+                        "Warji Town",
+                        "Bauchi Road",
+                        "Katagum"
+                    ]
+                },
+                {
+                    "lga_name": "Zaki",
+                    "places": [
+                        "Zaki Town",
+                        "Bauchi Road",
+                        "Katagum"
+                    ]
+                }
+            ]
+        },
+        {
+            "state_name": "Bayelsa",
+            "lgas": [
+                {
+                    "lga_name": "Brass",
+                    "places": [
+                        "Twon-Brass",
+                        "Yenagoa Road",
+                        "Nembe",
+                        "Obogoro"
+                    ]
+                },
+                {
+                    "lga_name": "Ekeremor",
+                    "places": [
+                        "Ekeremor Town",
+                        "Agudama",
+                        "Odioma",
+                        "Oporoma"
+                    ]
+                },
+                {
+                    "lga_name": "Kolokuma/Opokuma",
+                    "places": [
+                        "Kaiama",
+                        "Opokuma",
+                        "Kolokuma",
+                        "Sagbama Road"
+                    ]
+                },
+                {
+                    "lga_name": "Nembe",
+                    "places": [
+                        "Nembe Town",
+                        "Brass Road",
+                        "Obobriama",
+                        "Amassoma"
+                    ]
+                },
+                {
+                    "lga_name": "Ogbia",
+                    "places": [
+                        "Ogbia Town",
+                        "Nembe Road",
+                        "Kolo",
+                        "Agudama"
+                    ]
+                },
+                {
+                    "lga_name": "Sagbama",
+                    "places": [
+                        "Sagbama Town",
+                        "Kolokuma Road",
+                        "Ekeremor",
+                        "Oporoma"
+                    ]
+                },
+                {
+                    "lga_name": "Southern Ijaw",
+                    "places": [
+                        "Izon Towns",
+                        "Oloibiri",
+                        "Peremabiri",
+                        "Amassoma"
+                    ]
+                },
+                {
+                    "lga_name": "Yenagoa",
+                    "places": [
+                        "Yenagoa Town",
+                        "Swali",
+                        "Biogbolo",
+                        "Epie",
+                        "Koluama"
+                    ]
+                }
+            ]
+        },
+        {
+            "state_name": "Benue",
+            "lgas": [
+                {
+                    "lga_name": "Ado",
+                    "places": [
+                        "Ado Town",
+                        "Katsina-Ala Road",
+                        "Guma Road"
+                    ]
+                },
+                {
+                    "lga_name": "Agatu",
+                    "places": [
+                        "Agatu Town",
+                        "Obagaji",
+                        "Amechi",
+                        "Obagaji"
+                    ]
+                },
+                {
+                    "lga_name": "Apa",
+                    "places": [
+                        "Apa Town",
+                        "Ugbokolo",
+                        "Vandeikya Road"
+                    ]
+                },
+                {
+                    "lga_name": "Buruku",
+                    "places": [
+                        "Buruku Town",
+                        "Makurdi Road",
+                        "Shangev"
+                    ]
+                },
+                {
+                    "lga_name": "Gboko",
+                    "places": [
+                        "Gboko Town",
+                        "Ugbokolo Road",
+                        "Katsina-Ala Road"
+                    ]
+                },
+                {
+                    "lga_name": "Guma",
+                    "places": [
+                        "Guma Town",
+                        "Makurdi Road",
+                        "Katsina-Ala Road"
+                    ]
+                },
+                {
+                    "lga_name": "Gwer East",
+                    "places": [
+                        "Mkar Town",
+                        "Gboko Road",
+                        "Vandeikya Road"
+                    ]
+                },
+                {
+                    "lga_name": "Gwer West",
+                    "places": [
+                        "Naka Town",
+                        "Makurdi Road",
+                        "Gboko Road"
+                    ]
+                },
+                {
+                    "lga_name": "Katsina-Ala",
+                    "places": [
+                        "Katsina-Ala Town",
+                        "Ugbokolo Road",
+                        "Makurdi Road"
+                    ]
+                },
+                {
+                    "lga_name": "Konshisha",
+                    "places": [
+                        "Adikpo Town",
+                        "Gboko Road",
+                        "Makurdi Road"
+                    ]
+                },
+                {
+                    "lga_name": "Kwande",
+                    "places": [
+                        "Otukpo Town",
+                        "Makurdi Road",
+                        "Okpokwu Road"
+                    ]
+                },
+                {
+                    "lga_name": "Logo",
+                    "places": [
+                        "Logo Town",
+                        "Makurdi Road",
+                        "Ugbokolo Road"
+                    ]
+                },
+                {
+                    "lga_name": "Makurdi",
+                    "places": [
+                        "Makurdi Town",
+                        "Wadata",
+                        "North Bank",
+                        "Old Market"
+                    ]
+                },
+                {
+                    "lga_name": "Obi",
+                    "places": [
+                        "Obi Town",
+                        "Otukpo Road",
+                        "Makurdi Road"
+                    ]
+                },
+                {
+                    "lga_name": "Ogbadibo",
+                    "places": [
+                        "Ogbadibo Town",
+                        "Obagaji",
+                        "Otukpo Road"
+                    ]
+                },
+                {
+                    "lga_name": "Ohimini",
+                    "places": [
+                        "Ohimini Town",
+                        "Makurdi Road",
+                        "Ugbokolo Road"
+                    ]
+                },
+                {
+                    "lga_name": "Oju",
+                    "places": [
+                        "Oju Town",
+                        "Makurdi Road",
+                        "Okpokwu Road"
+                    ]
+                },
+                {
+                    "lga_name": "Okpokwu",
+                    "places": [
+                        "Okpokwu Town",
+                        "Makurdi Road",
+                        "Oju Road"
+                    ]
+                },
+                {
+                    "lga_name": "Tarka",
+                    "places": [
+                        "Tarka Town",
+                        "Makurdi Road",
+                        "Gboko Road"
+                    ]
+                },
+                {
+                    "lga_name": "Ukum",
+                    "places": [
+                        "Ukum Town",
+                        "Makurdi Road",
+                        "Gboko Road"
+                    ]
+                },
+                {
+                    "lga_name": "Ushongo",
+                    "places": [
+                        "Ushongo Town",
+                        "Gboko Road",
+                        "Makurdi Road"
+                    ]
+                },
+                {
+                    "lga_name": "Vandeikya",
+                    "places": [
+                        "Vandeikya Town",
+                        "Gboko Road",
+                        "Makurdi Road"
+                    ]
+                }
+            ]
+        },
+        {
+            "state_name": "Borno",
+            "lgas": [
+                {
+                    "lga_name": "Abadam",
+                    "places": [
+                        "Abadam Town",
+                        "Baga",
+                        "Gajiganna"
+                    ]
+                },
+                {
+                    "lga_name": "Bama",
+                    "places": [
+                        "Bama Town",
+                        "Gwoza Road",
+                        "Kukuwa"
+                    ]
+                },
+                {
+                    "lga_name": "Bayo",
+                    "places": [
+                        "Bayo Town",
+                        "Kwaya Kusar",
+                        "Kukuwa"
+                    ]
+                },
+                {
+                    "lga_name": "Biu",
+                    "places": [
+                        "Biu Town",
+                        "Jere",
+                        "Uba"
+                    ]
+                },
+                {
+                    "lga_name": "Chibok",
+                    "places": [
+                        "Chibok Town",
+                        "Zangamari",
+                        "Bama Road"
+                    ]
+                },
+                {
+                    "lga_name": "Damboa",
+                    "places": [
+                        "Damboa Town",
+                        "Monguno Road",
+                        "Chibok Road"
+                    ]
+                },
+                {
+                    "lga_name": "Dikwa",
+                    "places": [
+                        "Dikwa Town",
+                        "Maiduguri Road",
+                        "Biu Road"
+                    ]
+                },
+                {
+                    "lga_name": "Gubio",
+                    "places": [
+                        "Gubio Town",
+                        "Biu Road",
+                        "Maiduguri Road"
+                    ]
+                },
+                {
+                    "lga_name": "Guzamala",
+                    "places": [
+                        "Guzamala Town",
+                        "Maiduguri Road",
+                        "Biu Road"
+                    ]
+                },
+                {
+                    "lga_name": "Gwoza",
+                    "places": [
+                        "Gwoza Town",
+                        "Bama Road",
+                        "Chibok Road"
+                    ]
+                },
+                {
+                    "lga_name": "Hawul",
+                    "places": [
+                        "Hawul Town",
+                        "Biu Road",
+                        "Maiduguri Road"
+                    ]
+                },
+                {
+                    "lga_name": "Jere",
+                    "places": [
+                        "Jere Town",
+                        "Maiduguri Road",
+                        "Biu Road"
+                    ]
+                },
+                {
+                    "lga_name": "Kaga",
+                    "places": [
+                        "Kaga Town",
+                        "Maiduguri Road",
+                        "Biu Road"
+                    ]
+                },
+                {
+                    "lga_name": "Kala/Balge",
+                    "places": [
+                        "Kala Town",
+                        "Balge Town",
+                        "Baga"
+                    ]
+                },
+                {
+                    "lga_name": "Konduga",
+                    "places": [
+                        "Konduga Town",
+                        "Maiduguri Road",
+                        "Bama Road"
+                    ]
+                },
+                {
+                    "lga_name": "Kukawa",
+                    "places": [
+                        "Kukawa Town",
+                        "Baga",
+                        "Gajiganna"
+                    ]
+                },
+                {
+                    "lga_name": "Mafa",
+                    "places": [
+                        "Mafa Town",
+                        "Maiduguri Road",
+                        "Biu Road"
+                    ]
+                },
+                {
+                    "lga_name": "Magumeri",
+                    "places": [
+                        "Magumeri Town",
+                        "Biu Road",
+                        "Maiduguri Road"
+                    ]
+                },
+                {
+                    "lga_name": "Maiduguri",
+                    "places": [
+                        "Maiduguri Town",
+                        "Yerwa",
+                        "Shehuri",
+                        "Bulabulin"
+                    ]
+                },
+                {
+                    "lga_name": "Marte",
+                    "places": [
+                        "Marte Town",
+                        "Maiduguri Road",
+                        "Gubio Road"
+                    ]
+                },
+                {
+                    "lga_name": "Mobbar",
+                    "places": [
+                        "Mobbar Town",
+                        "Maiduguri Road",
+                        "Baga"
+                    ]
+                },
+                {
+                    "lga_name": "Monguno",
+                    "places": [
+                        "Monguno Town",
+                        "Maiduguri Road",
+                        "Baga"
+                    ]
+                },
+                {
+                    "lga_name": "Ngala",
+                    "places": [
+                        "Ngala Town",
+                        "Maiduguri Road",
+                        "Baga"
+                    ]
+                },
+                {
+                    "lga_name": "Nganzai",
+                    "places": [
+                        "Nganzai Town",
+                        "Biu Road",
+                        "Maiduguri Road"
+                    ]
+                },
+                {
+                    "lga_name": "Shani",
+                    "places": [
+                        "Shani Town",
+                        "Maiduguri Road",
+                        "Biu Road"
+                    ]
+                }
+            ]
+        },
+        {
+            "state_name": "Cross River",
+            "lgas": [
+                {
+                    "lga_name": "Abi",
+                    "places": [
+                        "Itigidi",
+                        "Ugep Road",
+                        "Ebeku"
+                    ]
+                },
+                {
+                    "lga_name": "Akamkpa",
+                    "places": [
+                        "Akamkpa Town",
+                        "Ikom Road",
+                        "Akparabong"
+                    ]
+                },
+                {
+                    "lga_name": "Akpabuyo",
+                    "places": [
+                        "Ikot Nakanda",
+                        "Rumuji",
+                        "Esighi"
+                    ]
+                },
+                {
+                    "lga_name": "Bakassi",
+                    "places": [
+                        "Ikang",
+                        "Iko",
+                        "Akpabuyo Road"
+                    ]
+                },
+                {
+                    "lga_name": "Bekwarra",
+                    "places": [
+                        "Ugep",
+                        "Obudu Road",
+                        "Obudu Plateau"
+                    ]
+                },
+                {
+                    "lga_name": "Biase",
+                    "places": [
+                        "Akpet Central",
+                        "Itigidi",
+                        "Biase Town"
+                    ]
+                },
+                {
+                    "lga_name": "Boki",
+                    "places": [
+                        "Boki Town",
+                        "Ogoja Road",
+                        "Ikom Road"
+                    ]
+                },
+                {
+                    "lga_name": "Calabar Municipal",
+                    "places": [
+                        "Calabar Town",
+                        "Tinapa Road",
+                        "Marian Road"
+                    ]
+                },
+                {
+                    "lga_name": "Calabar South",
+                    "places": [
+                        "Calabar South Town",
+                        "Rumuji",
+                        "Marian Road"
+                    ]
+                },
+                {
+                    "lga_name": "Etung",
+                    "places": [
+                        "Effraya",
+                        "Ebughu",
+                        "Etung Town"
+                    ]
+                },
+                {
+                    "lga_name": "Ikom",
+                    "places": [
+                        "Ikom Town",
+                        "Nassarawa",
+                        "Etomi"
+                    ]
+                },
+                {
+                    "lga_name": "Obanliku",
+                    "places": [
+                        "Obanliku Town",
+                        "Obudu Road",
+                        "Boki Road"
+                    ]
+                },
+                {
+                    "lga_name": "Obubra",
+                    "places": [
+                        "Obubra Town",
+                        "Ogoja Road",
+                        "Ikom Road"
+                    ]
+                },
+                {
+                    "lga_name": "Obudu",
+                    "places": [
+                        "Obudu Town",
+                        "Obudu Plateau",
+                        "Bekwarra Road"
+                    ]
+                },
+                {
+                    "lga_name": "Odukpani",
+                    "places": [
+                        "Odukpani Town",
+                        "Cross River Road",
+                        "Calabar Road"
+                    ]
+                },
+                {
+                    "lga_name": "Ogoja",
+                    "places": [
+                        "Ogoja Town",
+                        "Ikom Road",
+                        "Obubra Road"
+                    ]
+                },
+                {
+                    "lga_name": "Yakuur",
+                    "places": [
+                        "Yakuur Town",
+                        "Ikom Road",
+                        "Obubra Road"
+                    ]
+                },
+                {
+                    "lga_name": "Yala",
+                    "places": [
+                        "Yala Town",
+                        "Obudu Road",
+                        "Bekwarra Road"
+                    ]
+                }
+            ]
+        },
+        {
+            "state_name": "Delta",
+            "lgas": [
+                {
+                    "lga_name": "Aniocha North",
+                    "places": [
+                        "Issele-Uku",
+                        "Ubulu-Uku",
+                        "Obomkpa",
+                        "Ebu"
+                    ]
+                },
+                {
+                    "lga_name": "Aniocha South",
+                    "places": [
+                        "Ezi",
+                        "Obomkpa Road",
+                        "Ogwashi-Uku",
+                        "Akwu-Umuigbe"
+                    ]
+                },
+                {
+                    "lga_name": "Bomadi",
+                    "places": [
+                        "Bomadi Town",
+                        "Patani",
+                        "Ogume"
+                    ]
+                },
+                {
+                    "lga_name": "Burutu",
+                    "places": [
+                        "Burutu Town",
+                        "Ogulagha",
+                        "Obatebe"
+                    ]
+                },
+                {
+                    "lga_name": "Ethiope East",
+                    "places": [
+                        "Agbon",
+                        "Oghara",
+                        "Ozoro Road"
+                    ]
+                },
+                {
+                    "lga_name": "Ethiope West",
+                    "places": [
+                        "Sapele",
+                        "Ekurede-Urhobo",
+                        "Uvwie"
+                    ]
+                },
+                {
+                    "lga_name": "Ika North East",
+                    "places": [
+                        "Agbor",
+                        "Umunede",
+                        "Owa-Alero",
+                        "Alihame"
+                    ]
+                },
+                {
+                    "lga_name": "Ika South",
+                    "places": [
+                        "Owa Oyibu",
+                        "Owa Ogo",
+                        "Umunede",
+                        "Agbor Road"
+                    ]
+                },
+                {
+                    "lga_name": "Isoko North",
+                    "places": [
+                        "Ozoro",
+                        "Emevor",
+                        "Irri",
+                        "Umeh"
+                    ]
+                },
+                {
+                    "lga_name": "Isoko South",
+                    "places": [
+                        "Okpe",
+                        "Okpolo",
+                        "Oleh",
+                        "Ebugodo"
+                    ]
+                },
+                {
+                    "lga_name": "Ndokwa East",
+                    "places": [
+                        "Aboh",
+                        "Umutu",
+                        "Owhelogbo"
+                    ]
+                },
+                {
+                    "lga_name": "Ndokwa West",
+                    "places": [
+                        "Kwale",
+                        "Utagba-Ogbe",
+                        "Asaba Road"
+                    ]
+                },
+                {
+                    "lga_name": "Okpe",
+                    "places": [
+                        "Orerokpe",
+                        "Okpe Town",
+                        "Oghara Road"
+                    ]
+                },
+                {
+                    "lga_name": "Oshimili North",
+                    "places": [
+                        "Asaba",
+                        "Okpanam",
+                        "Akwu-Ebolo"
+                    ]
+                },
+                {
+                    "lga_name": "Oshimili South",
+                    "places": [
+                        "Kwale",
+                        "Ogwashi-Uku",
+                        "Asaba Road"
+                    ]
+                },
+                {
+                    "lga_name": "Patani",
+                    "places": [
+                        "Patani Town",
+                        "Burutu Road",
+                        "Obodeti"
+                    ]
+                },
+                {
+                    "lga_name": "Sapele",
+                    "places": [
+                        "Sapele Town",
+                        "Ekurede-Urhobo",
+                        "Uvwie"
+                    ]
+                },
+                {
+                    "lga_name": "Udu",
+                    "places": [
+                        "Ovwian",
+                        "Effurun",
+                        "Enerhen"
+                    ]
+                },
+                {
+                    "lga_name": "Ughelli North",
+                    "places": [
+                        "Ughelli Town",
+                        "Ovwian",
+                        "Otor-Udu"
+                    ]
+                },
+                {
+                    "lga_name": "Ughelli South",
+                    "places": [
+                        "Oghara",
+                        "Ovwian",
+                        "Uvwie"
+                    ]
+                },
+                {
+                    "lga_name": "Ukwuani",
+                    "places": [
+                        "Obiaruku",
+                        "Otu-Jeremi",
+                        "Akumazi"
+                    ]
+                },
+                {
+                    "lga_name": "Uvwie",
+                    "places": [
+                        "Effurun",
+                        "Ovwian",
+                        "Otokutu"
+                    ]
+                },
+                {
+                    "lga_name": "Warri North",
+                    "places": [
+                        "Koko",
+                        "Ogulagha",
+                        "Ogheye"
+                    ]
+                },
+                {
+                    "lga_name": "Warri South",
+                    "places": [
+                        "Warri Town",
+                        "Enerhen",
+                        "Effurun"
+                    ]
+                },
+                {
+                    "lga_name": "Warri South West",
+                    "places": [
+                        "Okere-Urhobo",
+                        "Obodo-Ugbo",
+                        "Agbassa"
+                    ]
+                }
+            ]
+        },
+        {
+            "state_name": "Ebonyi",
+            "lgas": [
+                {
+                    "lga_name": "Abakaliki",
+                    "places": [
+                        "Abakaliki Town",
+                        "Nkalagu",
+                        "Uburu",
+                        "Okposi"
+                    ]
+                },
+                {
+                    "lga_name": "Afikpo North",
+                    "places": [
+                        "Ehugbo",
+                        "Nkpoghoro",
+                        "Oso-Adu",
+                        "Amasiri"
+                    ]
+                },
+                {
+                    "lga_name": "Afikpo South",
+                    "places": [
+                        "Afikpo Town",
+                        "Edda",
+                        "Amangwu"
+                    ]
+                },
+                {
+                    "lga_name": "Ebonyi",
+                    "places": [
+                        "Ebonyi Town",
+                        "Ohaukwu",
+                        "Onicha"
+                    ]
+                },
+                {
+                    "lga_name": "Ezza North",
+                    "places": [
+                        "Ezza Town",
+                        "Ezza Market",
+                        "Uburu Road"
+                    ]
+                },
+                {
+                    "lga_name": "Ezza South",
+                    "places": [
+                        "Onueke",
+                        "Ezza Town",
+                        "Ebonyi Road"
+                    ]
+                },
+                {
+                    "lga_name": "Ikwo",
+                    "places": [
+                        "Ikwo Town",
+                        "Ezza Road",
+                        "Nkalagu"
+                    ]
+                },
+                {
+                    "lga_name": "Ishielu",
+                    "places": [
+                        "Itim",
+                        "Nkalagu Road",
+                        "Okposi"
+                    ]
+                },
+                {
+                    "lga_name": "Ivo",
+                    "places": [
+                        "Abakaliki Road",
+                        "Onicha Town",
+                        "Ebonyi"
+                    ]
+                },
+                {
+                    "lga_name": "Izzi",
+                    "places": [
+                        "Izzi Town",
+                        "Onicha Road",
+                        "Uburu"
+                    ]
+                },
+                {
+                    "lga_name": "Ohaozara",
+                    "places": [
+                        "Ohaozara Town",
+                        "Ezza Road",
+                        "Uburu"
+                    ]
+                },
+                {
+                    "lga_name": "Ohaukwu",
+                    "places": [
+                        "Ohaukwu Town",
+                        "Ebonyi Road",
+                        "Onicha"
+                    ]
+                },
+                {
+                    "lga_name": "Onicha",
+                    "places": [
+                        "Onicha Town",
+                        "Ebonyi Road",
+                        "Uburu"
+                    ]
+                }
+            ]
+        },
+        {
+            "state_name": "Edo",
+            "lgas": [
+                {
+                    "lga_name": "Akoko-Edo",
+                    "places": [
+                        "Igarra",
+                        "Ikpeshi",
+                        "Okpesa",
+                        "Ikpoba"
+                    ]
+                },
+                {
+                    "lga_name": "Egor",
+                    "places": [
+                        "Benin City",
+                        "Ugbowo",
+                        "Ring Road"
+                    ]
+                },
+                {
+                    "lga_name": "Esan Central",
+                    "places": [
+                        "Igueben",
+                        "Igue-an",
+                        "Ubiaja"
+                    ]
+                },
+                {
+                    "lga_name": "Esan North-East",
+                    "places": [
+                        "Ubiaja",
+                        "Uromi",
+                        "Ewatto"
+                    ]
+                },
+                {
+                    "lga_name": "Esan South-East",
+                    "places": [
+                        "Ubiaja",
+                        "Ubulu-Uno",
+                        "Ekpoma"
+                    ]
+                },
+                {
+                    "lga_name": "Esan West",
+                    "places": [
+                        "Ekpoma",
+                        "Uromi",
+                        "Ubiaja"
+                    ]
+                },
+                {
+                    "lga_name": "Etsako Central",
+                    "places": [
+                        "Fugar",
+                        "Agbede",
+                        "Auchi"
+                    ]
+                },
+                {
+                    "lga_name": "Etsako East",
+                    "places": [
+                        "Agbede",
+                        "Okpella",
+                        "Ubiaja"
+                    ]
+                },
+                {
+                    "lga_name": "Etsako West",
+                    "places": [
+                        "Auchi",
+                        "Somorika",
+                        "Ujiogba"
+                    ]
+                },
+                {
+                    "lga_name": "Igueben",
+                    "places": [
+                        "Igueben Town",
+                        "Ubiaja",
+                        "Ekpoma"
+                    ]
+                },
+                {
+                    "lga_name": "Ikpoba-Okha",
+                    "places": [
+                        "Benin City",
+                        "Ring Road",
+                        "Ugbowo"
+                    ]
+                },
+                {
+                    "lga_name": "Oredo",
+                    "places": [
+                        "Benin City",
+                        "Ring Road",
+                        "Ugbowo"
+                    ]
+                },
+                {
+                    "lga_name": "Orhionmwon",
+                    "places": [
+                        "Igbanke",
+                        "Evbuobanosa",
+                        "Obagie"
+                    ]
+                },
+                {
+                    "lga_name": "Ovia North-East",
+                    "places": [
+                        "Okada",
+                        "Ugbowo",
+                        "Evbuobanosa"
+                    ]
+                },
+                {
+                    "lga_name": "Ovia South-West",
+                    "places": [
+                        "Oregbeni",
+                        "Ugbowo",
+                        "Okada"
+                    ]
+                },
+                {
+                    "lga_name": "Owan East",
+                    "places": [
+                        "Igueben",
+                        "Uromi",
+                        "Ekpoma"
+                    ]
+                },
+                {
+                    "lga_name": "Owan West",
+                    "places": [
+                        "Sabongida-Ora",
+                        "Igueben",
+                        "Ekpoma"
+                    ]
+                },
+                {
+                    "lga_name": "Uhunmwonde",
+                    "places": [
+                        "Uromi",
+                        "Ekpoma",
+                        "Ubiaja"
+                    ]
+                }
+            ]
+        },
+        {
+            "state_name": "Ekiti",
+            "lgas": [
+                {
+                    "lga_name": "Ado-Ekiti",
+                    "places": [
+                        "Ado Town",
+                        "Iworoko",
+                        "Ijero Road"
+                    ]
+                },
+                {
+                    "lga_name": "Efon",
+                    "places": [
+                        "Efon Town",
+                        "Ikere Road",
+                        "Emure Road"
+                    ]
+                },
+                {
+                    "lga_name": "Ekiti East",
+                    "places": [
+                        "Omuo-Ekiti",
+                        "Ikere Road",
+                        "Iworoko"
+                    ]
+                },
+                {
+                    "lga_name": "Ekiti South-West",
+                    "places": [
+                        "Ijero Town",
+                        "Omuo-Ekiti",
+                        "Ikere Road"
+                    ]
+                },
+                {
+                    "lga_name": "Ekiti West",
+                    "places": [
+                        "Ipole-Ijesa",
+                        "Ikere Road",
+                        "Iworoko"
+                    ]
+                },
+                {
+                    "lga_name": "Emure",
+                    "places": [
+                        "Emure Town",
+                        "Ikere Road",
+                        "Ijero Road"
+                    ]
+                },
+                {
+                    "lga_name": "Ido-Osi",
+                    "places": [
+                        "Ido Town",
+                        "Ijero Road",
+                        "Ikere Road"
+                    ]
+                },
+                {
+                    "lga_name": "Ilejemeje",
+                    "places": [
+                        "Ilejemeje Town",
+                        "Iworoko",
+                        "Ikere Road"
+                    ]
+                },
+                {
+                    "lga_name": "Irepodun/Ifelodun",
+                    "places": [
+                        "Irepodun Town",
+                        "Ifelodun Town",
+                        "Ado Road"
+                    ]
+                },
+                {
+                    "lga_name": "Ise/Orun",
+                    "places": [
+                        "Ise Town",
+                        "Orun Town",
+                        "Ijero Road"
+                    ]
+                },
+                {
+                    "lga_name": "Moba",
+                    "places": [
+                        "Moba Town",
+                        "Ikere Road",
+                        "Ado Road"
+                    ]
+                },
+                {
+                    "lga_name": "Oye",
+                    "places": [
+                        "Oye Town",
+                        "Ijero Road",
+                        "Ikere Road"
+                    ]
+                }
+            ]
+        },
+        {
+            "state_name": "Enugu",
+            "lgas": [
+                {
+                    "lga_name": "Enugu East",
+                    "places": [
+                        "Agbani",
+                        "Nike",
+                        "GRA",
+                        "Independence Layout"
+                    ]
+                },
+                {
+                    "lga_name": "Enugu North",
+                    "places": [
+                        "Kawpoku",
+                        "Ogbete",
+                        "GRA",
+                        "Emene"
+                    ]
+                },
+                {
+                    "lga_name": "Enugu South",
+                    "places": [
+                        "Awkunanaw",
+                        "Uwani",
+                        "Ogui",
+                        "Obinagu"
+                    ]
+                },
+                {
+                    "lga_name": "Ezeagu",
+                    "places": [
+                        "Mmaku",
+                        "Ugbo",
+                        "Achi",
+                        "Umulokpa"
+                    ]
+                },
+                {
+                    "lga_name": "Igbo-Etiti",
+                    "places": [
+                        "Nsukka Road",
+                        "Igbo-Etiti Town",
+                        "Aku Road"
+                    ]
+                },
+                {
+                    "lga_name": "Igbo-Eze North",
+                    "places": [
+                        "Nsukka Town",
+                        "Obollo-Afor",
+                        "Obollo-Eke"
+                    ]
+                },
+                {
+                    "lga_name": "Igbo-Eze South",
+                    "places": [
+                        "Nsukka Road",
+                        "Isi-Uzo",
+                        "Achi"
+                    ]
+                },
+                {
+                    "lga_name": "Isi-Uzo",
+                    "places": [
+                        "Ikem",
+                        "Neke",
+                        "Mgbowo"
+                    ]
+                },
+                {
+                    "lga_name": "Nkanu East",
+                    "places": [
+                        "Amagunze",
+                        "Nara",
+                        "Nkerefi"
+                    ]
+                },
+                {
+                    "lga_name": "Nkanu West",
+                    "places": [
+                        "Agbani",
+                        "Neke",
+                        "Owo"
+                    ]
+                },
+                {
+                    "lga_name": "Nsukka",
+                    "places": [
+                        "Nsukka Town",
+                        "Obukpa",
+                        "Opi",
+                        "Ugbawka"
+                    ]
+                },
+                {
+                    "lga_name": "Udenu",
+                    "places": [
+                        "Obollo-Afor",
+                        "Obollo-Eke",
+                        "Nsukka Road"
+                    ]
+                },
+                {
+                    "lga_name": "Udi",
+                    "places": [
+                        "Udi Town",
+                        "Ogbede",
+                        "Ngwo",
+                        "Aguobu"
+                    ]
+                },
+                {
+                    "lga_name": "Uzo-Uwani",
+                    "places": [
+                        "Neke",
+                        "Achi",
+                        "Uzo-Uwani Town"
+                    ]
+                }
+            ]
+        },
+        {
+            "state_name": "Gombe",
+            "lgas": [
+                {
+                    "lga_name": "Akko",
+                    "places": [
+                        "Kumo",
+                        "Pindiga",
+                        "Akko Town"
+                    ]
+                },
+                {
+                    "lga_name": "Balanga",
+                    "places": [
+                        "Balanga Town",
+                        "Wuro-Kufi",
+                        "Kaure"
+                    ]
+                },
+                {
+                    "lga_name": "Billiri",
+                    "places": [
+                        "Billiri Town",
+                        "Kalshingi",
+                        "Bangshika"
+                    ]
+                },
+                {
+                    "lga_name": "Dukku",
+                    "places": [
+                        "Dukku Town",
+                        "Pindiga",
+                        "Biri"
+                    ]
+                },
+                {
+                    "lga_name": "Funakaye",
+                    "places": [
+                        "Kaltungo",
+                        "Funakaye Town",
+                        "Gombe Road"
+                    ]
+                },
+                {
+                    "lga_name": "Gombe",
+                    "places": [
+                        "Gombe Town",
+                        "Pantami",
+                        "Tudun Wada",
+                        "Biu Road"
+                    ]
+                },
+                {
+                    "lga_name": "Kaltungo",
+                    "places": [
+                        "Kaltungo Town",
+                        "Funakaye Road",
+                        "Bajoga"
+                    ]
+                },
+                {
+                    "lga_name": "Kwami",
+                    "places": [
+                        "Kwami Town",
+                        "Bajoga",
+                        "Gombe Road"
+                    ]
+                },
+                {
+                    "lga_name": "Nafada/Bajoga",
+                    "places": [
+                        "Bajoga Town",
+                        "Nafada Town",
+                        "Gombe Road"
+                    ]
+                },
+                {
+                    "lga_name": "Yamaltu/Deba",
+                    "places": [
+                        "Yamaltu Town",
+                        "Deba Town",
+                        "Gombe Road"
+                    ]
+                }
+            ]
+        },
+        {
+            "state_name": "Imo",
+            "lgas": [
+                {
+                    "lga_name": "Aboh-Mbaise",
+                    "places": [
+                        "Nguru",
+                        "Umuneke",
+                        "Okwuato"
+                    ]
+                },
+                {
+                    "lga_name": "Ahiazu-Mbaise",
+                    "places": [
+                        "Ndi-Ana",
+                        "Ahiara",
+                        "Oru"
+                    ]
+                },
+                {
+                    "lga_name": "Ehime-Mbano",
+                    "places": [
+                        "Umuezeala",
+                        "Ndi-Okoro",
+                        "Umulolo"
+                    ]
+                },
+                {
+                    "lga_name": "Ezinihitte",
+                    "places": [
+                        "Okpofe",
+                        "Isiala",
+                        "Ihitte"
+                    ]
+                },
+                {
+                    "lga_name": "Ideato North",
+                    "places": [
+                        "Urualla",
+                        "Obodoukwu",
+                        "Nkwerre"
+                    ]
+                },
+                {
+                    "lga_name": "Ideato South",
+                    "places": [
+                        "Dikenafai",
+                        "Umuozu",
+                        "Obodoukwu"
+                    ]
+                },
+                {
+                    "lga_name": "Ihitte/Uboma",
+                    "places": [
+                        "Isiala",
+                        "Uboma",
+                        "Ihitte"
+                    ]
+                },
+                {
+                    "lga_name": "Ikeduru",
+                    "places": [
+                        "Amakohia",
+                        "Iho",
+                        "Ubomiri"
+                    ]
+                },
+                {
+                    "lga_name": "Isiala Mbano",
+                    "places": [
+                        "Umuezeala",
+                        "Ndi-Okoro",
+                        "Amurie-Omanze"
+                    ]
+                },
+                {
+                    "lga_name": "Isu",
+                    "places": [
+                        "Umundugba",
+                        "Ekwe",
+                        "Okwudor"
+                    ]
+                },
+                {
+                    "lga_name": "Mbaitoli",
+                    "places": [
+                        "Owerri",
+                        "Nwaorieubi",
+                        "Umueshi"
+                    ]
+                },
+                {
+                    "lga_name": "Ngor Okpala",
+                    "places": [
+                        "Awa",
+                        "Okpala",
+                        "Umule"
+                    ]
+                },
+                {
+                    "lga_name": "Njaba",
+                    "places": [
+                        "Nnenasa",
+                        "Okwudor",
+                        "Amaigbo"
+                    ]
+                },
+                {
+                    "lga_name": "Nkwerre",
+                    "places": [
+                        "Nkwerre Town",
+                        "Umudi",
+                        "Amaokpara"
+                    ]
+                },
+                {
+                    "lga_name": "Nwangele",
+                    "places": [
+                        "Nwangele Town",
+                        "Amaimo",
+                        "Umuaka"
+                    ]
+                },
+                {
+                    "lga_name": "Obowo",
+                    "places": [
+                        "Obowo Town",
+                        "Umundugba",
+                        "Amakohia"
+                    ]
+                },
+                {
+                    "lga_name": "Oguta",
+                    "places": [
+                        "Oguta Town",
+                        "Ogbu",
+                        "Amakohia"
+                    ]
+                },
+                {
+                    "lga_name": "Ohaji/Egbema",
+                    "places": [
+                        "Ohaji Town",
+                        "Egbema Town",
+                        "Okpofe"
+                    ]
+                },
+                {
+                    "lga_name": "Okigwe",
+                    "places": [
+                        "Okigwe Town",
+                        "Umulolo",
+                        "Amaigbo"
+                    ]
+                },
+                {
+                    "lga_name": "Orlu",
+                    "places": [
+                        "Orlu Town",
+                        "Ihitenansa",
+                        "Obor"
+                    ]
+                },
+                {
+                    "lga_name": "Orsu",
+                    "places": [
+                        "Orsu Town",
+                        "Okwudor",
+                        "Amaimo"
+                    ]
+                },
+                {
+                    "lga_name": "Oru East",
+                    "places": [
+                        "Oru Town",
+                        "Obodo",
+                        "Isiekenesi"
+                    ]
+                },
+                {
+                    "lga_name": "Oru West",
+                    "places": [
+                        "Oru Town",
+                        "Omuma",
+                        "Obor"
+                    ]
+                },
+                {
+                    "lga_name": "Owerri Municipal",
+                    "places": [
+                        "Owerri Town",
+                        "Ihiagwa",
+                        "Obibi-Uratta"
+                    ]
+                },
+                {
+                    "lga_name": "Owerri North",
+                    "places": [
+                        "Amaigbo",
+                        "Orie-Ugwu",
+                        "Umuagwo"
+                    ]
+                },
+                {
+                    "lga_name": "Owerri West",
+                    "places": [
+                        "Obibi-Uratta",
+                        "Ihiagwa",
+                        "Umuawulu"
+                    ]
+                }
+            ]
+        },
+        {
+            "state_name": "Jigawa",
+            "lgas": [
+                {
+                    "lga_name": "Auyo",
+                    "places": [
+                        "Auyo Town",
+                        "Dutse Road",
+                        "Gwaram"
+                    ]
+                },
+                {
+                    "lga_name": "Babura",
+                    "places": [
+                        "Babura Town",
+                        "Dutse Road",
+                        "Kafin Hausa"
+                    ]
+                },
+                {
+                    "lga_name": "Biriniwa",
+                    "places": [
+                        "Biriniwa Town",
+                        "Guri Road",
+                        "Kafin Hausa"
+                    ]
+                },
+                {
+                    "lga_name": "Birnin Kudu",
+                    "places": [
+                        "Birnin Kudu Town",
+                        "Hadejia Road",
+                        "Guri"
+                    ]
+                },
+                {
+                    "lga_name": "Buji",
+                    "places": [
+                        "Buji Town",
+                        "Guri Road",
+                        "Kafin Hausa"
+                    ]
+                },
+                {
+                    "lga_name": "Dutse",
+                    "places": [
+                        "Dutse Town",
+                        "Auyo Road",
+                        "Biriniwa"
+                    ]
+                },
+                {
+                    "lga_name": "Gagarawa",
+                    "places": [
+                        "Gagarawa Town",
+                        "Buji Road",
+                        "Kafin Hausa"
+                    ]
+                },
+                {
+                    "lga_name": "Garki",
+                    "places": [
+                        "Garki Town",
+                        "Dutse Road",
+                        "Auyo"
+                    ]
+                },
+                {
+                    "lga_name": "Gumel",
+                    "places": [
+                        "Gumel Town",
+                        "Kafin Hausa",
+                        "Birnin Kudu Road"
+                    ]
+                },
+                {
+                    "lga_name": "Guri",
+                    "places": [
+                        "Guri Town",
+                        "Hadejia Road",
+                        "Birnin Kudu"
+                    ]
+                },
+                {
+                    "lga_name": "Gwaram",
+                    "places": [
+                        "Gwaram Town",
+                        "Biriniwa",
+                        "Dutse Road"
+                    ]
+                },
+                {
+                    "lga_name": "Gwiwa",
+                    "places": [
+                        "Gwiwa Town",
+                        "Kafin Hausa",
+                        "Guri Road"
+                    ]
+                },
+                {
+                    "lga_name": "Hadejia",
+                    "places": [
+                        "Hadejia Town",
+                        "Birnin Kudu",
+                        "Guri Road"
+                    ]
+                },
+                {
+                    "lga_name": "Jahun",
+                    "places": [
+                        "Jahun Town",
+                        "Guri Road",
+                        "Kafin Hausa"
+                    ]
+                },
+                {
+                    "lga_name": "Kafin Hausa",
+                    "places": [
+                        "Kafin Hausa Town",
+                        "Dutse Road",
+                        "Guri"
+                    ]
+                },
+                {
+                    "lga_name": "Kaugama",
+                    "places": [
+                        "Kaugama Town",
+                        "Hadejia Road",
+                        "Biriniwa"
+                    ]
+                },
+                {
+                    "lga_name": "Kazaure",
+                    "places": [
+                        "Kazaure Town",
+                        "Hadejia Road",
+                        "Guri"
+                    ]
+                },
+                {
+                    "lga_name": "Kiri Kasama",
+                    "places": [
+                        "Kiri Kasama Town",
+                        "Guri Road",
+                        "Dutse Road"
+                    ]
+                },
+                {
+                    "lga_name": "Kiyawa",
+                    "places": [
+                        "Kiyawa Town",
+                        "Biriniwa",
+                        "Guri Road"
+                    ]
+                },
+                {
+                    "lga_name": "Maigatari",
+                    "places": [
+                        "Maigatari Town",
+                        "Dutse Road",
+                        "Kafin Hausa"
+                    ]
+                },
+                {
+                    "lga_name": "Malam Madori",
+                    "places": [
+                        "Malam Madori Town",
+                        "Dutse Road",
+                        "Biriniwa"
+                    ]
+                },
+                {
+                    "lga_name": "Miga",
+                    "places": [
+                        "Miga Town",
+                        "Guri Road",
+                        "Biriniwa"
+                    ]
+                },
+                {
+                    "lga_name": "Ringim",
+                    "places": [
+                        "Ringim Town",
+                        "Hadejia Road",
+                        "Guri Road"
+                    ]
+                },
+                {
+                    "lga_name": "Roni",
+                    "places": [
+                        "Roni Town",
+                        "Dutse Road",
+                        "Kafin Hausa"
+                    ]
+                },
+                {
+                    "lga_name": "Sule-Tankarkar",
+                    "places": [
+                        "Sule Town",
+                        "Tankarkar Road",
+                        "Guri"
+                    ]
+                },
+                {
+                    "lga_name": "Taura",
+                    "places": [
+                        "Taura Town",
+                        "Guri Road",
+                        "Biriniwa"
+                    ]
+                },
+                {
+                    "lga_name": "Yankwashi",
+                    "places": [
+                        "Yankwashi Town",
+                        "Biriniwa",
+                        "Dutse Road"
+                    ]
+                }
+            ]
+        },
+        {
+            "state_name": "Kaduna",
+            "lgas": [
+                {
+                    "lga_name": "Birnin Gwari",
+                    "places": [
+                        "Birnin Gwari Town",
+                        "Zuba",
+                        "Gwarinpa"
+                    ]
+                },
+                {
+                    "lga_name": "Chikun",
+                    "places": [
+                        "Kakau",
+                        "Gwagwalada Road",
+                        "Chikun Town"
+                    ]
+                },
+                {
+                    "lga_name": "Giwa",
+                    "places": [
+                        "Giwa Town",
+                        "Kachia Road",
+                        "Kaduna Road"
+                    ]
+                },
+                {
+                    "lga_name": "Igabi",
+                    "places": [
+                        "Rigachikun",
+                        "Turunku",
+                        "Igabi Town"
+                    ]
+                },
+                {
+                    "lga_name": "Ikara",
+                    "places": [
+                        "Ikara Town",
+                        "Kaduna Road",
+                        "Gurku"
+                    ]
+                },
+                {
+                    "lga_name": "Jaba",
+                    "places": [
+                        "Kwoi",
+                        "Fadan Kaje",
+                        "Jaba Town"
+                    ]
+                },
+                {
+                    "lga_name": "Jema'a",
+                    "places": [
+                        "Kafanchan",
+                        "Godogodo",
+                        "Jema'a Town"
+                    ]
+                },
+                {
+                    "lga_name": "Kachia",
+                    "places": [
+                        "Kachia Town",
+                        "Gidan Waya",
+                        "Kaduna Road"
+                    ]
+                },
+                {
+                    "lga_name": "Kaduna North",
+                    "places": [
+                        "Kawo",
+                        "Unguwan Sarki",
+                        "Barnawa"
+                    ]
+                },
+                {
+                    "lga_name": "Kaduna South",
+                    "places": [
+                        "Unguwan Dosa",
+                        "Kachia Road",
+                        "Kawo"
+                    ]
+                },
+                {
+                    "lga_name": "Kajuru",
+                    "places": [
+                        "Kajuru Town",
+                        "Godogodo",
+                        "Kaduna Road"
+                    ]
+                },
+                {
+                    "lga_name": "Kaura",
+                    "places": [
+                        "Kaura Town",
+                        "Zonkwa",
+                        "Kafanchan Road"
+                    ]
+                },
+                {
+                    "lga_name": "Kauru",
+                    "places": [
+                        "Kauru Town",
+                        "Gidan Waya",
+                        "Kaduna Road"
+                    ]
+                },
+                {
+                    "lga_name": "Kubau",
+                    "places": [
+                        "Kuduru",
+                        "Zaria Road",
+                        "Kubau Town"
+                    ]
+                },
+                {
+                    "lga_name": "Kudan",
+                    "places": [
+                        "Kudan Town",
+                        "Kaduna Road",
+                        "Zaria Road"
+                    ]
+                },
+                {
+                    "lga_name": "Lere",
+                    "places": [
+                        "Lere Town",
+                        "Zaria Road",
+                        "Kachia Road"
+                    ]
+                },
+                {
+                    "lga_name": "Makarfi",
+                    "places": [
+                        "Makarfi Town",
+                        "Kachia Road",
+                        "Kaduna Road"
+                    ]
+                },
+                {
+                    "lga_name": "Sabon Gari",
+                    "places": [
+                        "Sabon Gari Town",
+                        "Zaria Road",
+                        "Kaduna Road"
+                    ]
+                },
+                {
+                    "lga_name": "Sanga",
+                    "places": [
+                        "Sanga Town",
+                        "Kafanchan Road",
+                        "Kaduna Road"
+                    ]
+                },
+                {
+                    "lga_name": "Soba",
+                    "places": [
+                        "Soba Town",
+                        "Zaria Road",
+                        "Kaduna Road"
+                    ]
+                },
+                {
+                    "lga_name": "Zangon Kataf",
+                    "places": [
+                        "Zonkwa",
+                        "Kafanchan Road",
+                        "Zangon Kataf Town"
+                    ]
+                },
+                {
+                    "lga_name": "Zaria",
+                    "places": [
+                        "Zaria Town",
+                        "Samaru",
+                        "Samaru Road"
+                    ]
+                }
+            ]
+        },
+        {
+            "state_name": "Kano",
+            "lgas": [
+                {
+                    "lga_name": "Ajingi",
+                    "places": [
+                        "Ajingi Town",
+                        "Bunkure Road",
+                        "Kano Road"
+                    ]
+                },
+                {
+                    "lga_name": "Albasu",
+                    "places": [
+                        "Albasu Town",
+                        "Rano Road",
+                        "Bichi Road"
+                    ]
+                },
+                {
+                    "lga_name": "Bagwai",
+                    "places": [
+                        "Bagwai Town",
+                        "Kano Road",
+                        "Gaya Road"
+                    ]
+                },
+                {
+                    "lga_name": "Bebeji",
+                    "places": [
+                        "Bebeji Town",
+                        "Kano Road",
+                        "Gaya Road"
+                    ]
+                },
+                {
+                    "lga_name": "Bichi",
+                    "places": [
+                        "Bichi Town",
+                        "Rano Road",
+                        "Kano Road"
+                    ]
+                },
+                {
+                    "lga_name": "Bunkure",
+                    "places": [
+                        "Bunkure Town",
+                        "Kano Road",
+                        "Rano Road"
+                    ]
+                },
+                {
+                    "lga_name": "Dala",
+                    "places": [
+                        "Dala Town",
+                        "Kofar Ruwa",
+                        "Kano City"
+                    ]
+                },
+                {
+                    "lga_name": "Dambatta",
+                    "places": [
+                        "Dambatta Town",
+                        "Kano Road",
+                        "Rano Road"
+                    ]
+                },
+                {
+                    "lga_name": "Dawakin Kudu",
+                    "places": [
+                        "Dawakin Kudu Town",
+                        "Kano Road",
+                        "Rano Road"
+                    ]
+                },
+                {
+                    "lga_name": "Dawakin Tofa",
+                    "places": [
+                        "Dawakin Tofa Town",
+                        "Kano Road",
+                        "Rano Road"
+                    ]
+                },
+                {
+                    "lga_name": "Fagge",
+                    "places": [
+                        "Fagge Town",
+                        "Kano City",
+                        "Kofar Ruwa"
+                    ]
+                },
+                {
+                    "lga_name": "Gabasawa",
+                    "places": [
+                        "Gabasawa Town",
+                        "Kano Road",
+                        "Rano Road"
+                    ]
+                },
+                {
+                    "lga_name": "Garko",
+                    "places": [
+                        "Garko Town",
+                        "Kano Road",
+                        "Rano Road"
+                    ]
+                },
+                {
+                    "lga_name": "Garun Mallam",
+                    "places": [
+                        "Garun Mallam Town",
+                        "Kano Road",
+                        "Rano Road"
+                    ]
+                },
+                {
+                    "lga_name": "Gaya",
+                    "places": [
+                        "Gaya Town",
+                        "Kano Road",
+                        "Rano Road"
+                    ]
+                },
+                {
+                    "lga_name": "Gezawa",
+                    "places": [
+                        "Gezawa Town",
+                        "Kano Road",
+                        "Rano Road"
+                    ]
+                },
+                {
+                    "lga_name": "Gwale",
+                    "places": [
+                        "Gwale Town",
+                        "Kano City",
+                        "Kofar Ruwa"
+                    ]
+                },
+                {
+                    "lga_name": "Gwarzo",
+                    "places": [
+                        "Gwarzo Town",
+                        "Kano Road",
+                        "Rano Road"
+                    ]
+                },
+                {
+                    "lga_name": "Kabo",
+                    "places": [
+                        "Kabo Town",
+                        "Kano Road",
+                        "Rano Road"
+                    ]
+                },
+                {
+                    "lga_name": "Kano Municipal",
+                    "places": [
+                        "Kano City",
+                        "Fagge",
+                        "Kofar Ruwa"
+                    ]
+                },
+                {
+                    "lga_name": "Karaye",
+                    "places": [
+                        "Karaye Town",
+                        "Kano Road",
+                        "Rano Road"
+                    ]
+                },
+                {
+                    "lga_name": "Kibiya",
+                    "places": [
+                        "Kibiya Town",
+                        "Kano Road",
+                        "Rano Road"
+                    ]
+                },
+                {
+                    "lga_name": "Kiru",
+                    "places": [
+                        "Kiru Town",
+                        "Kano Road",
+                        "Rano Road"
+                    ]
+                },
+                {
+                    "lga_name": "Kumbotso",
+                    "places": [
+                        "Kumbotso Town",
+                        "Kano City",
+                        "Rano Road"
+                    ]
+                },
+                {
+                    "lga_name": "Kunchi",
+                    "places": [
+                        "Kunchi Town",
+                        "Kano Road",
+                        "Rano Road"
+                    ]
+                },
+                {
+                    "lga_name": "Kura",
+                    "places": [
+                        "Kura Town",
+                        "Kano Road",
+                        "Rano Road"
+                    ]
+                },
+                {
+                    "lga_name": "Madobi",
+                    "places": [
+                        "Madobi Town",
+                        "Kano Road",
+                        "Rano Road"
+                    ]
+                },
+                {
+                    "lga_name": "Makoda",
+                    "places": [
+                        "Makoda Town",
+                        "Kano Road",
+                        "Rano Road"
+                    ]
+                },
+                {
+                    "lga_name": "Minjibir",
+                    "places": [
+                        "Minjibir Town",
+                        "Kano Road",
+                        "Rano Road"
+                    ]
+                },
+                {
+                    "lga_name": "Nasarawa",
+                    "places": [
+                        "Nasarawa Town",
+                        "Kano City",
+                        "Kofar Ruwa"
+                    ]
+                },
+                {
+                    "lga_name": "Rano",
+                    "places": [
+                        "Rano Town",
+                        "Kano Road",
+                        "Rano Road"
+                    ]
+                },
+                {
+                    "lga_name": "Rimin Gado",
+                    "places": [
+                        "Rimin Gado Town",
+                        "Kano Road",
+                        "Rano Road"
+                    ]
+                },
+                {
+                    "lga_name": "Rogo",
+                    "places": [
+                        "Rogo Town",
+                        "Kano Road",
+                        "Rano Road"
+                    ]
+                },
+                {
+                    "lga_name": "Shanono",
+                    "places": [
+                        "Shanono Town",
+                        "Kano Road",
+                        "Rano Road"
+                    ]
+                },
+                {
+                    "lga_name": "Sumaila",
+                    "places": [
+                        "Sumaila Town",
+                        "Kano Road",
+                        "Rano Road"
+                    ]
+                },
+                {
+                    "lga_name": "Takai",
+                    "places": [
+                        "Takai Town",
+                        "Kano Road",
+                        "Rano Road"
+                    ]
+                },
+                {
+                    "lga_name": "Tarauni",
+                    "places": [
+                        "Tarauni Town",
+                        "Kano City",
+                        "Kofar Ruwa"
+                    ]
+                },
+                {
+                    "lga_name": "Tofa",
+                    "places": [
+                        "Tofa Town",
+                        "Kano Road",
+                        "Rano Road"
+                    ]
+                },
+                {
+                    "lga_name": "Tsanyawa",
+                    "places": [
+                        "Tsanyawa Town",
+                        "Kano Road",
+                        "Rano Road"
+                    ]
+                },
+                {
+                    "lga_name": "Tudun Wada",
+                    "places": [
+                        "Tudun Wada Town",
+                        "Kano City",
+                        "Kofar Ruwa"
+                    ]
+                },
+                {
+                    "lga_name": "Ungogo",
+                    "places": [
+                        "Ungogo Town",
+                        "Kano Road",
+                        "Rano Road"
+                    ]
+                },
+                {
+                    "lga_name": "Warawa",
+                    "places": [
+                        "Warawa Town",
+                        "Kano Road",
+                        "Rano Road"
+                    ]
+                },
+                {
+                    "lga_name": "Wudil",
+                    "places": [
+                        "Wudil Town",
+                        "Kano Road",
+                        "Rano Road"
+                    ]
+                }
+            ]
+        },
+        {
+            "state_name": "Katsina",
+            "lgas": [
+                {
+                    "lga_name": "Bakori",
+                    "places": [
+                        "Bakori Town",
+                        "Dandume",
+                        "Kankara Road"
+                    ]
+                },
+                {
+                    "lga_name": "Batagarawa",
+                    "places": [
+                        "Batagarawa Town",
+                        "Katsina Road",
+                        "Dan Musa"
+                    ]
+                },
+                {
+                    "lga_name": "Batsari",
+                    "places": [
+                        "Batsari Town",
+                        "Malumfashi",
+                        "Kankara Road"
+                    ]
+                },
+                {
+                    "lga_name": "Baure",
+                    "places": [
+                        "Baure Town",
+                        "Kaita",
+                        "Funtua Road"
+                    ]
+                },
+                {
+                    "lga_name": "Bindawa",
+                    "places": [
+                        "Bindawa Town",
+                        "Katsina Road",
+                        "Funtua Road"
+                    ]
+                },
+                {
+                    "lga_name": "Charanchi",
+                    "places": [
+                        "Charanchi Town",
+                        "Malumfashi",
+                        "Dan Musa"
+                    ]
+                },
+                {
+                    "lga_name": "Dandume",
+                    "places": [
+                        "Dandume Town",
+                        "Bakori Road",
+                        "Kankara"
+                    ]
+                },
+                {
+                    "lga_name": "Danja",
+                    "places": [
+                        "Danja Town",
+                        "Funtua Road",
+                        "Katsina Road"
+                    ]
+                },
+                {
+                    "lga_name": "Daura",
+                    "places": [
+                        "Daura Town",
+                        "Dutsi",
+                        "Sandamu Road"
+                    ]
+                },
+                {
+                    "lga_name": "Dutsi",
+                    "places": [
+                        "Dutsi Town",
+                        "Daura Road",
+                        "Sandamu Road"
+                    ]
+                },
+                {
+                    "lga_name": "Dutsin-Ma",
+                    "places": [
+                        "Dutsin-Ma Town",
+                        "Funtua Road",
+                        "Sandamu"
+                    ]
+                },
+                {
+                    "lga_name": "Faskari",
+                    "places": [
+                        "Faskari Town",
+                        "Kaita Road",
+                        "Katsina Road"
+                    ]
+                },
+                {
+                    "lga_name": "Funtua",
+                    "places": [
+                        "Funtua Town",
+                        "Kankara Road",
+                        "Bakori Road"
+                    ]
+                },
+                {
+                    "lga_name": "Ingawa",
+                    "places": [
+                        "Ingawa Town",
+                        "Funtua Road",
+                        "Katsina Road"
+                    ]
+                },
+                {
+                    "lga_name": "Jibia",
+                    "places": [
+                        "Jibia Town",
+                        "Katsina Road",
+                        "Daura Road"
+                    ]
+                },
+                {
+                    "lga_name": "Kafur",
+                    "places": [
+                        "Kafur Town",
+                        "Funtua Road",
+                        "Kankara Road"
+                    ]
+                },
+                {
+                    "lga_name": "Kaita",
+                    "places": [
+                        "Kaita Town",
+                        "Baure Road",
+                        "Funtua Road"
+                    ]
+                },
+                {
+                    "lga_name": "Kankara",
+                    "places": [
+                        "Kankara Town",
+                        "Bakori Road",
+                        "Funtua Road"
+                    ]
+                },
+                {
+                    "lga_name": "Kankia",
+                    "places": [
+                        "Kankia Town",
+                        "Dan Musa",
+                        "Funtua Road"
+                    ]
+                },
+                {
+                    "lga_name": "Katsina",
+                    "places": [
+                        "Katsina Town",
+                        "Funtua Road",
+                        "Daura Road"
+                    ]
+                },
+                {
+                    "lga_name": "Kurfi",
+                    "places": [
+                        "Kurfi Town",
+                        "Bakori Road",
+                        "Funtua Road"
+                    ]
+                },
+                {
+                    "lga_name": "Kusada",
+                    "places": [
+                        "Kusada Town",
+                        "Kankara Road",
+                        "Bakori"
+                    ]
+                },
+                {
+                    "lga_name": "Mai'Adua",
+                    "places": [
+                        "Mai’Adua Town",
+                        "Daura Road",
+                        "Sandamu Road"
+                    ]
+                },
+                {
+                    "lga_name": "Malumfashi",
+                    "places": [
+                        "Malumfashi Town",
+                        "Batsari",
+                        "Charanchi"
+                    ]
+                },
+                {
+                    "lga_name": "Mani",
+                    "places": [
+                        "Mani Town",
+                        "Funtua Road",
+                        "Kankara"
+                    ]
+                },
+                {
+                    "lga_name": "Mashi",
+                    "places": [
+                        "Mashi Town",
+                        "Kankara Road",
+                        "Bakori Road"
+                    ]
+                },
+                {
+                    "lga_name": "Matazu",
+                    "places": [
+                        "Matazu Town",
+                        "Bakori Road",
+                        "Funtua Road"
+                    ]
+                },
+                {
+                    "lga_name": "Musawa",
+                    "places": [
+                        "Musawa Town",
+                        "Katsina Road",
+                        "Kankara Road"
+                    ]
+                },
+                {
+                    "lga_name": "Rimi",
+                    "places": [
+                        "Rimi Town",
+                        "Funtua Road",
+                        "Katsina Road"
+                    ]
+                },
+                {
+                    "lga_name": "Sabuwa",
+                    "places": [
+                        "Sabuwa Town",
+                        "Katsina Road",
+                        "Bakori"
+                    ]
+                },
+                {
+                    "lga_name": "Safana",
+                    "places": [
+                        "Safana Town",
+                        "Funtua Road",
+                        "Kankara Road"
+                    ]
+                },
+                {
+                    "lga_name": "Sandamu",
+                    "places": [
+                        "Sandamu Town",
+                        "Daura Road",
+                        "Dutsi Road"
+                    ]
+                },
+                {
+                    "lga_name": "Zango",
+                    "places": [
+                        "Zango Town",
+                        "Funtua Road",
+                        "Bakori Road"
+                    ]
+                }
+            ]
+        },
+        {
+            "state_name": "Kebbi",
+            "lgas": [
+                {
+                    "lga_name": "Aleiro",
+                    "places": [
+                        "Aleiro Town",
+                        "Argungu Road",
+                        "Birnin Kebbi"
+                    ]
+                },
+                {
+                    "lga_name": "Arewa Dandi",
+                    "places": [
+                        "Arewa Town",
+                        "Dandi Road",
+                        "Birnin Kebbi"
+                    ]
+                },
+                {
+                    "lga_name": "Argungu",
+                    "places": [
+                        "Argungu Town",
+                        "Birnin Kebbi Road",
+                        "Zuru"
+                    ]
+                },
+                {
+                    "lga_name": "Augie",
+                    "places": [
+                        "Augie Town",
+                        "Birnin Kebbi Road",
+                        "Danko"
+                    ]
+                },
+                {
+                    "lga_name": "Bagudo",
+                    "places": [
+                        "Bagudo Town",
+                        "Birnin Kebbi Road",
+                        "Augie"
+                    ]
+                },
+                {
+                    "lga_name": "Birnin Kebbi",
+                    "places": [
+                        "Birnin Kebbi Town",
+                        "Argungu Road",
+                        "Bagudo"
+                    ]
+                },
+                {
+                    "lga_name": "Bunza",
+                    "places": [
+                        "Bunza Town",
+                        "Birnin Kebbi Road",
+                        "Argungu"
+                    ]
+                },
+                {
+                    "lga_name": "Dandi",
+                    "places": [
+                        "Dandi Town",
+                        "Birnin Kebbi Road",
+                        "Arewa"
+                    ]
+                },
+                {
+                    "lga_name": "Fakai",
+                    "places": [
+                        "Fakai Town",
+                        "Birnin Kebbi Road",
+                        "Augie"
+                    ]
+                },
+                {
+                    "lga_name": "Gwandu",
+                    "places": [
+                        "Gwandu Town",
+                        "Birnin Kebbi Road",
+                        "Argungu"
+                    ]
+                },
+                {
+                    "lga_name": "Jega",
+                    "places": [
+                        "Jega Town",
+                        "Birnin Kebbi Road",
+                        "Argungu"
+                    ]
+                },
+                {
+                    "lga_name": "Kalgo",
+                    "places": [
+                        "Kalgo Town",
+                        "Birnin Kebbi Road",
+                        "Augie"
+                    ]
+                },
+                {
+                    "lga_name": "Koko/Besse",
+                    "places": [
+                        "Koko Town",
+                        "Besse",
+                        "Birnin Kebbi Road"
+                    ]
+                },
+                {
+                    "lga_name": "Maiyama",
+                    "places": [
+                        "Maiyama Town",
+                        "Birnin Kebbi Road",
+                        "Argungu"
+                    ]
+                },
+                {
+                    "lga_name": "Ngaski",
+                    "places": [
+                        "Ngaski Town",
+                        "Birnin Kebbi Road",
+                        "Augie"
+                    ]
+                },
+                {
+                    "lga_name": "Sakaba",
+                    "places": [
+                        "Sakaba Town",
+                        "Birnin Kebbi Road",
+                        "Argungu"
+                    ]
+                },
+                {
+                    "lga_name": "Shanga",
+                    "places": [
+                        "Shanga Town",
+                        "Birnin Kebbi Road",
+                        "Augie"
+                    ]
+                },
+                {
+                    "lga_name": "Suru",
+                    "places": [
+                        "Suru Town",
+                        "Birnin Kebbi Road",
+                        "Argungu"
+                    ]
+                },
+                {
+                    "lga_name": "Wasagu/Danko",
+                    "places": [
+                        "Wasagu Town",
+                        "Danko",
+                        "Birnin Kebbi Road"
+                    ]
+                },
+                {
+                    "lga_name": "Yauri",
+                    "places": [
+                        "Yauri Town",
+                        "Birnin Kebbi Road",
+                        "Augie"
+                    ]
+                },
+                {
+                    "lga_name": "Zuru",
+                    "places": [
+                        "Zuru Town",
+                        "Birnin Kebbi Road",
+                        "Argungu"
+                    ]
+                }
+            ]
+        },
+        {
+            "state_name": "Kogi",
+            "lgas": [
+                {
+                    "lga_name": "Adavi",
+                    "places": [
+                        "Obajana",
+                        "Ogugu",
+                        "Ogori"
+                    ]
+                },
+                {
+                    "lga_name": "Ajaokuta",
+                    "places": [
+                        "Ajaokuta Town",
+                        "Egume",
+                        "Okene Road"
+                    ]
+                },
+                {
+                    "lga_name": "Ankpa",
+                    "places": [
+                        "Ankpa Town",
+                        "Olamaboro",
+                        "Egume"
+                    ]
+                },
+                {
+                    "lga_name": "Bassa",
+                    "places": [
+                        "Bassa Town",
+                        "Gumel",
+                        "Lokoja Road"
+                    ]
+                },
+                {
+                    "lga_name": "Dekina",
+                    "places": [
+                        "Dekina Town",
+                        "Abaji",
+                        "Adavi Road"
+                    ]
+                },
+                {
+                    "lga_name": "Ibaji",
+                    "places": [
+                        "Ibaji Town",
+                        "Ajaokuta Road",
+                        "Lokoja Road"
+                    ]
+                },
+                {
+                    "lga_name": "Idah",
+                    "places": [
+                        "Idah Town",
+                        "Egume",
+                        "Lokoja Road"
+                    ]
+                },
+                {
+                    "lga_name": "Igalamela-Odolu",
+                    "places": [
+                        "Ogume",
+                        "Odolu",
+                        "Idah Road"
+                    ]
+                },
+                {
+                    "lga_name": "Ijumu",
+                    "places": [
+                        "Ijumu Town",
+                        "Lokoja Road",
+                        "Egume"
+                    ]
+                },
+                {
+                    "lga_name": "Kabba/Bunu",
+                    "places": [
+                        "Kabba Town",
+                        "Bunu",
+                        "Egume Road"
+                    ]
+                },
+                {
+                    "lga_name": "Kogi",
+                    "places": [
+                        "Lokoja Town",
+                        "Egume",
+                        "Bassa Road"
+                    ]
+                },
+                {
+                    "lga_name": "Lokoja",
+                    "places": [
+                        "Lokoja Town",
+                        "Ajaokuta Road",
+                        "Adavi"
+                    ]
+                },
+                {
+                    "lga_name": "Mopa-Muro",
+                    "places": [
+                        "Mopa",
+                        "Muro",
+                        "Lokoja Road"
+                    ]
+                },
+                {
+                    "lga_name": "Ofu",
+                    "places": [
+                        "Ofu Town",
+                        "Egume",
+                        "Lokoja Road"
+                    ]
+                },
+                {
+                    "lga_name": "Ogori/Magongo",
+                    "places": [
+                        "Ogori",
+                        "Magongo",
+                        "Egume"
+                    ]
+                },
+                {
+                    "lga_name": "Okehi",
+                    "places": [
+                        "Okehi Town",
+                        "Egume",
+                        "Lokoja Road"
+                    ]
+                },
+                {
+                    "lga_name": "Okene",
+                    "places": [
+                        "Okene Town",
+                        "Egume",
+                        "Lokoja Road"
+                    ]
+                },
+                {
+                    "lga_name": "Olamaboro",
+                    "places": [
+                        "Olamaboro Town",
+                        "Egume",
+                        "Lokoja Road"
+                    ]
+                },
+                {
+                    "lga_name": "Omala",
+                    "places": [
+                        "Omala Town",
+                        "Lokoja Road",
+                        "Egume"
+                    ]
+                },
+                {
+                    "lga_name": "Yagba East",
+                    "places": [
+                        "Yagba Town",
+                        "Egume",
+                        "Lokoja Road"
+                    ]
+                },
+                {
+                    "lga_name": "Yagba West",
+                    "places": [
+                        "Yagba Town",
+                        "Egume",
+                        "Lokoja Road"
+                    ]
+                }
+            ]
+        },
+        {
+            "state_name": "Kwara",
+            "lgas": [
+                {
+                    "lga_name": "Asa",
+                    "places": [
+                        "Asa Town",
+                        "Ilorin Road",
+                        "Irepodun"
+                    ]
+                },
+                {
+                    "lga_name": "Baruten",
+                    "places": [
+                        "Kosubosu",
+                        "Chikanda",
+                        "Baruten Town"
+                    ]
+                },
+                {
+                    "lga_name": "Edu",
+                    "places": [
+                        "Lafiagi",
+                        "Edu Town",
+                        "Patigi"
+                    ]
+                },
+                {
+                    "lga_name": "Ekiti",
+                    "places": [
+                        "Isanlu",
+                        "Ekiti Town",
+                        "Omu-Aran"
+                    ]
+                },
+                {
+                    "lga_name": "Ifelodun",
+                    "places": [
+                        "Ilorin Road",
+                        "Ifelodun Town",
+                        "Offa Road"
+                    ]
+                },
+                {
+                    "lga_name": "Ilorin East",
+                    "places": [
+                        "Ilorin City",
+                        "Oja-Oba",
+                        "Agba"
+                    ]
+                },
+                {
+                    "lga_name": "Ilorin South",
+                    "places": [
+                        "Ilorin City",
+                        "Oja-Oba",
+                        "Agba"
+                    ]
+                },
+                {
+                    "lga_name": "Ilorin West",
+                    "places": [
+                        "Ilorin City",
+                        "Oja-Oba",
+                        "Agba"
+                    ]
+                },
+                {
+                    "lga_name": "Irepodun",
+                    "places": [
+                        "Ajasse Ipo",
+                        "Irepodun Town",
+                        "Omu-Aran"
+                    ]
+                },
+                {
+                    "lga_name": "Isin",
+                    "places": [
+                        "Isin Town",
+                        "Omu-Aran",
+                        "Ilorin Road"
+                    ]
+                },
+                {
+                    "lga_name": "Kaiama",
+                    "places": [
+                        "Kaiama Town",
+                        "Ilorin Road",
+                        "Baruten"
+                    ]
+                },
+                {
+                    "lga_name": "Moro",
+                    "places": [
+                        "Moro Town",
+                        "Ilorin Road",
+                        "Omu-Aran"
+                    ]
+                },
+                {
+                    "lga_name": "Offa",
+                    "places": [
+                        "Offa Town",
+                        "Ilorin Road",
+                        "Irepodun"
+                    ]
+                },
+                {
+                    "lga_name": "Oke Ero",
+                    "places": [
+                        "Oke Ero Town",
+                        "Ilorin Road",
+                        "Isin"
+                    ]
+                },
+                {
+                    "lga_name": "Oyun",
+                    "places": [
+                        "Oyun Town",
+                        "Ilorin Road",
+                        "Offa Road"
+                    ]
+                },
+                {
+                    "lga_name": "Pategi",
+                    "places": [
+                        "Pategi Town",
+                        "Edu Road",
+                        "Lafiagi"
+                    ]
+                }
+            ]
+        },
+        {
+            "state_name": "Lagos",
+            "lgas": [
+                {
+                    "lga_name": "Agege",
+                    "places": [
+                        "Orile Agege",
+                        "Agbado",
+                        "Idimu",
+                        "Oko-Oba"
+                    ]
+                },
+                {
+                    "lga_name": "Ajeromi-Ifelodun",
+                    "places": [
+                        "Festac Town",
+                        "Amukoko",
+                        "Orile",
+                        "Alaba"
+                    ]
+                },
+                {
+                    "lga_name": "Alimosho",
+                    "places": [
+                        "Ikotun",
+                        "Egbeda",
+                        "Ikotun Market",
+                        "Ayobo"
+                    ]
+                },
+                {
+                    "lga_name": "Amuwo-Odofin",
+                    "places": [
+                        "Festac Town",
+                        "Satellite Town",
+                        "Iba",
+                        "Orile-Agege"
+                    ]
+                },
+                {
+                    "lga_name": "Apapa",
+                    "places": [
+                        "Apapa Port",
+                        "Apapa Town",
+                        "Tincan Island",
+                        "Wharf Road"
+                    ]
+                },
+                {
+                    "lga_name": "Badagry",
+                    "places": [
+                        "Badagry Town",
+                        "Ibereko",
+                        "Ajido",
+                        "Oke-Odo"
+                    ]
+                },
+                {
+                    "lga_name": "Epe",
+                    "places": [
+                        "Epe Town",
+                        "Ikosi",
+                        "Ijede",
+                        "Odo-Ona"
+                    ]
+                },
+                {
+                    "lga_name": "Eti-Osa",
+                    "places": [
+                        "Lekki",
+                        "Victoria Island",
+                        "Ikoyi",
+                        "Ajah"
+                    ]
+                },
+                {
+                    "lga_name": "Ibeju-Lekki",
+                    "places": [
+                        "Ibeju Town",
+                        "Lekki Free Trade Zone",
+                        "Ajah",
+                        "Epe Road"
+                    ]
+                },
+                {
+                    "lga_name": "Ifako-Ijaiye",
+                    "places": [
+                        "Ifako Town",
+                        "Ijaiye Town",
+                        "Obawole",
+                        "Iju"
+                    ]
+                },
+                {
+                    "lga_name": "Ikeja",
+                    "places": [
+                        "Ikeja GRA",
+                        "Allen Avenue",
+                        "Oregun",
+                        "Oba Akran"
+                    ]
+                },
+                {
+                    "lga_name": "Ikorodu",
+                    "places": [
+                        "Ikorodu Town",
+                        "Igbogbo",
+                        "Ijede",
+                        "Aworoshon"
+                    ]
+                },
+                {
+                    "lga_name": "Kosofe",
+                    "places": [
+                        "Ojota",
+                        "Ketu",
+                        "Ikosi",
+                        "Agboyi-Ketu"
+                    ]
+                },
+                {
+                    "lga_name": "Lagos Island",
+                    "places": [
+                        "Broad Street",
+                        "Marina",
+                        "Tinubu",
+                        "Idumota"
+                    ]
+                },
+                {
+                    "lga_name": "Lagos Mainland",
+                    "places": [
+                        "Yaba",
+                        "Mushin",
+                        "Surulere",
+                        "Ebute-Metta"
+                    ]
+                },
+                {
+                    "lga_name": "Mushin",
+                    "places": [
+                        "Mushin Town",
+                        "Akoka",
+                        "Okota",
+                        "Idi-Araba"
+                    ]
+                },
+                {
+                    "lga_name": "Ojo",
+                    "places": [
+                        "Ojo Town",
+                        "Festac Town",
+                        "Igbo-efon",
+                        "Iba"
+                    ]
+                },
+                {
+                    "lga_name": "Oshodi-Isolo",
+                    "places": [
+                        "Oshodi",
+                        "Isolo",
+                        "Festac",
+                        "Okota"
+                    ]
+                },
+                {
+                    "lga_name": "Shomolu",
+                    "places": [
+                        "Shomolu Town",
+                        "Ajao Estate",
+                        "Bariga",
+                        "Ikate"
+                    ]
+                },
+                {
+                    "lga_name": "Surulere",
+                    "places": [
+                        "Surulere Town",
+                        "Aguda",
+                        "Alaka",
+                        "Ojuelegba"
+                    ]
+                }
+            ]
+        },
+        {
+            "state_name": "Nasarawa",
+            "lgas": [
+                {
+                    "lga_name": "Akwanga",
+                    "places": [
+                        "Akwanga Town",
+                        "Hulahula",
+                        "Miango"
+                    ]
+                },
+                {
+                    "lga_name": "Awe",
+                    "places": [
+                        "Awe Town",
+                        "Gudi",
+                        "Bakin Kogi"
+                    ]
+                },
+                {
+                    "lga_name": "Doma",
+                    "places": [
+                        "Doma Town",
+                        "Gudi",
+                        "Gurku"
+                    ]
+                },
+                {
+                    "lga_name": "Karu",
+                    "places": [
+                        "Karu Town",
+                        "New Nyanya",
+                        "Mararaba"
+                    ]
+                },
+                {
+                    "lga_name": "Keana",
+                    "places": [
+                        "Keana Town",
+                        "Akwanga Road",
+                        "Gurku"
+                    ]
+                },
+                {
+                    "lga_name": "Keffi",
+                    "places": [
+                        "Keffi Town",
+                        "Shabu",
+                        "New Nyanya"
+                    ]
+                },
+                {
+                    "lga_name": "Kokona",
+                    "places": [
+                        "Kokona Town",
+                        "Gurku",
+                        "Bakin Kogi"
+                    ]
+                },
+                {
+                    "lga_name": "Lafia",
+                    "places": [
+                        "Lafia Town",
+                        "Wakiri",
+                        "Bakin Kogi"
+                    ]
+                },
+                {
+                    "lga_name": "Nasarawa",
+                    "places": [
+                        "Nasarawa Town",
+                        "Mararaba",
+                        "New Nyanya"
+                    ]
+                },
+                {
+                    "lga_name": "Nasarawa-Eggon",
+                    "places": [
+                        "Nasarawa-Eggon Town",
+                        "Tundun-Wada",
+                        "Gurku"
+                    ]
+                },
+                {
+                    "lga_name": "Obi",
+                    "places": [
+                        "Obi Town",
+                        "Bakin Kogi",
+                        "Gurku"
+                    ]
+                },
+                {
+                    "lga_name": "Toto",
+                    "places": [
+                        "Toto Town",
+                        "Gurku",
+                        "Bakin Kogi"
+                    ]
+                },
+                {
+                    "lga_name": "Wamba",
+                    "places": [
+                        "Wamba Town",
+                        "Gurku",
+                        "Bakin Kogi"
+                    ]
+                }
+            ]
+        },
+        {
+            "state_name": "Niger",
+            "lgas": [
+                {
+                    "lga_name": "Agaie",
+                    "places": [
+                        "Agaie Town",
+                        "Bida Road",
+                        "Paikoro"
+                    ]
+                },
+                {
+                    "lga_name": "Agwara",
+                    "places": [
+                        "Agwara Town",
+                        "Kontagora Road",
+                        "Bida"
+                    ]
+                },
+                {
+                    "lga_name": "Bida",
+                    "places": [
+                        "Bida Town",
+                        "Tunga",
+                        "Gurara"
+                    ]
+                },
+                {
+                    "lga_name": "Borgu",
+                    "places": [
+                        "Borgu Town",
+                        "New Bussa",
+                        "Ngaski"
+                    ]
+                },
+                {
+                    "lga_name": "Bosso",
+                    "places": [
+                        "Bosso Town",
+                        "Minna Road",
+                        "Paikoro"
+                    ]
+                },
+                {
+                    "lga_name": "Chanchaga",
+                    "places": [
+                        "Minna Town",
+                        "Chanchaga Town",
+                        "Paikoro"
+                    ]
+                },
+                {
+                    "lga_name": "Edati",
+                    "places": [
+                        "Edati Town",
+                        "Paikoro",
+                        "New Bussa"
+                    ]
+                },
+                {
+                    "lga_name": "Gbako",
+                    "places": [
+                        "Gbako Town",
+                        "Minna Road",
+                        "Paikoro"
+                    ]
+                },
+                {
+                    "lga_name": "Gurara",
+                    "places": [
+                        "Gurara Town",
+                        "Paikoro",
+                        "Bida Road"
+                    ]
+                },
+                {
+                    "lga_name": "Katcha",
+                    "places": [
+                        "Katcha Town",
+                        "Paikoro",
+                        "Bida Road"
+                    ]
+                },
+                {
+                    "lga_name": "Kontagora",
+                    "places": [
+                        "Kontagora Town",
+                        "Agwara Road",
+                        "Bida"
+                    ]
+                },
+                {
+                    "lga_name": "Lapai",
+                    "places": [
+                        "Lapai Town",
+                        "Minna Road",
+                        "Paikoro"
+                    ]
+                },
+                {
+                    "lga_name": "Lavun",
+                    "places": [
+                        "Lavun Town",
+                        "Bida Road",
+                        "Paikoro"
+                    ]
+                },
+                {
+                    "lga_name": "Magama",
+                    "places": [
+                        "Magama Town",
+                        "Minna Road",
+                        "Paikoro"
+                    ]
+                },
+                {
+                    "lga_name": "Mariga",
+                    "places": [
+                        "Mariga Town",
+                        "Kontagora Road",
+                        "Bida"
+                    ]
+                },
+                {
+                    "lga_name": "Mashegu",
+                    "places": [
+                        "Mashegu Town",
+                        "Bida Road",
+                        "Paikoro"
+                    ]
+                },
+                {
+                    "lga_name": "Mokwa",
+                    "places": [
+                        "Mokwa Town",
+                        "Minna Road",
+                        "Paikoro"
+                    ]
+                },
+                {
+                    "lga_name": "Muya",
+                    "places": [
+                        "Muya Town",
+                        "Bida Road",
+                        "Paikoro"
+                    ]
+                },
+                {
+                    "lga_name": "Paikoro",
+                    "places": [
+                        "Paikoro Town",
+                        "Minna Road",
+                        "Bida"
+                    ]
+                },
+                {
+                    "lga_name": "Rafi",
+                    "places": [
+                        "Rafi Town",
+                        "Bida Road",
+                        "Kontagora"
+                    ]
+                },
+                {
+                    "lga_name": "Rijau",
+                    "places": [
+                        "Rijau Town",
+                        "Bida Road",
+                        "Kontagora"
+                    ]
+                },
+                {
+                    "lga_name": "Shiroro",
+                    "places": [
+                        "Shiroro Town",
+                        "Minna Road",
+                        "Paikoro"
+                    ]
+                },
+                {
+                    "lga_name": "Suleja",
+                    "places": [
+                        "Suleja Town",
+                        "Maraba",
+                        "New Bussa"
+                    ]
+                },
+                {
+                    "lga_name": "Tafa",
+                    "places": [
+                        "Tafa Town",
+                        "Suleja Road",
+                        "Bida"
+                    ]
+                },
+                {
+                    "lga_name": "Wushishi",
+                    "places": [
+                        "Wushishi Town",
+                        "Minna Road",
+                        "Paikoro"
+                    ]
+                }
+            ]
+        },
+        {
+            "state_name": "Ogun",
+            "lgas": [
+                {
+                    "lga_name": "Abeokuta North",
+                    "places": [
+                        "Abeokuta Town",
+                        "Ijeun",
+                        "Ijemo"
+                    ]
+                },
+                {
+                    "lga_name": "Abeokuta South",
+                    "places": [
+                        "Abeokuta City",
+                        "Kuto",
+                        "Asero"
+                    ]
+                },
+                {
+                    "lga_name": "Ado-Odo/Ota",
+                    "places": [
+                        "Ota Town",
+                        "Ado-Odo",
+                        "Agbara"
+                    ]
+                },
+                {
+                    "lga_name": "Egbado North (Yewa North)",
+                    "places": [
+                        "Ipokia",
+                        "Imeko",
+                        "Ilaro"
+                    ]
+                },
+                {
+                    "lga_name": "Egbado South (Yewa South)",
+                    "places": [
+                        "Odogbolu",
+                        "Ijebu-Ode",
+                        "Idiroko"
+                    ]
+                },
+                {
+                    "lga_name": "Ewekoro",
+                    "places": [
+                        "Ewekoro Town",
+                        "Itori",
+                        "Ijede"
+                    ]
+                },
+                {
+                    "lga_name": "Ifo",
+                    "places": [
+                        "Ifo Town",
+                        "Ajiwogbo",
+                        "Iyana-Iyesi"
+                    ]
+                },
+                {
+                    "lga_name": "Ijebu East",
+                    "places": [
+                        "Ijebu Town",
+                        "Oru",
+                        "Ode-Remo"
+                    ]
+                },
+                {
+                    "lga_name": "Ijebu North",
+                    "places": [
+                        "Ijebu Igbo",
+                        "Oru-Ijebu",
+                        "Ago-Iwoye"
+                    ]
+                },
+                {
+                    "lga_name": "Ijebu North East",
+                    "places": [
+                        "Oru-Ijebu",
+                        "Atan",
+                        "Ago-Iwoye"
+                    ]
+                },
+                {
+                    "lga_name": "Ijebu Ode",
+                    "places": [
+                        "Ijebu Ode Town",
+                        "Oru",
+                        "Ago-Iwoye"
+                    ]
+                },
+                {
+                    "lga_name": "Ikenne",
+                    "places": [
+                        "Ikenne Town",
+                        "Ilishan",
+                        "Ilisan Remo"
+                    ]
+                },
+                {
+                    "lga_name": "Imeko Afon",
+                    "places": [
+                        "Imeko Town",
+                        "Afon",
+                        "Ipokia"
+                    ]
+                },
+                {
+                    "lga_name": "Ipokia",
+                    "places": [
+                        "Ipokia Town",
+                        "Imeko",
+                        "Ilaro"
+                    ]
+                },
+                {
+                    "lga_name": "Obafemi Owode",
+                    "places": [
+                        "Owode Town",
+                        "Obafemi",
+                        "Ibafo"
+                    ]
+                },
+                {
+                    "lga_name": "Odeda",
+                    "places": [
+                        "Odeda Town",
+                        "Obantoko",
+                        "Ayepe"
+                    ]
+                },
+                {
+                    "lga_name": "Odogbolu",
+                    "places": [
+                        "Odogbolu Town",
+                        "Ijebu Ode Road",
+                        "Ago-Iwoye"
+                    ]
+                },
+                {
+                    "lga_name": "Ogun Waterside",
+                    "places": [
+                        "Ijebu Waterside",
+                        "Ode",
+                        "Igbokoda"
+                    ]
+                },
+                {
+                    "lga_name": "Remo North",
+                    "places": [
+                        "Remo Town",
+                        "Ikenne",
+                        "Sagamu"
+                    ]
+                },
+                {
+                    "lga_name": "Sagamu",
+                    "places": [
+                        "Sagamu Town",
+                        "Ijebu Remo",
+                        "Ijebu Ode"
+                    ]
+                },
+                {
+                    "lga_name": "Yewa North",
+                    "places": [
+                        "Ipokia",
+                        "Imeko",
+                        "Idiroko"
+                    ]
+                },
+                {
+                    "lga_name": "Yewa South",
+                    "places": [
+                        "Odogbolu",
+                        "Ijebu-Ode",
+                        "Ilaro"
+                    ]
+                }
+            ]
+        },
+        {
+            "state_name": "Ondo",
+            "lgas": [
+                {
+                    "lga_name": "Akoko North-East",
+                    "places": [
+                        "Ikare",
+                        "Okeagbe",
+                        "Ijare"
+                    ]
+                },
+                {
+                    "lga_name": "Akoko North-West",
+                    "places": [
+                        "Oka Akoko",
+                        "Ikun",
+                        "Supare"
+                    ]
+                },
+                {
+                    "lga_name": "Akoko South-East",
+                    "places": [
+                        "Ikare",
+                        "Okeagbe",
+                        "Oyin"
+                    ]
+                },
+                {
+                    "lga_name": "Akoko South-West",
+                    "places": [
+                        "Oka Akoko",
+                        "Supare",
+                        "Ikun"
+                    ]
+                },
+                {
+                    "lga_name": "Akure North",
+                    "places": [
+                        "Ikere",
+                        "Iju",
+                        "Oba Akoko"
+                    ]
+                },
+                {
+                    "lga_name": "Akure South",
+                    "places": [
+                        "Akure City",
+                        "Iju",
+                        "Oja-Oba"
+                    ]
+                },
+                {
+                    "lga_name": "Ese-Odo",
+                    "places": [
+                        "Igbokoda",
+                        "Ode",
+                        "Igbara"
+                    ]
+                },
+                {
+                    "lga_name": "Idanre",
+                    "places": [
+                        "Idanre Town",
+                        "Owo Road",
+                        "Ondo Hills"
+                    ]
+                },
+                {
+                    "lga_name": "Ifedore",
+                    "places": [
+                        "Igbatoro",
+                        "Ile Oluji",
+                        "Irese"
+                    ]
+                },
+                {
+                    "lga_name": "Ilaje",
+                    "places": [
+                        "Ijama",
+                        "Epe",
+                        "Ugbonla"
+                    ]
+                },
+                {
+                    "lga_name": "Ile-Oluji/Okeigbo",
+                    "places": [
+                        "Ile-Oluji",
+                        "Okeigbo",
+                        "Ise"
+                    ]
+                },
+                {
+                    "lga_name": "Irele",
+                    "places": [
+                        "Irele Town",
+                        "Ode-Irele",
+                        "Ifon"
+                    ]
+                },
+                {
+                    "lga_name": "Odigbo",
+                    "places": [
+                        "Odigbo Town",
+                        "Ode",
+                        "Ogun"
+                    ]
+                },
+                {
+                    "lga_name": "Okitipupa",
+                    "places": [
+                        "Okitipupa Town",
+                        "Igbokoda",
+                        "Irele"
+                    ]
+                },
+                {
+                    "lga_name": "Ondo East",
+                    "places": [
+                        "Ondo Town",
+                        "Oke-Igbo",
+                        "Oke-Are"
+                    ]
+                },
+                {
+                    "lga_name": "Ondo West",
+                    "places": [
+                        "Ondo Town",
+                        "Oke-Igbo",
+                        "Oke-Are"
+                    ]
+                },
+                {
+                    "lga_name": "Ose",
+                    "places": [
+                        "Ifon",
+                        "Igbokoda",
+                        "Ode"
+                    ]
+                },
+                {
+                    "lga_name": "Owo",
+                    "places": [
+                        "Owo Town",
+                        "Ikare",
+                        "Ilupeju"
+                    ]
+                }
+            ]
+        },
+        {
+            "state_name": "Osun",
+            "lgas": [
+                {
+                    "lga_name": "Aiyedaade",
+                    "places": [
+                        "Iwo Road",
+                        "Ayedade Town",
+                        "Gbongan"
+                    ]
+                },
+                {
+                    "lga_name": "Aiyedire",
+                    "places": [
+                        "Aiyedire Town",
+                        "Oke-Odo",
+                        "Ondo Road"
+                    ]
+                },
+                {
+                    "lga_name": "Atakunmosa East",
+                    "places": [
+                        "Ile Ife",
+                        "Osu",
+                        "Ilesa Road"
+                    ]
+                },
+                {
+                    "lga_name": "Atakunmosa West",
+                    "places": [
+                        "Osu Town",
+                        "Oba",
+                        "Ile Ife"
+                    ]
+                },
+                {
+                    "lga_name": "Boluwaduro",
+                    "places": [
+                        "Boluwaduro Town",
+                        "Iree",
+                        "Ikire"
+                    ]
+                },
+                {
+                    "lga_name": "Boripe",
+                    "places": [
+                        "Boripe Town",
+                        "Ikire",
+                        "Iwo Road"
+                    ]
+                },
+                {
+                    "lga_name": "Ede North",
+                    "places": [
+                        "Ede Town",
+                        "Oke-Odo",
+                        "Iwo Road"
+                    ]
+                },
+                {
+                    "lga_name": "Ede South",
+                    "places": [
+                        "Ede Town",
+                        "Oke-Odo",
+                        "Iwo Road"
+                    ]
+                },
+                {
+                    "lga_name": "Egbedore",
+                    "places": [
+                        "Egbedore Town",
+                        "Iwo Road",
+                        "Ikire"
+                    ]
+                },
+                {
+                    "lga_name": "Ejigbo",
+                    "places": [
+                        "Ejigbo Town",
+                        "Iwo Road",
+                        "Ode-Omu"
+                    ]
+                },
+                {
+                    "lga_name": "Ife Central",
+                    "places": [
+                        "Ile Ife Town",
+                        "Obafemi Awolowo University",
+                        "Osu"
+                    ]
+                },
+                {
+                    "lga_name": "Ife East",
+                    "places": [
+                        "Ile Ife",
+                        "Modakeke",
+                        "Osu"
+                    ]
+                },
+                {
+                    "lga_name": "Ife North",
+                    "places": [
+                        "Ile Ife",
+                        "Oke-Odo",
+                        "Iwo Road"
+                    ]
+                },
+                {
+                    "lga_name": "Ife South",
+                    "places": [
+                        "Ile Ife",
+                        "Iwo Road",
+                        "Osu"
+                    ]
+                },
+                {
+                    "lga_name": "Ifedayo",
+                    "places": [
+                        "Ifedayo Town",
+                        "Ode-Omu",
+                        "Iwo Road"
+                    ]
+                },
+                {
+                    "lga_name": "Ifelodun",
+                    "places": [
+                        "Ifelodun Town",
+                        "Iree",
+                        "Ikire"
+                    ]
+                },
+                {
+                    "lga_name": "Ila",
+                    "places": [
+                        "Ila Town",
+                        "Ikire",
+                        "Iwo Road"
+                    ]
+                },
+                {
+                    "lga_name": "Ilesa East",
+                    "places": [
+                        "Ilesa Town",
+                        "Ilesa Road",
+                        "Ode-Omu"
+                    ]
+                },
+                {
+                    "lga_name": "Ilesa West",
+                    "places": [
+                        "Ilesa Town",
+                        "Ilesa Road",
+                        "Ode-Omu"
+                    ]
+                },
+                {
+                    "lga_name": "Irepodun",
+                    "places": [
+                        "Irepodun Town",
+                        "Osu",
+                        "Ikire"
+                    ]
+                },
+                {
+                    "lga_name": "Irewole",
+                    "places": [
+                        "Irewole Town",
+                        "Ikire",
+                        "Iwo Road"
+                    ]
+                },
+                {
+                    "lga_name": "Isokan",
+                    "places": [
+                        "Isokan Town",
+                        "Osu",
+                        "Ikire"
+                    ]
+                },
+                {
+                    "lga_name": "Iwo",
+                    "places": [
+                        "Iwo Town",
+                        "Oke-Odo",
+                        "Iwo Road"
+                    ]
+                },
+                {
+                    "lga_name": "Obokun",
+                    "places": [
+                        "Obokun Town",
+                        "Ikire",
+                        "Ilesa Road"
+                    ]
+                },
+                {
+                    "lga_name": "Odo-Otin",
+                    "places": [
+                        "Odo-Otin Town",
+                        "Ikire",
+                        "Osu"
+                    ]
+                },
+                {
+                    "lga_name": "Ola-Oluwa",
+                    "places": [
+                        "Ola-Oluwa Town",
+                        "Ikire",
+                        "Iwo Road"
+                    ]
+                },
+                {
+                    "lga_name": "Olorunda",
+                    "places": [
+                        "Olorunda Town",
+                        "Osu",
+                        "Ikire"
+                    ]
+                },
+                {
+                    "lga_name": "Oriade",
+                    "places": [
+                        "Oriade Town",
+                        "Ilesa",
+                        "Ikire"
+                    ]
+                },
+                {
+                    "lga_name": "Orolu",
+                    "places": [
+                        "Orolu Town",
+                        "Ilesa",
+                        "Ikire"
+                    ]
+                },
+                {
+                    "lga_name": "Osogbo",
+                    "places": [
+                        "Osogbo Town",
+                        "Osogbo City",
+                        "Ilesa Road"
+                    ]
+                }
+            ]
+        },
+        {
+            "state_name": "Oyo",
+            "lgas": [
+                {
+                    "lga_name": "Afijio",
+                    "places": [
+                        "Jobele",
+                        "Tede",
+                        "Ilora"
+                    ]
+                },
+                {
+                    "lga_name": "Akinyele",
+                    "places": [
+                        "Moniya",
+                        "Apata",
+                        "Ikereku"
+                    ]
+                },
+                {
+                    "lga_name": "Atiba",
+                    "places": [
+                        "Okeho",
+                        "Olorunsogo",
+                        "Oja-Oba"
+                    ]
+                },
+                {
+                    "lga_name": "Atisbo",
+                    "places": [
+                        "Tegbe",
+                        "Tede",
+                        "Ode-Remo"
+                    ]
+                },
+                {
+                    "lga_name": "Egbeda",
+                    "places": [
+                        "Egbeda Town",
+                        "Alakia",
+                        "Iyana-Iyesi"
+                    ]
+                },
+                {
+                    "lga_name": "Ibadan North",
+                    "places": [
+                        "Agodi",
+                        "Mokola",
+                        "Apata"
+                    ]
+                },
+                {
+                    "lga_name": "Ibadan North-East",
+                    "places": [
+                        "Apata",
+                        "Mokola",
+                        "Oje"
+                    ]
+                },
+                {
+                    "lga_name": "Ibadan North-West",
+                    "places": [
+                        "Agodi",
+                        "Oje",
+                        "Mokola"
+                    ]
+                },
+                {
+                    "lga_name": "Ibadan South-East",
+                    "places": [
+                        "Oje",
+                        "Apata",
+                        "Bodija"
+                    ]
+                },
+                {
+                    "lga_name": "Ibadan South-West",
+                    "places": [
+                        "Bodija",
+                        "Oje",
+                        "Apata"
+                    ]
+                },
+                {
+                    "lga_name": "Ibarapa Central",
+                    "places": [
+                        "Eruwa",
+                        "Igangan",
+                        "Iwoye"
+                    ]
+                },
+                {
+                    "lga_name": "Ibarapa East",
+                    "places": [
+                        "Igangan",
+                        "Eruwa",
+                        "Ido"
+                    ]
+                },
+                {
+                    "lga_name": "Ibarapa North",
+                    "places": [
+                        "Ayete",
+                        "Tapa",
+                        "Iseyin"
+                    ]
+                },
+                {
+                    "lga_name": "Ido",
+                    "places": [
+                        "Ido Town",
+                        "Agodi",
+                        "Oje"
+                    ]
+                },
+                {
+                    "lga_name": "Irepo",
+                    "places": [
+                        "Irepo Town",
+                        "Oke-Odo",
+                        "Okeho"
+                    ]
+                },
+                {
+                    "lga_name": "Iseyin",
+                    "places": [
+                        "Iseyin Town",
+                        "Okeho",
+                        "Tapa"
+                    ]
+                },
+                {
+                    "lga_name": "Itesiwaju",
+                    "places": [
+                        "Itesiwaju Town",
+                        "Iganna",
+                        "Okeho"
+                    ]
+                },
+                {
+                    "lga_name": "Iwajowa",
+                    "places": [
+                        "Iwajowa Town",
+                        "Ilora",
+                        "Ido"
+                    ]
+                },
+                {
+                    "lga_name": "Kajola",
+                    "places": [
+                        "Okeho",
+                        "Ijebu-Igbo",
+                        "Oke-Odo"
+                    ]
+                },
+                {
+                    "lga_name": "Lagelu",
+                    "places": [
+                        "Lagelu Town",
+                        "Ogbomosho Road",
+                        "Okeho"
+                    ]
+                },
+                {
+                    "lga_name": "Ogbomosho North",
+                    "places": [
+                        "Ogbomosho Town",
+                        "Agodi",
+                        "Okeho"
+                    ]
+                },
+                {
+                    "lga_name": "Ogbomosho South",
+                    "places": [
+                        "Ogbomosho Town",
+                        "Agodi",
+                        "Okeho"
+                    ]
+                },
+                {
+                    "lga_name": "Ogo Oluwa",
+                    "places": [
+                        "Ogo Oluwa Town",
+                        "Oke-Odo",
+                        "Okeho"
+                    ]
+                },
+                {
+                    "lga_name": "Olorunsogo",
+                    "places": [
+                        "Olorunsogo Town",
+                        "Okeho",
+                        "Oke-Odo"
+                    ]
+                },
+                {
+                    "lga_name": "Oluyole",
+                    "places": [
+                        "Oluyole Town",
+                        "Agodi",
+                        "Oje"
+                    ]
+                },
+                {
+                    "lga_name": "Ona Ara",
+                    "places": [
+                        "Ona Ara Town",
+                        "Agodi",
+                        "Oje"
+                    ]
+                },
+                {
+                    "lga_name": "Orelope",
+                    "places": [
+                        "Orelope Town",
+                        "Oke-Odo",
+                        "Okeho"
+                    ]
+                },
+                {
+                    "lga_name": "Ori Ire",
+                    "places": [
+                        "Ikoyi-Ile",
+                        "Okeho",
+                        "Oke-Odo"
+                    ]
+                },
+                {
+                    "lga_name": "Oyo East",
+                    "places": [
+                        "Oyo Town",
+                        "Oyo Road",
+                        "Okeho"
+                    ]
+                },
+                {
+                    "lga_name": "Oyo West",
+                    "places": [
+                        "Oyo Town",
+                        "Oyo Road",
+                        "Okeho"
+                    ]
+                }
+            ]
+        },
+        {
+            "state_name": "Plateau",
+            "lgas": [
+                {
+                    "lga_name": "Barkin Ladi",
+                    "places": [
+                        "Barkin Ladi Town",
+                        "Riyom Road",
+                        "Jos Road"
+                    ]
+                },
+                {
+                    "lga_name": "Bassa",
+                    "places": [
+                        "Bassa Town",
+                        "Jos Road",
+                        "Riyom Road"
+                    ]
+                },
+                {
+                    "lga_name": "Bokkos",
+                    "places": [
+                        "Bokkos Town",
+                        "Jos Road",
+                        "Barkin Ladi"
+                    ]
+                },
+                {
+                    "lga_name": "Jos East",
+                    "places": [
+                        "Jos East Town",
+                        "Jos Road",
+                        "Bassa"
+                    ]
+                },
+                {
+                    "lga_name": "Jos North",
+                    "places": [
+                        "Jos City",
+                        "Bukuru Road",
+                        "Jos Road"
+                    ]
+                },
+                {
+                    "lga_name": "Jos South",
+                    "places": [
+                        "Jos South Town",
+                        "Bukuru Road",
+                        "Jos Road"
+                    ]
+                },
+                {
+                    "lga_name": "Kanam",
+                    "places": [
+                        "Kanam Town",
+                        "Pankshin Road",
+                        "Wase"
+                    ]
+                },
+                {
+                    "lga_name": "Kanke",
+                    "places": [
+                        "Kanke Town",
+                        "Jos Road",
+                        "Pankshin Road"
+                    ]
+                },
+                {
+                    "lga_name": "Langtang North",
+                    "places": [
+                        "Langtang Town",
+                        "Jos Road",
+                        "Bokkos"
+                    ]
+                },
+                {
+                    "lga_name": "Langtang South",
+                    "places": [
+                        "Langtang Town",
+                        "Pankshin Road",
+                        "Bokkos"
+                    ]
+                },
+                {
+                    "lga_name": "Mangu",
+                    "places": [
+                        "Mangu Town",
+                        "Jos Road",
+                        "Pankshin"
+                    ]
+                },
+                {
+                    "lga_name": "Mikang",
+                    "places": [
+                        "Mikang Town",
+                        "Pankshin Road",
+                        "Jos Road"
+                    ]
+                },
+                {
+                    "lga_name": "Pankshin",
+                    "places": [
+                        "Pankshin Town",
+                        "Jos Road",
+                        "Bokkos"
+                    ]
+                },
+                {
+                    "lga_name": "Qua’an Pan",
+                    "places": [
+                        "Qua’an Pan Town",
+                        "Pankshin Road",
+                        "Jos Road"
+                    ]
+                },
+                {
+                    "lga_name": "Riyom",
+                    "places": [
+                        "Riyom Town",
+                        "Barkin Ladi",
+                        "Jos Road"
+                    ]
+                },
+                {
+                    "lga_name": "Shendam",
+                    "places": [
+                        "Shendam Town",
+                        "Jos Road",
+                        "Pankshin"
+                    ]
+                },
+                {
+                    "lga_name": "Wase",
+                    "places": [
+                        "Wase Town",
+                        "Pankshin Road",
+                        "Jos Road"
+                    ]
+                }
+            ]
+        },
+        {
+            "state_name": "Rivers",
+            "lgas": [
+                {
+                    "lga_name": "Abua/Odual",
+                    "places": [
+                        "Abua Town",
+                        "Odual Town",
+                        "Okpeden"
+                    ]
+                },
+                {
+                    "lga_name": "Ahoada East",
+                    "places": [
+                        "Ahoada Town",
+                        "Odiabidi",
+                        "Umuapu"
+                    ]
+                },
+                {
+                    "lga_name": "Ahoada West",
+                    "places": [
+                        "Ahoada Town",
+                        "Odiabidi",
+                        "Okolo"
+                    ]
+                },
+                {
+                    "lga_name": "Akuku-Toru",
+                    "places": [
+                        "Akuku Town",
+                        "Buguma",
+                        "Esuk Oron"
+                    ]
+                },
+                {
+                    "lga_name": "Andoni",
+                    "places": [
+                        "Ngo Town",
+                        "Ikuru",
+                        "Obolo"
+                    ]
+                },
+                {
+                    "lga_name": "Asari-Toru",
+                    "places": [
+                        "Buguma Town",
+                        "Omoku",
+                        "Bille"
+                    ]
+                },
+                {
+                    "lga_name": "Bonny",
+                    "places": [
+                        "Bonny Town",
+                        "New Bonny",
+                        "Finima"
+                    ]
+                },
+                {
+                    "lga_name": "Degema",
+                    "places": [
+                        "Degema Town",
+                        "Bakana",
+                        "Kula"
+                    ]
+                },
+                {
+                    "lga_name": "Eleme",
+                    "places": [
+                        "Eleme Town",
+                        "Ogale",
+                        "Agbonchia"
+                    ]
+                },
+                {
+                    "lga_name": "Emohua",
+                    "places": [
+                        "Emohua Town",
+                        "Rumuji",
+                        "Ogbakiri"
+                    ]
+                },
+                {
+                    "lga_name": "Etche",
+                    "places": [
+                        "Etche Town",
+                        "Okehi",
+                        "Umuechem"
+                    ]
+                },
+                {
+                    "lga_name": "Gokana",
+                    "places": [
+                        "Bomu",
+                        "K-dere",
+                        "Yeghe"
+                    ]
+                },
+                {
+                    "lga_name": "Ikwerre",
+                    "places": [
+                        "Isiokpo",
+                        "Omuanwa",
+                        "Ogbogoro"
+                    ]
+                },
+                {
+                    "lga_name": "Khana",
+                    "places": [
+                        "Bori Town",
+                        "Nkpogu",
+                        "Bodo"
+                    ]
+                },
+                {
+                    "lga_name": "Obio/Akpor",
+                    "places": [
+                        "Rumuodara",
+                        "Rumuokoro",
+                        "Rumuola"
+                    ]
+                },
+                {
+                    "lga_name": "Ogba/Egbema/Ndoni",
+                    "places": [
+                        "Ndoni Town",
+                        "Ogba Town",
+                        "Egbema Town"
+                    ]
+                },
+                {
+                    "lga_name": "Ogu/Bolo",
+                    "places": [
+                        "Ogu Town",
+                        "Bolo Town",
+                        "Khana Road"
+                    ]
+                },
+                {
+                    "lga_name": "Okrika",
+                    "places": [
+                        "Okrika Town",
+                        "Eleme",
+                        "Ibaa"
+                    ]
+                },
+                {
+                    "lga_name": "Omuma",
+                    "places": [
+                        "Omuma Town",
+                        "Ogbakiri",
+                        "Rumuji"
+                    ]
+                },
+                {
+                    "lga_name": "Opobo/Nkoro",
+                    "places": [
+                        "Opobo Town",
+                        "Nkoro Town",
+                        "Bille"
+                    ]
+                },
+                {
+                    "lga_name": "Oyigbo",
+                    "places": [
+                        "Oyigbo Town",
+                        "Bori",
+                        "Elele"
+                    ]
+                },
+                {
+                    "lga_name": "Port Harcourt",
+                    "places": [
+                        "GRA",
+                        "Trans Amadi",
+                        "Rumuola",
+                        "Port Harcourt City"
+                    ]
+                },
+                {
+                    "lga_name": "Tai",
+                    "places": [
+                        "Kira Town",
+                        "Bunu Town",
+                        "Gokana Road"
+                    ]
+                }
+            ]
+        },
+        {
+            "state_name": "Sokoto",
+            "lgas": [
+                {
+                    "lga_name": "Binji",
+                    "places": [
+                        "Binji Town",
+                        "Bungudu Road",
+                        "Bodinga"
+                    ]
+                },
+                {
+                    "lga_name": "Bodinga",
+                    "places": [
+                        "Bodinga Town",
+                        "Binji Road",
+                        "Sokoto Road"
+                    ]
+                },
+                {
+                    "lga_name": "Dange Shuni",
+                    "places": [
+                        "Dange Town",
+                        "Shuni Town",
+                        "Gandi"
+                    ]
+                },
+                {
+                    "lga_name": "Gada",
+                    "places": [
+                        "Gada Town",
+                        "Sokoto Road",
+                        "Bodinga"
+                    ]
+                },
+                {
+                    "lga_name": "Goronyo",
+                    "places": [
+                        "Goronyo Town",
+                        "Sokoto Road",
+                        "Bodinga"
+                    ]
+                },
+                {
+                    "lga_name": "Gudu",
+                    "places": [
+                        "Gudu Town",
+                        "Sokoto Road",
+                        "Binji"
+                    ]
+                },
+                {
+                    "lga_name": "Gwadabawa",
+                    "places": [
+                        "Gwadabawa Town",
+                        "Sokoto Road",
+                        "Bodinga"
+                    ]
+                },
+                {
+                    "lga_name": "Illela",
+                    "places": [
+                        "Illela Town",
+                        "Sokoto Road",
+                        "Bodinga"
+                    ]
+                },
+                {
+                    "lga_name": "Isa",
+                    "places": [
+                        "Isa Town",
+                        "Bodinga Road",
+                        "Sokoto Road"
+                    ]
+                },
+                {
+                    "lga_name": "Kebbe",
+                    "places": [
+                        "Kebbe Town",
+                        "Sokoto Road",
+                        "Bodinga"
+                    ]
+                },
+                {
+                    "lga_name": "Kware",
+                    "places": [
+                        "Kware Town",
+                        "Sokoto City",
+                        "Bodinga"
+                    ]
+                },
+                {
+                    "lga_name": "Rabah",
+                    "places": [
+                        "Rabah Town",
+                        "Sokoto Road",
+                        "Bodinga"
+                    ]
+                },
+                {
+                    "lga_name": "Sabon Birni",
+                    "places": [
+                        "Sabon Birni Town",
+                        "Sokoto Road",
+                        "Bodinga"
+                    ]
+                },
+                {
+                    "lga_name": "Shagari",
+                    "places": [
+                        "Shagari Town",
+                        "Sokoto Road",
+                        "Bodinga"
+                    ]
+                },
+                {
+                    "lga_name": "Silame",
+                    "places": [
+                        "Silame Town",
+                        "Sokoto Road",
+                        "Bodinga"
+                    ]
+                },
+                {
+                    "lga_name": "Sokoto North",
+                    "places": [
+                        "Sokoto City",
+                        "Gidan Dare",
+                        "Rijiya"
+                    ]
+                },
+                {
+                    "lga_name": "Sokoto South",
+                    "places": [
+                        "Sokoto City",
+                        "Gidan Dare",
+                        "Rijiya"
+                    ]
+                },
+                {
+                    "lga_name": "Tambuwal",
+                    "places": [
+                        "Tambuwal Town",
+                        "Sokoto Road",
+                        "Bodinga"
+                    ]
+                },
+                {
+                    "lga_name": "Tangaza",
+                    "places": [
+                        "Tangaza Town",
+                        "Sokoto Road",
+                        "Bodinga"
+                    ]
+                },
+                {
+                    "lga_name": "Tureta",
+                    "places": [
+                        "Tureta Town",
+                        "Sokoto Road",
+                        "Bodinga"
+                    ]
+                },
+                {
+                    "lga_name": "Wamako",
+                    "places": [
+                        "Wamako Town",
+                        "Sokoto Road",
+                        "Bodinga"
+                    ]
+                },
+                {
+                    "lga_name": "Wurno",
+                    "places": [
+                        "Wurno Town",
+                        "Sokoto Road",
+                        "Bodinga"
+                    ]
+                },
+                {
+                    "lga_name": "Yabo",
+                    "places": [
+                        "Yabo Town",
+                        "Sokoto Road",
+                        "Bodinga"
+                    ]
+                }
+            ]
+        },
+        {
+            "state_name": "Rivers",
+            "lgas": [
+                {
+                    "lga_name": "Abua/Odual",
+                    "places": [
+                        "Abua Town",
+                        "Odual Town",
+                        "Okpeden"
+                    ]
+                },
+                {
+                    "lga_name": "Ahoada East",
+                    "places": [
+                        "Ahoada Town",
+                        "Odiabidi",
+                        "Umuapu"
+                    ]
+                },
+                {
+                    "lga_name": "Ahoada West",
+                    "places": [
+                        "Ahoada Town",
+                        "Odiabidi",
+                        "Okolo"
+                    ]
+                },
+                {
+                    "lga_name": "Akuku-Toru",
+                    "places": [
+                        "Akuku Town",
+                        "Buguma",
+                        "Esuk Oron"
+                    ]
+                },
+                {
+                    "lga_name": "Andoni",
+                    "places": [
+                        "Ngo Town",
+                        "Ikuru",
+                        "Obolo"
+                    ]
+                },
+                {
+                    "lga_name": "Asari-Toru",
+                    "places": [
+                        "Buguma Town",
+                        "Omoku",
+                        "Bille"
+                    ]
+                },
+                {
+                    "lga_name": "Bonny",
+                    "places": [
+                        "Bonny Town",
+                        "New Bonny",
+                        "Finima"
+                    ]
+                },
+                {
+                    "lga_name": "Degema",
+                    "places": [
+                        "Degema Town",
+                        "Bakana",
+                        "Kula"
+                    ]
+                },
+                {
+                    "lga_name": "Eleme",
+                    "places": [
+                        "Eleme Town",
+                        "Ogale",
+                        "Agbonchia"
+                    ]
+                },
+                {
+                    "lga_name": "Emohua",
+                    "places": [
+                        "Emohua Town",
+                        "Rumuji",
+                        "Ogbakiri"
+                    ]
+                },
+                {
+                    "lga_name": "Etche",
+                    "places": [
+                        "Etche Town",
+                        "Okehi",
+                        "Umuechem"
+                    ]
+                },
+                {
+                    "lga_name": "Gokana",
+                    "places": [
+                        "Bomu",
+                        "K-dere",
+                        "Yeghe"
+                    ]
+                },
+                {
+                    "lga_name": "Ikwerre",
+                    "places": [
+                        "Isiokpo",
+                        "Omuanwa",
+                        "Ogbogoro"
+                    ]
+                },
+                {
+                    "lga_name": "Khana",
+                    "places": [
+                        "Bori Town",
+                        "Nkpogu",
+                        "Bodo"
+                    ]
+                },
+                {
+                    "lga_name": "Obio/Akpor",
+                    "places": [
+                        "Rumuodara",
+                        "Rumuokoro",
+                        "Rumuola"
+                    ]
+                },
+                {
+                    "lga_name": "Ogba/Egbema/Ndoni",
+                    "places": [
+                        "Ndoni Town",
+                        "Ogba Town",
+                        "Egbema Town"
+                    ]
+                },
+                {
+                    "lga_name": "Ogu/Bolo",
+                    "places": [
+                        "Ogu Town",
+                        "Bolo Town",
+                        "Khana Road"
+                    ]
+                },
+                {
+                    "lga_name": "Okrika",
+                    "places": [
+                        "Okrika Town",
+                        "Eleme",
+                        "Ibaa"
+                    ]
+                },
+                {
+                    "lga_name": "Omuma",
+                    "places": [
+                        "Omuma Town",
+                        "Ogbakiri",
+                        "Rumuji"
+                    ]
+                },
+                {
+                    "lga_name": "Opobo/Nkoro",
+                    "places": [
+                        "Opobo Town",
+                        "Nkoro Town",
+                        "Bille"
+                    ]
+                },
+                {
+                    "lga_name": "Oyigbo",
+                    "places": [
+                        "Oyigbo Town",
+                        "Bori",
+                        "Elele"
+                    ]
+                },
+                {
+                    "lga_name": "Port Harcourt",
+                    "places": [
+                        "GRA",
+                        "Trans Amadi",
+                        "Rumuola",
+                        "Port Harcourt City"
+                    ]
+                },
+                {
+                    "lga_name": "Tai",
+                    "places": [
+                        "Kira Town",
+                        "Bunu Town",
+                        "Gokana Road"
+                    ]
+                }
+            ]
+        },
+        {
+            "state_name": "Sokoto",
+            "lgas": [
+                {
+                    "lga_name": "Binji",
+                    "places": [
+                        "Binji Town",
+                        "Bungudu Road",
+                        "Bodinga"
+                    ]
+                },
+                {
+                    "lga_name": "Bodinga",
+                    "places": [
+                        "Bodinga Town",
+                        "Binji Road",
+                        "Sokoto Road"
+                    ]
+                },
+                {
+                    "lga_name": "Dange Shuni",
+                    "places": [
+                        "Dange Town",
+                        "Shuni Town",
+                        "Gandi"
+                    ]
+                },
+                {
+                    "lga_name": "Gada",
+                    "places": [
+                        "Gada Town",
+                        "Sokoto Road",
+                        "Bodinga"
+                    ]
+                },
+                {
+                    "lga_name": "Goronyo",
+                    "places": [
+                        "Goronyo Town",
+                        "Sokoto Road",
+                        "Bodinga"
+                    ]
+                },
+                {
+                    "lga_name": "Gudu",
+                    "places": [
+                        "Gudu Town",
+                        "Sokoto Road",
+                        "Binji"
+                    ]
+                },
+                {
+                    "lga_name": "Gwadabawa",
+                    "places": [
+                        "Gwadabawa Town",
+                        "Sokoto Road",
+                        "Bodinga"
+                    ]
+                },
+                {
+                    "lga_name": "Illela",
+                    "places": [
+                        "Illela Town",
+                        "Sokoto Road",
+                        "Bodinga"
+                    ]
+                },
+                {
+                    "lga_name": "Isa",
+                    "places": [
+                        "Isa Town",
+                        "Bodinga Road",
+                        "Sokoto Road"
+                    ]
+                },
+                {
+                    "lga_name": "Kebbe",
+                    "places": [
+                        "Kebbe Town",
+                        "Sokoto Road",
+                        "Bodinga"
+                    ]
+                },
+                {
+                    "lga_name": "Kware",
+                    "places": [
+                        "Kware Town",
+                        "Sokoto City",
+                        "Bodinga"
+                    ]
+                },
+                {
+                    "lga_name": "Rabah",
+                    "places": [
+                        "Rabah Town",
+                        "Sokoto Road",
+                        "Bodinga"
+                    ]
+                },
+                {
+                    "lga_name": "Sabon Birni",
+                    "places": [
+                        "Sabon Birni Town",
+                        "Sokoto Road",
+                        "Bodinga"
+                    ]
+                },
+                {
+                    "lga_name": "Shagari",
+                    "places": [
+                        "Shagari Town",
+                        "Sokoto Road",
+                        "Bodinga"
+                    ]
+                },
+                {
+                    "lga_name": "Silame",
+                    "places": [
+                        "Silame Town",
+                        "Sokoto Road",
+                        "Bodinga"
+                    ]
+                },
+                {
+                    "lga_name": "Sokoto North",
+                    "places": [
+                        "Sokoto City",
+                        "Gidan Dare",
+                        "Rijiya"
+                    ]
+                },
+                {
+                    "lga_name": "Sokoto South",
+                    "places": [
+                        "Sokoto City",
+                        "Gidan Dare",
+                        "Rijiya"
+                    ]
+                },
+                {
+                    "lga_name": "Tambuwal",
+                    "places": [
+                        "Tambuwal Town",
+                        "Sokoto Road",
+                        "Bodinga"
+                    ]
+                },
+                {
+                    "lga_name": "Tangaza",
+                    "places": [
+                        "Tangaza Town",
+                        "Sokoto Road",
+                        "Bodinga"
+                    ]
+                },
+                {
+                    "lga_name": "Tureta",
+                    "places": [
+                        "Tureta Town",
+                        "Sokoto Road",
+                        "Bodinga"
+                    ]
+                },
+                {
+                    "lga_name": "Wamako",
+                    "places": [
+                        "Wamako Town",
+                        "Sokoto Road",
+                        "Bodinga"
+                    ]
+                },
+                {
+                    "lga_name": "Wurno",
+                    "places": [
+                        "Wurno Town",
+                        "Sokoto Road",
+                        "Bodinga"
+                    ]
+                },
+                {
+                    "lga_name": "Yabo",
+                    "places": [
+                        "Yabo Town",
+                        "Sokoto Road",
+                        "Bodinga"
+                    ]
+                }
+            ]
+        }
+    ]
+}

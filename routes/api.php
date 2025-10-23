@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\API\Admin\AdminDashController;
+use App\Http\Controllers\API\Admin\DeliveryFeeController;
+use App\Http\Controllers\API\Admin\LocationController;
 use App\Http\Controllers\API\Auth\AuthController;
 use App\Http\Controllers\API\CartController;
 use App\Http\Controllers\API\CategoryController;
@@ -56,6 +58,13 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/checkout', [OrderController::class, 'checkout']);
 
     Route::get('/user/transactions', [PaymentController::class, 'userTransactions']);
+
+    Route::get('/locations', [LocationController::class, 'nigeriaLocation']);
+
+    Route::post('/delivery-fee', [DeliveryFeeController::class, 'store']);
+    Route::get('/delivery-fees', [DeliveryFeeController::class, 'index']);
+    Route::patch('/delivery-fee/{id}', [DeliveryFeeController::class, 'update']);
+    Route::delete('/delivery-fee/{id}', [DeliveryFeeController::class, 'destroy']);
 });
 Route::get('/verify-payment/{reference}/{order_reference}', [PaymentController::class, 'PaystackCallback']);
 
