@@ -38,6 +38,9 @@ Route::post('/password/reset', [AuthController::class, 'resetPassword'])
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
 Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
 
+// delivery address
+Route::post('/delivery/fee', [DeliveryFeeController::class, 'getFee']);
+
 // add to cart
 Route::post('/cart/add', [CartController::class, 'addToCart']);
 Route::get('/cart', [CartController::class, 'getCart']);

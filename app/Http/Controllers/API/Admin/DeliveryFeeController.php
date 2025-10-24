@@ -82,4 +82,31 @@ class DeliveryFeeController extends Controller
             'message' => 'Delivery fee deleted successfully'
         ]);
     }
+
+    public function getFee(Request $request)
+    {
+        $request->validate([
+            'state_name' => 'required|string',
+            'lga_name' => 'required|string',
+            'places' => 'required|string',
+        ]);
+
+        $deliveryFee = DeliveryFee::where('state_name', $request->state_name)
+            ->where('lga_name', $request->lga_name)
+            ->where('places', $request->places)
+            ->first();
+
+        if (!$deliveryFee) {
+            return response()->json([
+                'message' => 'Delivery location not found'
+            ], 404);
+        }
+
+        return response()->json([
+            'state' => $deliveryFee->state_name,
+            'lga' => $deliveryFee->lga_name,
+            'place' => $deliveryFee->places,
+            'fee' => $deliveryFee->fee
+        ]);
+    }
 }

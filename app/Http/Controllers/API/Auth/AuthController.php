@@ -18,7 +18,7 @@ class AuthController extends Controller
         // ✅ Let Laravel handle validation normally
         $request->validate([
             'name' => 'required|string',
-            'username'=> 'nullable|string|unique:users,username,',
+            'username'=> 'nullable|string|unique:users,username',
             'email' => 'required|email|unique:users',
             'phone' => 'required|string|unique:users',
             'password' => 'required|string|min:6|confirmed',
@@ -116,7 +116,6 @@ class AuthController extends Controller
 
         // find user by email OR username
         $user = User::where('email', $request->login)
-            ->orWhere('username', $request->login)
             ->first();
 
         if (!$user) {
@@ -144,12 +143,13 @@ class AuthController extends Controller
             'message' => 'Login successful',
             'user' => $user,
             'token' => $token,
-            'expires_at' => $expiry
+            'expires_at' => $expiry,
         ]);
     }
 
     public function sendResetLink(Request $request)
     {
+        
         // Validate email
         $request->validate([
             'email' => 'required|email',
