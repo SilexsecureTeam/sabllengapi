@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\VerificationCode;
+use App\Models\PasswordResetToken;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -181,12 +182,12 @@ class AuthController extends Controller
         ]);
 
         // Find token record
-        $reset = PasswordReset::where('email', $request->email)
+        $reset = PasswordResetToken::where('email', $request->email)
             ->where('token', $request->token)
             ->first();
 
-        if (!$reset) {
-            return response()->json(['message' => 'Invalid or expired token.'], 400);
+        if (!$reset || now()->diffInMinutes($reset->created_at) > 60) {
+            return response()->json(['message' => 'Invalid or expired token'], 400);
         }
 
         // Check expiry time
