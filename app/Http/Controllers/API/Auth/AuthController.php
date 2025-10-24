@@ -8,7 +8,9 @@ use App\Models\VerificationCode;
 use App\Models\PasswordResetToken;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Password;
@@ -151,26 +153,32 @@ class AuthController extends Controller
 
     public function sendResetLink(Request $request)
     {
-
-        // Validate email
         $request->validate([
-            'email' => 'required|email',
+            'email' => 'required|email|exists:users,email',
         ]);
 
-        // Attempt to send reset link
-        $status = Password::sendResetLink(
-            $request->only('email')
+        $token = Str::random(64);
+        $expires = Carbon::now()->addMinutes(60); // Token valid for 60 minutes
+
+        // Save token in DB
+        DB::table('password_resets')->updateOrInsert(
+            ['email' => $request->email],
+            ['token' => $token, 'expires_at' => $expires, 'created_at' => now()]
         );
 
-        if ($status === Password::RESET_LINK_SENT) {
-            return response()->json([
-                'message' => __($status)
-            ], 200);
-        }
+        // Generate reset link
+        $resetUrl = url("api/password/reset?token={$token}&email={$request->email}");
+
+        // Send email (customize your Mail)
+        Mail::raw("Click this link to reset your password: $resetUrl", function ($message) use ($request) {
+            $message->to($request->email)
+                ->subject('Password Reset Request');
+        });
 
         return response()->json([
-            'message' => __($status)
-        ], 400);
+            'message' => 'Password reset link sent to your email',
+            'reset_url' => $resetUrl // optional, for testing
+        ]);
     }
 
     public function resetPassword(Request $request)
@@ -178,39 +186,30 @@ class AuthController extends Controller
         $request->validate([
             'email' => 'required|email|exists:users,email',
             'token' => 'required|string',
-            'password' => 'required|string|min:6|confirmed',
+            'password' => 'required|string|min:6|confirmed', // password + password_confirmation
         ]);
 
-        // Find token record
-        $reset = PasswordResetToken::where('email', $request->email)
+        $record = DB::table('password_resets')
+            ->where('email', $request->email)
             ->where('token', $request->token)
             ->first();
 
-        if (!$reset || now()->diffInMinutes($reset->created_at) > 60) {
-            return response()->json(['message' => 'Invalid or expired token'], 400);
+        if (!$record) {
+            return response()->json(['message' => 'Invalid token or email'], 400);
         }
 
-        // Check expiry time
-        if (Carbon::now()->greaterThan($reset->expires_at)) {
-            return response()->json(['message' => 'Token has expired.'], 400);
+        if (Carbon::now()->isAfter($record->expires_at)) {
+            return response()->json(['message' => 'Token has expired'], 400);
         }
 
-        // Find user
+        // Update user password
         $user = User::where('email', $request->email)->first();
-
-        if (!$user) {
-            return response()->json(['message' => 'User not found.'], 404);
-        }
-
-        // Update password
-        $user->password = Hash::make($request->password);
+        $user->password = bcrypt($request->password);
         $user->save();
 
-        // Delete used token
-        $reset->delete();
+        // Delete the token after use
+        DB::table('password_resets')->where('email', $request->email)->delete();
 
-        return response()->json([
-            'message' => 'Password has been reset successfully. You can now log in.',
-        ]);
+        return response()->json(['message' => 'Password has been reset successfully']);
     }
 }
