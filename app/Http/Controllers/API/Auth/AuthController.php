@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\VerificationCode;
+use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
@@ -18,7 +19,7 @@ class AuthController extends Controller
         // ✅ Let Laravel handle validation normally
         $request->validate([
             'name' => 'required|string',
-            'username'=> 'nullable|string|unique:users,username',
+            'username' => 'nullable|string|unique:users,username',
             'email' => 'required|email|unique:users',
             'phone' => 'required|string|unique:users',
             'password' => 'required|string|min:6|confirmed',
@@ -149,7 +150,7 @@ class AuthController extends Controller
 
     public function sendResetLink(Request $request)
     {
-        
+
         // Validate email
         $request->validate([
             'email' => 'required|email',
@@ -169,5 +170,46 @@ class AuthController extends Controller
         return response()->json([
             'message' => __($status)
         ], 400);
+    }
+
+    public function resetPassword(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email|exists:users,email',
+            'token' => 'required|string',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+
+        // Find token record
+        $reset = PasswordReset::where('email', $request->email)
+            ->where('token', $request->token)
+            ->first();
+
+        if (!$reset) {
+            return response()->json(['message' => 'Invalid or expired token.'], 400);
+        }
+
+        // Check expiry time
+        if (Carbon::now()->greaterThan($reset->expires_at)) {
+            return response()->json(['message' => 'Token has expired.'], 400);
+        }
+
+        // Find user
+        $user = User::where('email', $request->email)->first();
+
+        if (!$user) {
+            return response()->json(['message' => 'User not found.'], 404);
+        }
+
+        // Update password
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        // Delete used token
+        $reset->delete();
+
+        return response()->json([
+            'message' => 'Password has been reset successfully. You can now log in.',
+        ]);
     }
 }
