@@ -39,7 +39,13 @@ Route::get('/categories', [CategoryController::class, 'index'])->name('categorie
 Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
 
 // delivery address
-Route::post('/delivery/fee', [DeliveryFeeController::class, 'getFee']);
+Route::get('/states', [DeliveryFeeController::class, 'getStates']);
+
+// Get LGAs by state
+Route::get('/lgas/{state}', [DeliveryFeeController::class, 'getLgas']);
+
+// Get places by state and LGA
+Route::get('/places/{state}/{lga}', [DeliveryFeeController::class, 'getPlaces']);
 
 // add to cart
 Route::post('/cart/add', [CartController::class, 'addToCart']);

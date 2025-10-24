@@ -166,8 +166,10 @@ class AuthController extends Controller
             ['token' => $token, 'expires_at' => $expires, 'created_at' => now()]
         );
 
+        $frontendUrl = "https://sablleng.vercel.app/reset-password";
+
         // Generate reset link
-        $resetUrl = url("api/password/reset?token={$token}&email={$request->email}");
+        $resetUrl = url($frontendUrl ."?token={$token}&email={$request->email}");
 
         // Send email (customize your Mail)
         Mail::raw("Click this link to reset your password: $resetUrl", function ($message) use ($request) {

@@ -83,30 +83,27 @@ class DeliveryFeeController extends Controller
         ]);
     }
 
-    public function getFee(Request $request)
+    public function getStates()
     {
-        $request->validate([
-            'state_name' => 'required|string',
-            'lga_name' => 'required|string',
-            'places' => 'required|string',
-        ]);
+        $states = DeliveryFee::select('state_name')->distinct()->get();
+        return response()->json($states);
+    }
 
-        $deliveryFee = DeliveryFee::where('state_name', $request->state_name)
-            ->where('lga_name', $request->lga_name)
-            ->where('places', $request->places)
-            ->first();
+    public function getLgas($state)
+    {
+        $lgas = DeliveryFee::where('state_name', $state)
+            ->select('lga_name')
+            ->distinct()
+            ->get();
+        return response()->json($lgas);
+    }
 
-        if (!$deliveryFee) {
-            return response()->json([
-                'message' => 'Delivery location not found'
-            ], 404);
-        }
-
-        return response()->json([
-            'state' => $deliveryFee->state_name,
-            'lga' => $deliveryFee->lga_name,
-            'place' => $deliveryFee->places,
-            'fee' => $deliveryFee->fee
-        ]);
+    public function getPlaces($state, $lga)
+    {
+        $places = DeliveryFee::where('state_name', $state)
+            ->where('lga_name', $lga)
+            ->select('places', 'fee')
+            ->get();
+        return response()->json($places);
     }
 }
