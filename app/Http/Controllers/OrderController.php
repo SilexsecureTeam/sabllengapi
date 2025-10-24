@@ -110,5 +110,52 @@ class OrderController extends Controller
         ], 201);
     }
 
-    
+    public function myOrders(Request $request)
+    {
+        $user = Auth::user();
+
+        if (!$user) {
+            return response()->json(['message' => 'Unauthorized'], 401);
+        }
+
+        $orders = Order::with('items.product.images', 'items.customization')
+            ->where('user_id', $user->id)
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        if ($orders->isEmpty()) {
+            return response()->json(['message' => 'No orders found'], 404);
+        }
+
+        return response()->json([
+            'message' => 'Orders retrieved successfully',
+            'orders' => $orders,
+        ], 200);
+    }
+
+    /**
+     * Get a single order by reference
+     */
+    public function getOrder(Request $request, $orderReference)
+    {
+        $user = Auth::user();
+
+        if (!$user) {
+            return response()->json(['message' => 'Unauthorized'], 401);
+        }
+
+        $order = Order::with('items.product.images', 'items.customization')
+            ->where('user_id', $user->id)
+            ->where('order_reference', $orderReference)
+            ->first();
+
+        if (!$order) {
+            return response()->json(['message' => 'Order not found'], 404);
+        }
+
+        return response()->json([
+            'message' => 'Order retrieved successfully',
+            'order' => $order,
+        ], 200);
+    }
 }

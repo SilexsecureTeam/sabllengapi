@@ -76,6 +76,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/delivery-fees', [DeliveryFeeController::class, 'index']);
     Route::patch('/delivery-fee/{id}', [DeliveryFeeController::class, 'update']);
     Route::delete('/delivery-fee/{id}', [DeliveryFeeController::class, 'destroy']);
+    
+    Route::get('/orders', [OrderController::class, 'myOrders']);
+    // Get a specific order by order_reference
+    Route::get('/orders/{orderReference}', [OrderController::class, 'getOrder']);
 });
 Route::get('/verify-payment/{reference}/{order_reference}', [PaymentController::class, 'PaystackCallback']);
 
