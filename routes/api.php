@@ -104,6 +104,8 @@ Route::post('/admin/login', [AdminDashController::class, 'login']);
 Route::post('/admin/verify-otp', [AdminDashController::class, 'verifyOtp']);
 Route::post('/admin/otp/resend', [AdminDashController::class, 'resendOtp']);
 
+Route::get('/taxes', [TaxController::class, 'index']);
+
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/staff', [StaffController::class, 'store'])->name('staff.store');
     //categories
@@ -117,8 +119,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::delete('/products/{id}', [ProductController::class, 'destroy']);
     Route::get('/admin/orders', [AdminDashController::class, 'listOrders']);
 
-    Route::get('/taxes', [TaxController::class, 'index']);
-    Route::post('/taxes', [TaxController::class, 'store']);
+        Route::post('/taxes', [TaxController::class, 'store']);
     Route::patch('/taxes/{id}', [TaxController::class, 'update']);
     Route::delete('/taxes/{id}', [TaxController::class, 'destroy']);
 });

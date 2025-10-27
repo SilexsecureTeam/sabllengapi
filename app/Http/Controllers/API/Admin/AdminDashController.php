@@ -20,14 +20,14 @@ class AdminDashController extends Controller
         ]);
 
         $user = User::where('email', $request->email)->first();
-
         // Check user existence & password
         if (!$user || !Hash::check($request->password, $user->password)) {
-            return response()->json(['message' => 'Invalid credentials'], 401);
+            return response()->json([
+                'message' => 'Invalid credentials'
+            ], 401);
         }
 
         // ✅ Restrict to admin and superadmin only
-
         if ($user->role !== 'admin' && $user->role !== 'superadmin') {
             return response()->json(['message' => 'Access denied. Admins only.'], 403);
         }

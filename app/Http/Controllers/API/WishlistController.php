@@ -13,9 +13,11 @@ class WishlistController extends Controller
 {
     public function index(Request $request)
     {
+
         $user = Auth::user();
         $sessionId = $request->header('X-Cart-Session');
 
+        // dd(Auth::user());
         if (!$user && !$sessionId) {
             $sessionId = Str::uuid()->toString();
         }
@@ -26,7 +28,9 @@ class WishlistController extends Controller
             ->get();
 
         return response()
-            ->json($wishlist)
+            ->json([
+                'wishlist' => $wishlist
+            ])
             ->header('X-Cart-Session', $sessionId);
     }
 
@@ -39,22 +43,30 @@ class WishlistController extends Controller
         $user = Auth::user();
         $sessionId = $request->header('X-Cart-Session');
 
+        // ✅ Generate only once if guest has no session yet
         if (!$user && !$sessionId) {
-            $sessionId = Str::uuid()->toString();
+            $sessionId = (string) Str::uuid();
         }
 
+        // ✅ Store or update wishlist
         $wishlist = Wishlist::firstOrCreate(
             $user
-                ? ['user_id' => $user->id, 'product_id' => $validated['product_id']]
-                : ['session_id' => $sessionId, 'product_id' => $validated['product_id']]
+                ? [
+                    'user_id' => $user->id,
+                    'product_id' => $validated['product_id'],
+                ]
+                : [
+                    'session_id' => $sessionId,
+                    'product_id' => $validated['product_id'],
+                ]
         );
 
         return response()
             ->json([
                 'message' => 'Product added to wishlist successfully',
                 'wishlist' => $wishlist,
-                'cart_session_id' => $sessionId,
-            ], 201)
+                'session_id' => $sessionId,
+            ])
             ->header('X-Cart-Session', $sessionId);
     }
 
@@ -91,6 +103,7 @@ class WishlistController extends Controller
             ->when(!$user, fn($q) => $q->where('session_id', $sessionId))
             ->where('product_id', $productId)
             ->first();
+            dd($wishlistItem);
 
         if (!$wishlistItem) {
             return response()->json([

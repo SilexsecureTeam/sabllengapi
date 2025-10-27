@@ -45,7 +45,7 @@ class TaxController extends Controller
             'percentage' => 'sometimes|required|numeric|min:0|max:100',
             'is_active' => 'sometimes|boolean',
         ]);
-
+// dd($validated);
         $tax->update($validated);
 
         return response()->json([
