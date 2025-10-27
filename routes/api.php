@@ -3,11 +3,13 @@
 use App\Http\Controllers\API\Admin\AdminDashController;
 use App\Http\Controllers\API\Admin\DeliveryFeeController;
 use App\Http\Controllers\API\Admin\LocationController;
+use App\Http\Controllers\Api\Admin\TaxController;
 use App\Http\Controllers\API\Auth\AuthController;
 use App\Http\Controllers\API\CartController;
 use App\Http\Controllers\API\CategoryController;
 use App\Http\Controllers\API\CustomizationController;
 use App\Http\Controllers\API\ProductController;
+use App\Http\Controllers\Api\WishlistController;
 use App\Http\Controllers\Import\ImportInventoryController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
@@ -53,10 +55,16 @@ Route::get('/cart', [CartController::class, 'getCart']);
 Route::delete('/cart/items/{id}', [CartController::class, 'removeItem']);
 Route::patch('/cart/items/{id}', [CartController::class, 'updateItem']);
 
+// wishlist
+Route::get('/wishlist', [WishlistController::class, 'index']);
+Route::post('/wishlist', [WishlistController::class, 'store']);
+Route::delete('/wishlist/{productId}', [WishlistController::class, 'destroy']);
+Route::post('/wishlist/{productId}/move-to-cart', [WishlistController::class, 'moveToCart']);
 
 //product
 Route::get('/products', [ProductController::class, 'index']);
 Route::get('/products/{id}', [ProductController::class, 'show']);
+Route::get('/products/customizable', [ProductController::class, 'customizableProducts']);
 
 // authenticated user
 Route::middleware('auth:sanctum')->group(function () {
@@ -76,7 +84,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/delivery-fees', [DeliveryFeeController::class, 'index']);
     Route::patch('/delivery-fee/{id}', [DeliveryFeeController::class, 'update']);
     Route::delete('/delivery-fee/{id}', [DeliveryFeeController::class, 'destroy']);
-    
+
     Route::get('/orders', [OrderController::class, 'myOrders']);
     // Get a specific order by order_reference
     Route::get('/orders/{orderReference}', [OrderController::class, 'getOrder']);
@@ -108,4 +116,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::patch('/products/{id}', [ProductController::class, 'update']);
     Route::delete('/products/{id}', [ProductController::class, 'destroy']);
     Route::get('/admin/orders', [AdminDashController::class, 'listOrders']);
+
+    Route::get('/taxes', [TaxController::class, 'index']);
+    Route::post('/taxes', [TaxController::class, 'store']);
+    Route::patch('/taxes/{id}', [TaxController::class, 'update']);
+    Route::delete('/taxes/{id}', [TaxController::class, 'destroy']);
 });

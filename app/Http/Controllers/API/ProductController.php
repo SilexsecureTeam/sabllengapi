@@ -13,7 +13,17 @@ class ProductController extends Controller
 
     public function index()
     {
-        $products = Product::with(['category', 'brand', 'supplier'])->paginate(10);
+        $products = Product::with(['category', 'brand', 'supplier', 'customization'])->paginate(10);
+
+        return response()->json($products, 200);
+    }
+
+    public function customizableProducts()
+    {
+        // Fetch products where 'customize' is true, eager-load relations
+        $products = Product::with(['category', 'brand', 'supplier', 'customization'])
+            ->where('customize', true)
+            ->paginate(10); // paginate if needed
 
         return response()->json($products, 200);
     }
@@ -103,7 +113,7 @@ class ProductController extends Controller
 
     public function show($id)
     {
-        $product = Product::with(['category', 'brand', 'supplier'])->findOrFail($id);
+        $product = Product::with(['category', 'brand', 'supplier', 'customization'])->findOrFail($id);
 
         return response()->json($product, 200);
     }

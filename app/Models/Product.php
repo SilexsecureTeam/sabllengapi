@@ -70,4 +70,9 @@ class Product extends Model
     {
         return $this->hasMany(OrderItem::class);
     }
+
+    public function customization()
+    {
+        return $this->hasMany(Customization::class);
+    }
 }
