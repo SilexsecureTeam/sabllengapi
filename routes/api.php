@@ -3,13 +3,13 @@
 use App\Http\Controllers\API\Admin\AdminDashController;
 use App\Http\Controllers\API\Admin\DeliveryFeeController;
 use App\Http\Controllers\API\Admin\LocationController;
-use App\Http\Controllers\Api\Admin\TaxController;
+use App\Http\Controllers\API\Admin\TaxController;
 use App\Http\Controllers\API\Auth\AuthController;
 use App\Http\Controllers\API\CartController;
 use App\Http\Controllers\API\CategoryController;
 use App\Http\Controllers\API\CustomizationController;
 use App\Http\Controllers\API\ProductController;
-use App\Http\Controllers\Api\WishlistController;
+use App\Http\Controllers\API\WishlistController;
 use App\Http\Controllers\Import\ImportInventoryController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
@@ -64,7 +64,7 @@ Route::post('/wishlist/{productId}/move-to-cart', [WishlistController::class, 'm
 //product
 Route::get('/products', [ProductController::class, 'index']);
 Route::get('/products/{id}', [ProductController::class, 'show']);
-Route::get('/products/customizable', [ProductController::class, 'customizableProducts']);
+Route::get('/product/customized', [ProductController::class, 'customizableProducts']);
 
 // authenticated user
 Route::middleware('auth:sanctum')->group(function () {

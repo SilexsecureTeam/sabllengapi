@@ -20,13 +20,35 @@ class ProductController extends Controller
 
     public function customizableProducts()
     {
-        // Fetch products where 'customize' is true, eager-load relations
+        // Fetch all products where 'customize' is true, eager-load relations
         $products = Product::with(['category', 'brand', 'supplier', 'customization'])
             ->where('customize', true)
-            ->paginate(10); // paginate if needed
+            ->get();
 
-        return response()->json($products, 200);
+        // Transform each product to show detailed info
+        $data = $products->map(function ($product) {
+            return [
+                'id' => $product->id,
+                'name' => $product->name,
+                'slug' => $product->slug,
+                'description' => $product->description,
+                'price' => number_format($product->price, 2),
+                'image' => $product->image ? asset('storage/' . $product->image) : null,
+                'customize' => $product->customize,
+                'category' => $product->category?->name,
+                'brand' => $product->brand?->name,
+                'supplier' => $product->supplier?->name,
+                'customization' => $product->customization,
+                'created_at' => $product->created_at->toDateString(),
+            ];
+        });
+
+        return response()->json([
+            'count' => $data->count(),
+            'products' => $data,
+        ], 200);
     }
+
 
     public function store(Request $request)
     {
