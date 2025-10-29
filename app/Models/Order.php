@@ -24,6 +24,7 @@ class Order extends Model
         'shipping_address',
         'payment_method',
         'status',
+        'oder_status'
     ];
 
     /**

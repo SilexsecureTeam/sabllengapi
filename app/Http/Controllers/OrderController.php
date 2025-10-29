@@ -8,7 +8,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use App\Models\Coupon;
+use App\Mail\OrderStatusUpdated;
 use App\Models\DeliveryFee;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -156,6 +158,120 @@ class OrderController extends Controller
         return response()->json([
             'message' => 'Order retrieved successfully',
             'order' => $order,
+        ], 200);
+    }
+
+    public function allOrders(Request $request)
+    {
+        // Ensure only admin users can access this route
+        if (!Auth::check() || !Auth::user()->admin) {
+            return response()->json(['message' => 'Unauthorized'], 401);
+        }
+
+        // Optional filters for admin dashboard (e.g. ?status=paid)
+        $query = Order::with([
+            'user:id,name,email',
+            'items.product.images',
+            'items.customization'
+        ]);
+
+        // if ($request->has('status')) {
+        //     $query->where('status', $request->status);
+        // }
+
+        if ($request->has('payment_status')) {
+            $query->where('payment_status', $request->payment_status);
+        }
+
+        if ($request->has('search')) {
+            $search = $request->search;
+            $query->whereHas('user', function ($q) use ($search) {
+                $q->where('name', 'like', "%$search%")
+                    ->orWhere('email', 'like', "%$search%");
+            });
+        }
+
+        $orders = $query->orderBy('created_at', 'desc')->get();
+
+        if ($orders->isEmpty()) {
+            return response()->json(['message' => 'No orders found'], 404);
+        }
+
+        $data = $orders->map(function ($order) {
+            return [
+                'id' => $order->id,
+                'order_number' => $order->order_number ?? 'N/A',
+                'status' => ucfirst($order->status),
+                'payment_status' => ucfirst($order->payment_status),
+                'total' => number_format($order->total, 2),
+                'delivery_address' => $order->delivery_address,
+                'created_at' => $order->created_at->toDateTimeString(),
+                'user' => [
+                    'id' => $order->user?->id,
+                    'name' => $order->user?->name,
+                    'email' => $order->user?->email,
+                ],
+                'items' => $order->items->map(function ($item) {
+                    return [
+                        'product_name' => $item->product?->name,
+                        'quantity' => $item->quantity,
+                        'price' => number_format($item->price, 2),
+                        'subtotal' => number_format($item->price * $item->quantity, 2),
+                        'images' => $item->product?->images?->pluck('url')
+                            ->map(fn($url) => asset('storage/' . $url)),
+                        'customization' => $item->customization,
+                    ];
+                }),
+            ];
+        });
+
+        return response()->json([
+            'message' => 'All orders retrieved successfully',
+            'count' => $data->count(),
+            'orders' => $data,
+        ], 200);
+    }
+
+    public function updateOrderStatus(Request $request, $id)
+    {
+        // Ensure only admin users can perform this action
+        if (!Auth::check() || !Auth::user()->admin) {
+            return response()->json([
+                'message' => 'This User is Unauthorized'
+            ], 401);
+        }
+
+        // Validate incoming request with fixed status stages
+        $validated = $request->validate([
+            'order_status' => 'required|string|in:Order Placed,Processing,Packed,Shipped,Out for Delivery,Delivered',
+        ]);
+
+        // Find order and include user for email notification
+        $order = Order::with('user')->find($id);
+
+        if (!$order) {
+            return response()->json([
+                'message' => 'Order not found'
+            ], 404);
+        }
+
+        // Update the order_status field
+        $order->order_status = $validated['order_status'];
+        $order->save();
+
+        // Send email notification to the user
+        if ($order->user && $order->user->email) {
+            Mail::to($order->user->email)->send(new OrderStatusUpdated($order));
+        }
+
+        return response()->json([
+            'message' => 'Order status updated and user notified successfully',
+            'order' => [
+                'id' => $order->id,
+                'order_number' => $order->order_number ?? 'N/A',
+                'order_status' => $order->order_status,
+                'updated_at' => $order->updated_at->toDateTimeString(),
+            ],
         ], 200);
     }
 }

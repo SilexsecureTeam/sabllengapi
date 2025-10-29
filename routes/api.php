@@ -119,7 +119,10 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::delete('/products/{id}', [ProductController::class, 'destroy']);
     Route::get('/admin/orders', [AdminDashController::class, 'listOrders']);
 
-        Route::post('/taxes', [TaxController::class, 'store']);
+    Route::post('/taxes', [TaxController::class, 'store']);
     Route::patch('/taxes/{id}', [TaxController::class, 'update']);
     Route::delete('/taxes/{id}', [TaxController::class, 'destroy']);
+
+    Route::get('/admin/orders', [OrderController::class, 'allOrders']);
+    Route::patch('/admin/orders/{id}/status', [OrderController::class, 'updateOrderStatus']);
 });
