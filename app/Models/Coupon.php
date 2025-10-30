@@ -7,17 +7,25 @@ use Illuminate\Database\Eloquent\Model;
 
 class Coupon extends Model
 {
-     use HasFactory;
+    use HasFactory;
 
     protected $fillable = [
+        'promotion_name',
         'code',
         'type',
         'value',
+        'start_date',
         'expires_at',
         'usage_limit',
         'times_used',
+        'is_active'
     ];
 
+    protected $casts = [
+        'start_date' => 'datetime',
+        'expires_at' => 'datetime',
+        'is_active' => 'boolean',
+    ];
     /**
      * Check if coupon is valid (not expired and within usage limit)
      */

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\Admin\AdminDashController;
+use App\Http\Controllers\API\Admin\CouponController;
 use App\Http\Controllers\API\Admin\DeliveryFeeController;
 use App\Http\Controllers\API\Admin\LocationController;
 use App\Http\Controllers\API\Admin\TaxController;
@@ -128,4 +129,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/delivery-fees', [DeliveryFeeController::class, 'index']);
 
     Route::get('/admin/users', [AdminDashController::class, 'index']);
+
+    Route::get('/coupons', [CouponController::class, 'index']);
+    Route::post('/coupons', [CouponController::class, 'store']);
+    Route::patch('/coupons/{id}', [CouponController::class, 'update']);
+    Route::delete('/coupons/{id}', [CouponController::class, 'destroy']);
 });
