@@ -81,7 +81,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/locations', [LocationController::class, 'nigeriaLocation']);
 
     Route::post('/delivery-fee', [DeliveryFeeController::class, 'store']);
-    Route::get('/delivery-fees', [DeliveryFeeController::class, 'index']);
     Route::patch('/delivery-fee/{id}', [DeliveryFeeController::class, 'update']);
     Route::delete('/delivery-fee/{id}', [DeliveryFeeController::class, 'destroy']);
 
@@ -125,4 +124,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::get('/admin/orders', [OrderController::class, 'allOrders']);
     Route::patch('/admin/orders/{id}/status', [OrderController::class, 'updateOrderStatus']);
+
+    Route::get('/delivery-fees', [DeliveryFeeController::class, 'index']);
 });
