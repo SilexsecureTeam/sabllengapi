@@ -7,7 +7,7 @@
       <div class="email-content">
         <p>Hello {{ $order->user->name }},</p>
 
-        <p>Your order <strong>#{{ $order->order_number ?? $order->id }}</strong> status has been updated to:</p>
+        <p>Your order <strong>#{{ $order->order_reference ?? $order->id }}</strong> status has been updated to:</p>
 
         <div class="status">{{ $order->order_status }}</div>
 
@@ -26,7 +26,7 @@
               @break
 
             @case('Shipped')
-              <p>Your package has left our facility and is on its way.</p>
+              <p>Your order has now been dispatched and is making its way to you with our trusted carrier</p>
               @break
 
             @case('Out for Delivery')
@@ -34,7 +34,7 @@
               @break
 
             @case('Delivered')
-              <p>Your package has been delivered. Thank you for shopping with us!</p>
+              <p>We delivered your order today, {{ $order->updated_at->format('F j, Y') }}. We hope you like your purchase</p>
               @break
 
             @default

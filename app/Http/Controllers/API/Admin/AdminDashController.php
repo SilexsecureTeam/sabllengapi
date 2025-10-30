@@ -7,6 +7,7 @@ use App\Models\Order;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
@@ -171,5 +172,22 @@ class AdminDashController extends Controller
             'message' => 'Orders retrieved successfully',
             'data' => $orders,
         ]);
+    }
+
+    // list of users
+    public function index()
+    {
+        if (!Auth::check() && Auth::user()->role !== 'admin') {
+            return response()->json([
+                'message' => 'You are not authorized to view this credentials',
+            ], 401);
+        }
+        $users = User::orderBy('created_at', 'desc')->get();
+
+        return response()->json([
+            'message' => 'Users retrieved successfully.',
+            'count' => $users->count(),
+            'users' => $users,
+        ], 200);
     }
 }

@@ -126,4 +126,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::patch('/admin/orders/{id}/status', [OrderController::class, 'updateOrderStatus']);
 
     Route::get('/delivery-fees', [DeliveryFeeController::class, 'index']);
+
+    Route::get('/admin/users', [AdminDashController::class, 'index']);
 });

@@ -28,6 +28,7 @@ class OrderStatusUpdated extends Mailable
     {
         switch ($this->order->order_status) {
             case 'Order Placed':
+                return 'Thank you for your order!';
             case 'Packed':
             case 'Processing':
                 return 'Thank you for your order!';
