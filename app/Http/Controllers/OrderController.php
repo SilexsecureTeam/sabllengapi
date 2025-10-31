@@ -161,75 +161,111 @@ class OrderController extends Controller
         ], 200);
     }
 
+    // public function allOrders(Request $request)
+    // {
+    //     // Ensure only admin users can access this route
+    //     if (!Auth::check() || !Auth::user()->admin) {
+    //         return response()->json(['message' => 'Unauthorized'], 401);
+    //     }
+
+    //     // Optional filters for admin dashboard (e.g. ?status=paid)
+    //     $query = Order::with([
+    //         'user:id,name,email',
+    //         'items.product.images',
+    //         'items.customization'
+    //     ]);
+
+    //     // if ($request->has('status')) {
+    //     //     $query->where('status', $request->status);
+    //     // }
+
+    //     if ($request->has('payment_status')) {
+    //         $query->where('payment_status', $request->payment_status);
+    //     }
+
+    //     if ($request->has('search')) {
+    //         $search = $request->search;
+    //         $query->whereHas('user', function ($q) use ($search) {
+    //             $q->where('name', 'like', "%$search%")
+    //                 ->orWhere('email', 'like', "%$search%");
+    //         });
+    //     }
+
+    //     $orders = $query->orderBy('created_at', 'desc')->get();
+
+    //     if ($orders->isEmpty()) {
+    //         return response()->json(['message' => 'No orders found'], 404);
+    //     }
+
+    //     $data = $orders->map(function ($order) {
+    //         return [
+    //             'id' => $order->id,
+    //             'order_number' => $order->order_number ?? 'N/A',
+    //             'status' => ucfirst($order->status),
+    //             'payment_status' => ucfirst($order->payment_status),
+    //             'total' => number_format($order->total, 2),
+    //             'delivery_address' => $order->delivery_address,
+    //             'created_at' => $order->created_at->toDateTimeString(),
+    //             'user' => [
+    //                 'id' => $order->user?->id,
+    //                 'name' => $order->user?->name,
+    //                 'email' => $order->user?->email,
+    //             ],
+    //             'items' => $order->items->map(function ($item) {
+    //                 return [
+    //                     'product_name' => $item->product?->name,
+    //                     'quantity' => $item->quantity,
+    //                     'price' => number_format($item->price, 2),
+    //                     'subtotal' => number_format($item->price * $item->quantity, 2),
+    //                     'images' => $item->product?->images?->pluck('url')
+    //                         ->map(fn($url) => asset('storage/' . $url)),
+    //                     'customization' => $item->customization,
+    //                 ];
+    //             }),
+    //         ];
+    //     });
+
+    //     return response()->json([
+    //         'message' => 'All orders retrieved successfully',
+    //         'count' => $data->count(),
+    //         'orders' => $data,
+    //     ], 200);
+    // }
+
+     // list of orders
     public function allOrders(Request $request)
     {
-        // Ensure only admin users can access this route
-        if (!Auth::check() || !Auth::user()->admin) {
-            return response()->json(['message' => 'Unauthorized'], 401);
+        // Optional filters: status, payment_status, user_id
+        $query = Order::with('user:id,name,email')
+            ->orderBy('created_at', 'desc');
+
+        if ($request->has('status')) {
+            $query->where('status', $request->status);
         }
 
-        // Optional filters for admin dashboard (e.g. ?status=paid)
-        $query = Order::with([
-            'user:id,name,email',
-            'items.product.images',
-            'items.customization'
-        ]);
+        if ($request->has('payment_method')) {
+            $query->where('payment_method', $request->payment_method);
+        }
 
-        // if ($request->has('status')) {
-        //     $query->where('status', $request->status);
+        if ($request->has('user_id')) {
+            $query->where('user_id', $request->user_id);
+        }
+
+        // if ($request->filled('date_from')) {
+        //     $query->whereDate('created_at', '>=', $request->date_from);
         // }
 
-        if ($request->has('payment_status')) {
-            $query->where('payment_status', $request->payment_status);
-        }
+        // if ($request->filled('date_to')) {
+        //     $query->whereDate('created_at', '<=', $request->date_to);
+        // }
 
-        if ($request->has('search')) {
-            $search = $request->search;
-            $query->whereHas('user', function ($q) use ($search) {
-                $q->where('name', 'like', "%$search%")
-                    ->orWhere('email', 'like', "%$search%");
-            });
-        }
-
-        $orders = $query->orderBy('created_at', 'desc')->get();
-
-        if ($orders->isEmpty()) {
-            return response()->json(['message' => 'No orders found'], 404);
-        }
-
-        $data = $orders->map(function ($order) {
-            return [
-                'id' => $order->id,
-                'order_number' => $order->order_number ?? 'N/A',
-                'status' => ucfirst($order->status),
-                'payment_status' => ucfirst($order->payment_status),
-                'total' => number_format($order->total, 2),
-                'delivery_address' => $order->delivery_address,
-                'created_at' => $order->created_at->toDateTimeString(),
-                'user' => [
-                    'id' => $order->user?->id,
-                    'name' => $order->user?->name,
-                    'email' => $order->user?->email,
-                ],
-                'items' => $order->items->map(function ($item) {
-                    return [
-                        'product_name' => $item->product?->name,
-                        'quantity' => $item->quantity,
-                        'price' => number_format($item->price, 2),
-                        'subtotal' => number_format($item->price * $item->quantity, 2),
-                        'images' => $item->product?->images?->pluck('url')
-                            ->map(fn($url) => asset('storage/' . $url)),
-                        'customization' => $item->customization,
-                    ];
-                }),
-            ];
-        });
+        // Paginate results (default 15 per page)
+        $orders = $query->get();
 
         return response()->json([
-            'message' => 'All orders retrieved successfully',
-            'count' => $data->count(),
-            'orders' => $data,
-        ], 200);
+            'message' => 'Orders retrieved successfully',
+            'data' => $orders,
+        ]);
     }
 
     public function updateOrderStatus(Request $request, $id)

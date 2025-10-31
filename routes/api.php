@@ -117,7 +117,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/products', [ProductController::class, 'store']);
     Route::patch('/products/{id}', [ProductController::class, 'update']);
     Route::delete('/products/{id}', [ProductController::class, 'destroy']);
-    Route::get('/admin/orders', [AdminDashController::class, 'listOrders']);
+    // Route::get('/admin/orders', [AdminDashController::class, 'listOrders']);
 
     Route::post('/taxes', [TaxController::class, 'store']);
     Route::patch('/taxes/{id}', [TaxController::class, 'update']);

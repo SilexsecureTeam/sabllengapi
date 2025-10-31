@@ -137,44 +137,7 @@ class AdminDashController extends Controller
         ]);
     }
 
-    // list of orders
-
-    public function listOrders(Request $request)
-    {
-        // Optional filters: status, payment_status, user_id
-        $query = Order::with('user:id,name,email')
-            ->orderBy('created_at', 'desc');
-
-        if ($request->has('status')) {
-            $query->where('status', $request->status);
-        }
-
-        if ($request->has('payment_method')) {
-            $query->where('payment_method', $request->payment_method);
-        }
-
-        if ($request->has('user_id')) {
-            $query->where('user_id', $request->user_id);
-        }
-
-        // if ($request->filled('date_from')) {
-        //     $query->whereDate('created_at', '>=', $request->date_from);
-        // }
-
-        // if ($request->filled('date_to')) {
-        //     $query->whereDate('created_at', '<=', $request->date_to);
-        // }
-
-        // Paginate results (default 15 per page)
-        $orders = $query->get();
-
-        return response()->json([
-            'message' => 'Orders retrieved successfully',
-            'data' => $orders,
-        ]);
-    }
-
-    // list of users
+       // list of users
     public function index()
     {
         if (!Auth::check() && Auth::user()->role !== 'admin') {
