@@ -24,21 +24,17 @@ class CartController extends Controller
 
         $user = Auth::user();
 
-        // ✅ Use header-based session ID (instead of Laravel session)
         $sessionId = $request->header('X-Cart-Session');
 
         if (!$user && !$sessionId) {
-            // Create a new guest session ID
             $sessionId = Str::uuid()->toString();
         }
 
-        // ✅ Create or find the cart
         $cart = Cart::firstOrCreate(
             $user ? ['user_id' => $user->id] : ['session_id' => $sessionId],
             ['total' => 0]
         );
 
-        // Check if item already exists in cart with same attributes
         $item = CartItem::where('cart_id', $cart->id)
             ->where('product_id', $validated['product_id'])
             ->where('color', $validated['color'] ?? null)

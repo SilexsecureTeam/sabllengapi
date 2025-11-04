@@ -271,7 +271,7 @@ class OrderController extends Controller
     public function updateOrderStatus(Request $request, $id)
     {
         // Ensure only admin users can perform this action
-        if (!Auth::check() || !Auth::user()->admin) {
+        if (!Auth::check() || Auth::user()->role !== 'admin') {
             return response()->json([
                 'message' => 'This User is Unauthorized'
             ], 401);
@@ -304,7 +304,7 @@ class OrderController extends Controller
             'message' => 'Order status updated and user notified successfully',
             'order' => [
                 'id' => $order->id,
-                'order_number' => $order->order_number ?? 'N/A',
+                'order_number' => $order->order_reference ?? 'N/A',
                 'order_status' => $order->order_status,
                 'updated_at' => $order->updated_at->toDateTimeString(),
             ],

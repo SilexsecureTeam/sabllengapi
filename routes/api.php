@@ -124,7 +124,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::delete('/taxes/{id}', [TaxController::class, 'destroy']);
 
     Route::get('/admin/orders', [OrderController::class, 'allOrders']);
-    Route::patch('/admin/orders/{id}/status', [OrderController::class, 'updateOrderStatus']);
+    Route::patch('/admin/orders/status/{id}', [OrderController::class, 'updateOrderStatus']);
 
     Route::get('/delivery-fees', [DeliveryFeeController::class, 'index']);
 
