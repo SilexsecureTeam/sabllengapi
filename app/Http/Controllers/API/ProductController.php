@@ -13,7 +13,7 @@ class ProductController extends Controller
 
     public function index()
     {
-        $products = Product::with(['category', 'brand', 'supplier', 'customization'])->paginate(10);
+        $products = Product::with(['category', 'subcategory', 'brand', 'supplier', 'customization'])->paginate(10);
 
         return response()->json($products, 200);
     }
@@ -21,7 +21,7 @@ class ProductController extends Controller
     public function customizableProducts()
     {
         // Fetch all products where 'customize' is true, eager-load relations
-        $products = Product::with(['category', 'brand', 'supplier', 'customization'])
+        $products = Product::with(['category', 'subcategory', 'brand', 'supplier', 'customization'])
             ->where('customize', true)
             ->get();
 
@@ -36,6 +36,7 @@ class ProductController extends Controller
                 'image' => $product->image ? asset('storage/' . $product->image) : null,
                 'customize' => $product->customize,
                 'category' => $product->category?->name,
+                'subcategory' => $product->subcategory?->name,
                 'brand' => $product->brand?->name,
                 'supplier' => $product->supplier?->name,
                 'customization' => $product->customization,
@@ -54,6 +55,7 @@ class ProductController extends Controller
     {
         $validated = $request->validate([
             'category_id' => 'nullable|exists:categories,id',
+            'subcategory_id' => 'nullable|exists:sub_categories,id',
             'brand_id' => 'nullable|exists:brands,id',
             'supplier_id' => 'nullable|exists:suppliers,id',
             'name' => 'required|string|max:255',
@@ -80,15 +82,20 @@ class ProductController extends Controller
 
         // Handle image uploads
         $imagesData = [];
+
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $index => $image) {
                 $path = $image->store('products', 'public');
+                // $url = asset('storage/' . $path); // Generate full URL
+
                 $imagesData[] = [
                     'id' => $index + 1,
-                    'path' => $path
+                    // 'url' => $url, // Use 'url' instead of 'path'
+                    'path' => $path, // (optional) keep original path if needed
                 ];
             }
         }
+
 
         // Handle colors with IDs
         $colorsData = [];
@@ -101,9 +108,11 @@ class ProductController extends Controller
             }
         }
 
+        // dd($validated['images']);
         // Create product
         $product = Product::create([
             'category_id' => $validated['category_id'] ?? null,
+            'subcategory_id' => $validated['subcategory_id'] ?? null,
             'brand_id' => $validated['brand_id'] ?? null,
             'supplier_id' => $validated['supplier_id'] ?? null,
             'name' => $validated['name'],
@@ -127,15 +136,24 @@ class ProductController extends Controller
             'customize' => $validated['customize'] ?? false,
         ]);
 
+        $productImages = [];
+        if (!empty($product->images)) {
+            foreach ($product->images as $img) {
+                $path = is_array($img) && isset($img['path']) ? $img['path'] : $img;
+                $productImages[] = asset('storage/' . $path);
+            }
+        }
+
         return response()->json([
             'message' => 'Product created successfully',
-            'product' => $product->load('category', 'brand', 'supplier')
+            'product' => $product->load('category', 'subcategory', 'brand', 'supplier'),
+            'images' => $productImages
         ], 201);
     }
 
     public function show($id)
     {
-        $product = Product::with(['category', 'brand', 'supplier', 'customization'])->findOrFail($id);
+        $product = Product::with(['category', 'subcategory', 'brand', 'supplier', 'customization'])->findOrFail($id);
 
         return response()->json($product, 200);
     }
@@ -143,12 +161,14 @@ class ProductController extends Controller
     /**
      * Update an existing product.
      */
+    
     public function update(Request $request, $id)
     {
         $product = Product::findOrFail($id);
 
         $validated = $request->validate([
             'category_id' => 'nullable|exists:categories,id',
+            'subcategory_id' => 'nullable|exists:sub_categories,id',
             'brand_id' => 'nullable|exists:brands,id',
             'supplier_id' => 'nullable|exists:suppliers,id',
             'name' => 'sometimes|string|max:255',
@@ -175,19 +195,34 @@ class ProductController extends Controller
 
         // 🖼️ Handle images
         $imagesData = $product->images ?? [];
+
         if ($request->hasFile('images')) {
-            foreach ($request->file('images') as $image) {
+            // Delete existing images
+            if (!empty($product->images)) {
+                foreach ($product->images as $oldImage) {
+                    $path = is_array($oldImage) && isset($oldImage['path']) ? $oldImage['path'] : $oldImage;
+                    if (Storage::disk('public')->exists($path)) {
+                        Storage::disk('public')->delete($path);
+                    }
+                }
+            }
+
+            // Store new images
+            $imagesData = [];
+            foreach ($request->file('images') as $index => $image) {
                 $path = $image->store('products', 'public');
                 $imagesData[] = [
-                    'id' => count($imagesData) + 1,
-                    'path' => $path
+                    'id' => $index + 1,
+                    'path' => $path,
                 ];
             }
         }
 
         // 🎨 Handle colours
-        $colorsData = [];
+        $colorsData = $product->colours ?? [];
         if (!empty($validated['colours'])) {
+            // Replace existing colors with new ones
+            $colorsData = [];
             foreach ($validated['colours'] as $index => $color) {
                 $colorsData[] = [
                     'id' => $index + 1,
@@ -199,6 +234,7 @@ class ProductController extends Controller
         // 💾 Update product
         $product->update([
             'category_id' => $validated['category_id'] ?? $product->category_id,
+            'subcategory_id' => $validated['subcategory_id'] ?? $product->subcategory_id,
             'brand_id' => $validated['brand_id'] ?? $product->brand_id,
             'supplier_id' => $validated['supplier_id'] ?? $product->supplier_id,
             'name' => $validated['name'] ?? $product->name,
@@ -215,18 +251,29 @@ class ProductController extends Controller
             'bottle_deposit_item_name' => $validated['bottle_deposit_item_name'] ?? $product->bottle_deposit_item_name,
             'barcode' => $validated['barcode'] ?? $product->barcode,
             'size' => $validated['size'] ?? $product->size,
-            'colours' => !empty($colorsData) ? $colorsData : $product->colours,
+            'colours' => $colorsData,
             'product_code' => $validated['product_code'] ?? $product->product_code,
             'age_restriction' => $validated['age_restriction'] ?? $product->age_restriction,
             'customize' => $validated['customize'] ?? $product->customize,
             'images' => $imagesData,
         ]);
 
+        // Generate full image URLs
+        $productImages = [];
+        if (!empty($product->images)) {
+            foreach ($product->images as $img) {
+                $path = is_array($img) && isset($img['path']) ? $img['path'] : $img;
+                $productImages[] = asset('storage/' . $path);
+            }
+        }
+
         return response()->json([
             'message' => 'Product updated successfully',
-            'product' => $product->fresh(['category', 'brand', 'supplier'])
+            'product' => $product->fresh(['category', 'subcategory', 'brand', 'supplier']),
+            'images' => $productImages,
         ], 200);
     }
+
 
     /**
      * Remove a product.

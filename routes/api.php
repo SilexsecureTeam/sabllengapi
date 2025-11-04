@@ -10,6 +10,7 @@ use App\Http\Controllers\API\CartController;
 use App\Http\Controllers\API\CategoryController;
 use App\Http\Controllers\API\CustomizationController;
 use App\Http\Controllers\API\ProductController;
+use App\Http\Controllers\API\SubCategoryController;
 use App\Http\Controllers\API\WishlistController;
 use App\Http\Controllers\Import\ImportInventoryController;
 use App\Http\Controllers\OrderController;
@@ -40,6 +41,7 @@ Route::post('/password/reset', [AuthController::class, 'resetPassword'])
 //show category for users
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
 Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
+Route::get('/subcategories', [SubCategoryController::class, 'index']);
 
 // delivery address
 Route::get('/states', [DeliveryFeeController::class, 'getStates']);
@@ -105,6 +107,10 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::patch('/categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
     Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 
+    Route::post('/subcategories', [SubCategoryController::class, 'store']);
+    Route::get('/subcategories/{id}', [SubCategoryController::class, 'show']);
+    Route::patch('/subcategories/{id}', [SubcategoryController::class, 'update']);
+    Route::delete('/subcategories/{id}', [SubcategoryController::class, 'destroy']);
     //products
     Route::post('/products', [ProductController::class, 'store']);
     Route::patch('/products/{id}', [ProductController::class, 'update']);
