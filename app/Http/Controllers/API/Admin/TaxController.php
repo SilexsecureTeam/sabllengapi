@@ -27,6 +27,11 @@ class TaxController extends Controller
             'is_active' => 'nullable|boolean',
         ]);
 
+        // If new tax is active, deactivate all others
+        if (!empty($validated['is_active']) && $validated['is_active'] == true) {
+            Tax::where('is_active', true)->update(['is_active' => false]);
+        }
+
         $tax = Tax::create($validated);
 
         return response()->json([
@@ -45,7 +50,12 @@ class TaxController extends Controller
             'percentage' => 'sometimes|required|numeric|min:0|max:100',
             'is_active' => 'sometimes|boolean',
         ]);
-// dd($validated);
+
+         // If updated tax is being activated, deactivate all others
+        if (isset($validated['is_active']) && $validated['is_active'] == true) {
+            Tax::where('id', '!=', $tax->id)->update(['is_active' => false]);
+        }
+        // dd($validated);
         $tax->update($validated);
 
         return response()->json([
