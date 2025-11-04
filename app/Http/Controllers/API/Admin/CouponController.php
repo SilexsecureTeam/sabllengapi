@@ -38,6 +38,8 @@ class CouponController extends Controller
             'start_date' => 'required|date',
             'expires_at' => 'required|date|after:start_date',
             'usage_limit' => 'nullable|integer|min:1',
+            'product_ids' => 'required|array', // new
+        'product_ids.*' => 'exists:products,id', // ensure valid IDs
         ]);
 
         $coupon = Coupon::create(array_merge($validated, [
@@ -45,9 +47,11 @@ class CouponController extends Controller
             'is_active' => true,
         ]));
 
+    $coupon->products()->attach($validated['product_ids']);
+
         return response()->json([
             'message' => 'Coupon created successfully.',
-            'coupon' => $coupon,
+            'coupon' => $coupon->load('products:id,name'),
         ], 201);
     }
 
