@@ -232,12 +232,13 @@ class OrderController extends Controller
     //     ], 200);
     // }
 
-     // list of orders
+    // list of orders
     public function allOrders(Request $request)
     {
         // Optional filters: status, payment_status, user_id
-        $query = Order::with(['user:id,name,email',
-        'items.product:id,name'
+        $query = Order::with([
+            'user:id,name,email',
+            'items.product:id,name'
         ])
             ->orderBy('created_at', 'desc');
 
@@ -270,6 +271,7 @@ class OrderController extends Controller
         ]);
     }
 
+    // admin update status
     public function updateOrderStatus(Request $request, $id)
     {
         // Ensure only admin users can perform this action
@@ -310,6 +312,29 @@ class OrderController extends Controller
                 'order_status' => $order->order_status,
                 'updated_at' => $order->updated_at->toDateTimeString(),
             ],
+        ], 200);
+    }
+
+    // admin view each status
+    public function viewOrder($orderReference)
+    {
+        // Ensure only admin users can access this route
+        if (!Auth::check() || Auth::user()->role !== 'admin') {
+            return response()->json(['message' => 'Unauthorized'], 403);
+        }
+
+        // Find the order by order_reference and include related data
+        $order = Order::with(['user:id,name,email', 'items.product'])
+            ->where('order_reference', $orderReference)
+            ->first();
+
+        if (!$order) {
+            return response()->json(['message' => 'Order not found'], 404);
+        }
+
+        return response()->json([
+            'message' => 'Order retrieved successfully',
+            'order' => $order
         ], 200);
     }
 }

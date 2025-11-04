@@ -91,14 +91,6 @@ Route::middleware('auth:sanctum')->group(function () {
 });
 Route::get('/verify-payment/{reference}/{order_reference}', [PaymentController::class, 'PaystackCallback']);
 
-/**ADMIN ROUTES */
-// Route::middleware(['auth:sanctum', 'is_admin'])->group(function () {
-//     Route::get('/coupons', [CouponController::class, 'index']);
-//     Route::post('/coupons', [CouponController::class, 'store']);
-//     Route::put('/coupons/{id}', [CouponController::class, 'update']);
-//     Route::delete('/coupons/{id}', [CouponController::class, 'destroy']);
-// });
-
 // admin login
 Route::post('/admin/login', [AdminDashController::class, 'login']);
 Route::post('/admin/verify-otp', [AdminDashController::class, 'verifyOtp']);
@@ -124,6 +116,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::delete('/taxes/{id}', [TaxController::class, 'destroy']);
 
     Route::get('/admin/orders', [OrderController::class, 'allOrders']);
+    Route::get('/admin/orders/{orderReference}', [OrderController::class, 'viewOrder']);
     Route::patch('/admin/orders/status/{id}', [OrderController::class, 'updateOrderStatus']);
 
     Route::get('/delivery-fees', [DeliveryFeeController::class, 'index']);

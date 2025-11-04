@@ -33,7 +33,7 @@ class CouponController extends Controller
         $validated = $request->validate([
             'promotion_name' => 'required|string|max:255',
             'code' => 'required|string|max:50|unique:coupons,code',
-            'type' => 'required|in:percentage,fixed',
+            'type' => 'required|in:percent,fixed',
             'value' => 'required|numeric|min:0',
             'start_date' => 'required|date',
             'expires_at' => 'required|date|after:start_date',
