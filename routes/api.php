@@ -130,8 +130,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::get('/admin/users', [AdminDashController::class, 'index']);
 
-    Route::get('/coupons', [CouponController::class, 'index']);
     Route::post('/coupons', [CouponController::class, 'store']);
+    Route::get('/coupons', [CouponController::class, 'index']);
     Route::patch('/coupons/{id}', [CouponController::class, 'update']);
     Route::delete('/coupons/{id}', [CouponController::class, 'destroy']);
 });

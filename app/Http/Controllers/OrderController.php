@@ -236,7 +236,9 @@ class OrderController extends Controller
     public function allOrders(Request $request)
     {
         // Optional filters: status, payment_status, user_id
-        $query = Order::with('user:id,name,email')
+        $query = Order::with(['user:id,name,email',
+        'items.product:id,name'
+        ])
             ->orderBy('created_at', 'desc');
 
         if ($request->has('status')) {
