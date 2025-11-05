@@ -18,6 +18,10 @@ class Brand extends Model
         'is_active',
     ];
 
+    protected $casts = [
+        'is_active' => 'boolean',
+    ];
+
     // 🔗 Relationship: A brand can have many products
     public function products()
     {
@@ -27,5 +31,10 @@ class Brand extends Model
     public function stockReports()
     {
         return $this->hasMany(StockReport::class);
+    }
+
+    public function getLogoAttribute($value)
+    {
+        return $value ? asset('storage/' . $value) : null;
     }
 }

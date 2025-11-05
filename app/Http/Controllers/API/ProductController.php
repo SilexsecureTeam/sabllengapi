@@ -178,20 +178,17 @@ class ProductController extends Controller
             'age_restriction' => 'nullable|integer',
             'customize' => 'sometimes|boolean',
             'images' => 'nullable|array',
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048'
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048',
         ]);
 
         // 🖼️ Handle images
-        $imagesData = $product->images ?? [];
+        $imagesData = $product->getRawOriginal('images') ? json_decode($product->getRawOriginal('images'), true) : [];
 
         if ($request->hasFile('images')) {
             // Delete existing images
-            if (!empty($product->images)) {
-                foreach ($product->images as $oldImage) {
-                    $path = is_array($oldImage) && isset($oldImage['path']) ? $oldImage['path'] : $oldImage;
-                    if (Storage::disk('public')->exists($path)) {
-                        Storage::disk('public')->delete($path);
-                    }
+            foreach ($imagesData as $oldImage) {
+                if (!empty($oldImage['path']) && Storage::disk('public')->exists($oldImage['path'])) {
+                    Storage::disk('public')->delete($oldImage['path']);
                 }
             }
 
@@ -207,10 +204,8 @@ class ProductController extends Controller
         }
 
         // 🎨 Handle colours
-        $colorsData = $product->colours ?? [];
+        $colorsData = [];
         if (!empty($validated['colours'])) {
-            // Replace existing colors with new ones
-            $colorsData = [];
             foreach ($validated['colours'] as $index => $color) {
                 $colorsData[] = [
                     'id' => $index + 1,
@@ -239,29 +234,18 @@ class ProductController extends Controller
             'bottle_deposit_item_name' => $validated['bottle_deposit_item_name'] ?? $product->bottle_deposit_item_name,
             'barcode' => $validated['barcode'] ?? $product->barcode,
             'size' => $validated['size'] ?? $product->size,
-            'colours' => $colorsData,
+            'colours' => $colorsData ?: $product->colours,
             'product_code' => $validated['product_code'] ?? $product->product_code,
             'age_restriction' => $validated['age_restriction'] ?? $product->age_restriction,
             'customize' => $validated['customize'] ?? $product->customize,
             'images' => $imagesData,
         ]);
 
-        // Generate full image URLs
-        $productImages = [];
-        if (!empty($product->images)) {
-            foreach ($product->images as $img) {
-                $path = is_array($img) && isset($img['path']) ? $img['path'] : $img;
-                $productImages[] = asset('storage/' . $path);
-            }
-        }
-
         return response()->json([
             'message' => 'Product updated successfully',
             'product' => $product->fresh(['category', 'subcategory', 'brand', 'supplier']),
-            'images' => $productImages,
         ], 200);
     }
-
 
     /**
      * Remove a product.

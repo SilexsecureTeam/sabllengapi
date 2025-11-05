@@ -6,6 +6,7 @@ use App\Http\Controllers\API\Admin\DeliveryFeeController;
 use App\Http\Controllers\API\Admin\LocationController;
 use App\Http\Controllers\API\Admin\TaxController;
 use App\Http\Controllers\API\Auth\AuthController;
+use App\Http\Controllers\API\BrandController;
 use App\Http\Controllers\API\CartController;
 use App\Http\Controllers\API\CategoryController;
 use App\Http\Controllers\API\CustomizationController;
@@ -135,4 +136,14 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::delete('/coupons/{id}', [CouponController::class, 'destroy']);
 
     Route::post('/suppliers', [SupplierController::class, 'store']);
+    Route::get('/suppliers', [SupplierController::class, 'index']);
+    Route::get('/suppliers/{id}', [SupplierController::class, 'show']);
+    Route::patch('/suppliers/{id}', [SupplierController::class, 'update']);
+    Route::delete('/suppliers/{id}', [SupplierController::class, 'destroy']);
+
+    Route::post('/brand', [BrandController::class, 'store']);
+    Route::get('/brand', [BrandController::class, 'index']);
+    Route::get('/brand/{id}', [BrandController::class, 'show']);
+    Route::patch('/brand/{id}', [BrandController::class, 'update']);
+    Route::delete('/brand/{id}', [BrandController::class, 'destroy']);
 });
