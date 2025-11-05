@@ -86,12 +86,9 @@ class ProductController extends Controller
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $index => $image) {
                 $path = $image->store('products', 'public');
-                // $url = asset('storage/' . $path); // Generate full URL
-
                 $imagesData[] = [
                     'id' => $index + 1,
-                    // 'url' => $url, // Use 'url' instead of 'path'
-                    'path' => $path, // (optional) keep original path if needed
+                    'path' => $path, // only path saved
                 ];
             }
         }
@@ -136,18 +133,9 @@ class ProductController extends Controller
             'customize' => $validated['customize'] ?? false,
         ]);
 
-        $productImages = [];
-        if (!empty($product->images)) {
-            foreach ($product->images as $img) {
-                $path = is_array($img) && isset($img['path']) ? $img['path'] : $img;
-                $productImages[] = asset('storage/' . $path);
-            }
-        }
-
         return response()->json([
             'message' => 'Product created successfully',
             'product' => $product->load('category', 'subcategory', 'brand', 'supplier'),
-            'images' => $productImages
         ], 201);
     }
 
@@ -161,7 +149,7 @@ class ProductController extends Controller
     /**
      * Update an existing product.
      */
-    
+
     public function update(Request $request, $id)
     {
         $product = Product::findOrFail($id);

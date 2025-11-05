@@ -11,6 +11,7 @@ use App\Http\Controllers\API\CategoryController;
 use App\Http\Controllers\API\CustomizationController;
 use App\Http\Controllers\API\ProductController;
 use App\Http\Controllers\API\SubCategoryController;
+use App\Http\Controllers\API\SupplierController;
 use App\Http\Controllers\API\WishlistController;
 use App\Http\Controllers\Import\ImportInventoryController;
 use App\Http\Controllers\OrderController;
@@ -115,7 +116,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/products', [ProductController::class, 'store']);
     Route::patch('/products/{id}', [ProductController::class, 'update']);
     Route::delete('/products/{id}', [ProductController::class, 'destroy']);
-    // Route::get('/admin/orders', [AdminDashController::class, 'listOrders']);
 
     Route::post('/taxes', [TaxController::class, 'store']);
     Route::patch('/taxes/{id}', [TaxController::class, 'update']);
@@ -133,4 +133,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/coupons', [CouponController::class, 'index']);
     Route::patch('/coupons/{id}', [CouponController::class, 'update']);
     Route::delete('/coupons/{id}', [CouponController::class, 'destroy']);
+
+    Route::post('/suppliers', [SupplierController::class, 'store']);
 });

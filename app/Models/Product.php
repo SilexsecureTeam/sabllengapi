@@ -86,4 +86,17 @@ class Product extends Model
     {
         return $this->belongsToMany(Coupon::class, 'coupon_product');
     }
+
+    public function getImagesAttribute($value)
+    {
+        $images = json_decode($value, true) ?? [];
+
+        return collect($images)->map(function ($img) {
+            return [
+                'id' => $img['id'] ?? null,
+                'path' => $img['path'],
+                'url' => asset('storage/' . $img['path']),
+            ];
+        });
+    }
 }
