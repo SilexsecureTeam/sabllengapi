@@ -135,13 +135,13 @@ class ProductController extends Controller
 
         return response()->json([
             'message' => 'Product created successfully',
-            'product' => $product->load('category', 'subcategory', 'brand', 'supplier'),
+            'product' => $product->load('category', 'subcategory', 'brand', 'supplier', 'coupon'),
         ], 201);
     }
 
     public function show($id)
     {
-        $product = Product::with(['tag', 'category', 'subcategory', 'brand', 'supplier', 'customization'])->findOrFail($id);
+        $product = Product::with([ 'category', 'subcategory', 'brand', 'supplier', 'customization', 'coupon'])->findOrFail($id);
 
         return response()->json($product, 200);
     }
@@ -241,7 +241,7 @@ class ProductController extends Controller
 
         return response()->json([
             'message' => 'Product updated successfully',
-            'product' => $product->fresh(['category', 'subcategory', 'brand', 'supplier']),
+            'product' => $product->fresh(['category', 'subcategory', 'brand', 'supplier', 'coupon']),
         ], 200);
     }
 
