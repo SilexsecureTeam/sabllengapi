@@ -13,7 +13,7 @@ class ProductController extends Controller
 
     public function index()
     {
-        $products = Product::with(['category', 'subcategory', 'brand', 'supplier', 'customization'])->paginate(10);
+        $products = Product::with(['tag', 'category', 'subcategory', 'brand', 'supplier', 'customization'])->paginate(10);
 
         return response()->json($products, 200);
     }
@@ -78,6 +78,7 @@ class ProductController extends Controller
             'customize' => 'boolean',
             'images' => 'nullable|array',
             'images.*' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'coupon_id' => 'nullable|exists:coupons,id'
         ]);
 
         // Handle image uploads
@@ -105,8 +106,6 @@ class ProductController extends Controller
             }
         }
 
-        // dd($validated['images']);
-        // Create product
         $product = Product::create([
             'category_id' => $validated['category_id'] ?? null,
             'subcategory_id' => $validated['subcategory_id'] ?? null,
@@ -131,6 +130,7 @@ class ProductController extends Controller
             'product_code' => $validated['product_code'] ?? null,
             'age_restriction' => $validated['age_restriction'] ?? null,
             'customize' => $validated['customize'] ?? false,
+            'coupon_id' => $validated['coupon_id'] ?? null,
         ]);
 
         return response()->json([
@@ -141,14 +141,10 @@ class ProductController extends Controller
 
     public function show($id)
     {
-        $product = Product::with(['category', 'subcategory', 'brand', 'supplier', 'customization'])->findOrFail($id);
+        $product = Product::with(['tag', 'category', 'subcategory', 'brand', 'supplier', 'customization'])->findOrFail($id);
 
         return response()->json($product, 200);
     }
-
-    /**
-     * Update an existing product.
-     */
 
     public function update(Request $request, $id)
     {
@@ -179,6 +175,7 @@ class ProductController extends Controller
             'customize' => 'sometimes|boolean',
             'images' => 'nullable|array',
             'images.*' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'coupon_id' => 'nullable|exists:coupons,id',
         ]);
 
         // 🖼️ Handle images
@@ -239,6 +236,7 @@ class ProductController extends Controller
             'age_restriction' => $validated['age_restriction'] ?? $product->age_restriction,
             'customize' => $validated['customize'] ?? $product->customize,
             'images' => $imagesData,
+            'coupon_id' => $validated['coupon_id'] ?? null,
         ]);
 
         return response()->json([
@@ -247,9 +245,6 @@ class ProductController extends Controller
         ], 200);
     }
 
-    /**
-     * Remove a product.
-     */
     public function destroy($id)
     {
         $product = Product::findOrFail($id);

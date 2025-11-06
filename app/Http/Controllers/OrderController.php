@@ -75,6 +75,7 @@ class OrderController extends Controller
 
         // Create order
         $order_reference = 'SAB-' . strtoupper(Str::random(10));
+        
 
         $order = Order::create([
             'user_id' => $user?->id,
@@ -89,6 +90,7 @@ class OrderController extends Controller
             'tax_amount' => $taxAmount,
             'shipping_address' => $validated['shipping_address'],
             'status' => 'pending',
+            
         ]);
 
         // Attach cart items as order items
@@ -134,10 +136,7 @@ class OrderController extends Controller
             'orders' => $orders,
         ], 200);
     }
-
-    /**
-     * Get a single order by reference
-     */
+   
     public function getOrder(Request $request, $orderReference)
     {
         $user = Auth::user();
@@ -160,77 +159,6 @@ class OrderController extends Controller
             'order' => $order,
         ], 200);
     }
-
-    // public function allOrders(Request $request)
-    // {
-    //     // Ensure only admin users can access this route
-    //     if (!Auth::check() || !Auth::user()->admin) {
-    //         return response()->json(['message' => 'Unauthorized'], 401);
-    //     }
-
-    //     // Optional filters for admin dashboard (e.g. ?status=paid)
-    //     $query = Order::with([
-    //         'user:id,name,email',
-    //         'items.product.images',
-    //         'items.customization'
-    //     ]);
-
-    //     // if ($request->has('status')) {
-    //     //     $query->where('status', $request->status);
-    //     // }
-
-    //     if ($request->has('payment_status')) {
-    //         $query->where('payment_status', $request->payment_status);
-    //     }
-
-    //     if ($request->has('search')) {
-    //         $search = $request->search;
-    //         $query->whereHas('user', function ($q) use ($search) {
-    //             $q->where('name', 'like', "%$search%")
-    //                 ->orWhere('email', 'like', "%$search%");
-    //         });
-    //     }
-
-    //     $orders = $query->orderBy('created_at', 'desc')->get();
-
-    //     if ($orders->isEmpty()) {
-    //         return response()->json(['message' => 'No orders found'], 404);
-    //     }
-
-    //     $data = $orders->map(function ($order) {
-    //         return [
-    //             'id' => $order->id,
-    //             'order_number' => $order->order_number ?? 'N/A',
-    //             'status' => ucfirst($order->status),
-    //             'payment_status' => ucfirst($order->payment_status),
-    //             'total' => number_format($order->total, 2),
-    //             'delivery_address' => $order->delivery_address,
-    //             'created_at' => $order->created_at->toDateTimeString(),
-    //             'user' => [
-    //                 'id' => $order->user?->id,
-    //                 'name' => $order->user?->name,
-    //                 'email' => $order->user?->email,
-    //             ],
-    //             'items' => $order->items->map(function ($item) {
-    //                 return [
-    //                     'product_name' => $item->product?->name,
-    //                     'quantity' => $item->quantity,
-    //                     'price' => number_format($item->price, 2),
-    //                     'subtotal' => number_format($item->price * $item->quantity, 2),
-    //                     'images' => $item->product?->images?->pluck('url')
-    //                         ->map(fn($url) => asset('storage/' . $url)),
-    //                     'customization' => $item->customization,
-    //                 ];
-    //             }),
-    //         ];
-    //     });
-
-    //     return response()->json([
-    //         'message' => 'All orders retrieved successfully',
-    //         'count' => $data->count(),
-    //         'orders' => $data,
-    //     ], 200);
-    // }
 
     // list of orders
     public function allOrders(Request $request)

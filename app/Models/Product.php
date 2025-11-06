@@ -14,6 +14,7 @@ class Product extends Model
         'subcategory_id',
         'brand_id',
         'supplier_id',
+        'coupon_id',
         'name',
         'images',
         'description',
@@ -46,6 +47,11 @@ class Product extends Model
         'sale_price_inc_tax' => 'decimal:2',
         'rr_price' => 'decimal:2',
     ];
+
+    public function tag()
+    {
+        return $this->belongsTo(Tag::class);
+    }
 
     public function category()
     {
@@ -84,7 +90,7 @@ class Product extends Model
 
     public function coupons()
     {
-        return $this->belongsToMany(Coupon::class, 'coupon_product');
+        return $this->belongsTo(Coupon::class);
     }
 
     public function getImagesAttribute($value)

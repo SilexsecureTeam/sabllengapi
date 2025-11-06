@@ -14,6 +14,7 @@ class Category extends Model
         'description',
         'image',
         'is_active',
+        'tag_id'
     ];
 
     // Example relationship: A category has many products
@@ -22,7 +23,13 @@ class Category extends Model
         return $this->hasMany(Product::class);
     }
 
-    public function subcategories(){
+    public function subcategories()
+    {
         return $this->hasMany(SubCategory::class);
+    }
+
+    public function tags()
+    {
+        return $this->belongsTo(Tag::class);
     }
 }

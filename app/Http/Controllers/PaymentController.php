@@ -41,6 +41,9 @@ class PaymentController extends Controller
             'reference' => $reference,
         ]);
 
+        if ($order->status === 'paid') {
+            $transact_mode = 'Online Transaction';
+        }
 
         Transaction::updateOrCreate(
             ['reference' => $reference],
@@ -56,6 +59,7 @@ class PaymentController extends Controller
                 'authorization_code' => $data['authorization']['authorization_code'] ?? null,
                 'customer_email' => $data['customer']['email'] ?? null,
                 'transaction_data' => $data,
+                'transaction_type' => $transact_mode,
             ]
         );
 

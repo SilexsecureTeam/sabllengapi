@@ -18,6 +18,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
+            'tag_id'    => 'nullable|exists:tags,id',
             'name'        => 'required|string|max:255|unique:categories,name',
             'description' => 'nullable|string',
             'image'       => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
@@ -29,6 +30,7 @@ class CategoryController extends Controller
         }
 
         $category = Category::create([
+            'tag_id' => $validated['tag_id'] ?? null,
             'name'        => $validated['name'],
             'slug'        => Str::slug($validated['name']),
             'description' => $validated['description'] ?? null,
