@@ -148,9 +148,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::patch('/brand/{id}', [BrandController::class, 'update']);
     Route::delete('/brand/{id}', [BrandController::class, 'destroy']);
 
-    Route::get('/tags', [TagController::class, 'index']);
     Route::get('/tags/{id}', [TagController::class, 'show']);
     Route::post('/tags', [TagController::class, 'store']);
     Route::patch('/tags/{id}', [TagController::class, 'update']);
     Route::delete('/tags/{id}', [TagController::class, 'destroy']);
 });
+Route::get('/tags', [TagController::class, 'index']);
