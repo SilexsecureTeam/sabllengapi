@@ -137,7 +137,7 @@ class AdminDashController extends Controller
         ]);
     }
 
-       // list of users
+    // list of users
     public function index()
     {
         if (!Auth::check() && Auth::user()->role !== 'admin') {
@@ -151,6 +151,82 @@ class AdminDashController extends Controller
             'message' => 'Users retrieved successfully.',
             'count' => $users->count(),
             'users' => $users,
+        ], 200);
+    }
+
+    public function store(Request $request)
+    {
+        if (!Auth::check() || Auth::user()->role !== 'admin') {
+            return response()->json([
+                'message' => 'Unauthorized action.',
+            ], 401);
+        }
+
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'phone' => 'required|string',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8',
+            'role' => 'nullable|string',
+        ]);
+
+        $user = User::create([
+            'name' => $validated['name'],
+            'phone' => $validated['phone'],
+            'email' => $validated['email'],
+            'password' => Hash::make($validated['password']),
+            'role' => $validated['role'] ?? 'user',
+        ]);
+
+        return response()->json([
+            'message' => 'User created successfully.',
+            'user' => $user,
+        ], 201);
+    }
+
+    public function update(Request $request, $id)
+    {
+        if (!Auth::check() || Auth::user()->role !== 'admin') {
+            return response()->json([
+                'message' => 'Unauthorized action.',
+            ], 401);
+        }
+
+        $user = User::findOrFail($id);
+
+        $validated = $request->validate([
+            'name' => 'nullable|string|max:255',
+            'phone' => 'nullable|string',
+            'email' => 'nullable|string|email|max:255|unique:users,email,' . $user->id,
+            'password' => 'nullable|string|min:8',
+            'role' => 'nullable|string',
+        ]);
+
+        if (isset($validated['password'])) {
+            $validated['password'] = Hash::make($validated['password']);
+        }
+// dd($validated);
+        $user->update($validated);
+
+        return response()->json([
+            'message' => 'User updated successfully.',
+            'user' => $user,
+        ], 200);
+    }
+
+    public function destroy($id)
+    {
+        if (!Auth::check() || Auth::user()->role !== 'admin') {
+            return response()->json([
+                'message' => 'Unauthorized action.',
+            ], 401);
+        }
+
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return response()->json([
+            'message' => 'User deleted successfully.',
         ], 200);
     }
 }

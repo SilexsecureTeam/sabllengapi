@@ -88,7 +88,7 @@ class Product extends Model
         return $this->hasMany(Customization::class);
     }
 
-    public function coupons()
+    public function coupon()
     {
         return $this->belongsTo(Coupon::class);
     }

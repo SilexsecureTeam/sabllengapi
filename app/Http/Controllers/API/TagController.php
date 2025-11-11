@@ -12,7 +12,9 @@ class TagController extends Controller
 {
     public function index()
     {
-        if (Auth::user()->role === 'admin') {
+        $user = Auth::user();
+
+        if ($user && $user->role === 'admin') {
             $tags = Tag::with('categories')->get();
         } else {
             $tags = Tag::with([
@@ -24,6 +26,7 @@ class TagController extends Controller
 
         return response()->json($tags);
     }
+
 
     public function store(Request $request)
     {

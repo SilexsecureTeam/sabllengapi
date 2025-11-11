@@ -130,6 +130,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/delivery-fees', [DeliveryFeeController::class, 'index']);
 
     Route::get('/admin/users', [AdminDashController::class, 'index']);
+    Route::post('/admin/users', [AdminDashController::class, 'store']);
+    Route::patch('/admin/users/{id}', [AdminDashController::class, 'update']);
+    Route::delete('/admin/users/{id}', [AdminDashController::class, 'destroy']);
 
     Route::post('/coupons', [CouponController::class, 'store']);
     Route::get('/coupons', [CouponController::class, 'index']);
@@ -148,9 +151,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::patch('/brand/{id}', [BrandController::class, 'update']);
     Route::delete('/brand/{id}', [BrandController::class, 'destroy']);
 
-    Route::get('/tags/{id}', [TagController::class, 'show']);
     Route::post('/tags', [TagController::class, 'store']);
     Route::patch('/tags/{id}', [TagController::class, 'update']);
     Route::delete('/tags/{id}', [TagController::class, 'destroy']);
 });
+Route::get('/tags/{id}', [TagController::class, 'show']);
 Route::get('/tags', [TagController::class, 'index']);
