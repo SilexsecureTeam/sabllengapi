@@ -21,7 +21,7 @@ class Product extends Model
         'cost_price',
         'tax_rate',
         'cost_inc_tax',
-        'sales_price',
+        'sale_price',
         'sale_price_inc_tax',
         'is_variable_price',
         'margin_perc',
@@ -45,6 +45,7 @@ class Product extends Model
         'tax_exempt_eligible' => 'boolean',
         'cost_price' => 'decimal:2',
         'cost_inc_tax' => 'decimal:2',
+        'sale_price' => 'decimal:2',
         'sale_price_inc_tax' => 'decimal:2',
         'rr_price' => 'decimal:2',
     ];

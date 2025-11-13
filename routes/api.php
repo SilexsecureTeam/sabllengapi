@@ -11,6 +11,7 @@ use App\Http\Controllers\API\CartController;
 use App\Http\Controllers\API\CategoryController;
 use App\Http\Controllers\API\CustomizationController;
 use App\Http\Controllers\API\ProductController;
+use App\Http\Controllers\API\StockReportController;
 use App\Http\Controllers\API\SubCategoryController;
 use App\Http\Controllers\API\SupplierController;
 use App\Http\Controllers\API\TagController;
@@ -154,6 +155,12 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/tags', [TagController::class, 'store']);
     Route::patch('/tags/{id}', [TagController::class, 'update']);
     Route::delete('/tags/{id}', [TagController::class, 'destroy']);
+
+    Route::get('/stockInventory', [StockReportController::class, 'index'])->name('stock.report.index');
+    Route::post('/stockInventory', [StockReportController::class, 'store']);
+    Route::get('/stockInventory/{id}', [StockReportController::class, 'show']);
+    Route::patch('/stockInventory/{id}', [StockReportController::class, 'update']);
+    Route::delete('/stockInventory/{id}', [StockReportController::class, 'destroy']);
 });
 Route::get('/tags/{id}', [TagController::class, 'show']);
 Route::get('/tags', [TagController::class, 'index']);
