@@ -13,7 +13,7 @@ class ProductController extends Controller
 
     public function index()
     {
-        $products = Product::with(['tag', 'category', 'subcategory', 'brand', 'supplier', 'customization'])->paginate(10);
+        $products = Product::with(['tag', 'category', 'subcategory', 'brand', 'supplier', 'customization'])->get();
 
         return response()->json($products, 200);
     }
@@ -64,6 +64,7 @@ class ProductController extends Controller
             'tax_rate' => 'nullable|string',
             'tax_rate_value' => 'nullable|numeric',
             'cost_inc_tax' => 'nullable|numeric',
+            'sales_price' => 'nullable|numeric',
             'sale_price_inc_tax' => 'nullable|numeric',
             'is_variable_price' => 'boolean',
             'margin_perc' => 'nullable|numeric',
@@ -118,6 +119,7 @@ class ProductController extends Controller
             'tax_rate' => $validated['tax_rate'] ?? null,
             'tax_rate_value' => $validated['tax_rate_value'] ?? 0.00,
             'cost_inc_tax' => $validated['cost_inc_tax'] ?? null,
+            'sales_price' => $validated['sales_price'] ?? null,
             'sale_price_inc_tax' => $validated['sale_price_inc_tax'] ?? null,
             'is_variable_price' => $validated['is_variable_price'] ?? false,
             'margin_perc' => $validated['margin_perc'] ?? null,
@@ -161,6 +163,7 @@ class ProductController extends Controller
             'tax_rate' => 'nullable|string',
             'tax_rate_value' => 'nullable|numeric',
             'cost_inc_tax' => 'nullable|numeric',
+            'sales_price' => 'nullable|numeric',
             'sale_price_inc_tax' => 'nullable|numeric',
             'is_variable_price' => 'sometimes|boolean',
             'margin_perc' => 'nullable|numeric',
@@ -223,6 +226,7 @@ class ProductController extends Controller
             'tax_rate' => $validated['tax_rate'] ?? $product->tax_rate,
             'tax_rate_value' => $validated['tax_rate_value'] ?? $product->tax_rate_value,
             'cost_inc_tax' => $validated['cost_inc_tax'] ?? $product->cost_inc_tax,
+            'sales_price' => $validated['sales_price'] ?? $product->sales_price,
             'sale_price_inc_tax' => $validated['sale_price_inc_tax'] ?? $product->sale_price_inc_tax,
             'is_variable_price' => $validated['is_variable_price'] ?? $product->is_variable_price,
             'margin_perc' => $validated['margin_perc'] ?? $product->margin_perc,

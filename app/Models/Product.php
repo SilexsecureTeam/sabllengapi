@@ -21,6 +21,7 @@ class Product extends Model
         'cost_price',
         'tax_rate',
         'cost_inc_tax',
+        'sales_price',
         'sale_price_inc_tax',
         'is_variable_price',
         'margin_perc',
