@@ -4,6 +4,11 @@ namespace App\Http\Controllers\API\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Google\Client as GoogleClient;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Str;
+
+
 
 class GoogleAuthController extends Controller
 {
@@ -16,7 +21,9 @@ class GoogleAuthController extends Controller
         $idToken = $request->input('id_token');
 
         // Verify token
-        $client = new Google_Client(['client_id' => config('services.google.client_id') ?? env('GOOGLE_CLIENT_ID')]);
+        $client = new GoogleClient([
+            'client_id' => config('services.google.client_id') ?? env('GOOGLE_CLIENT_ID')
+        ]);
 
         $payload = $client->verifyIdToken($idToken);
         if (!$payload) {
@@ -55,10 +62,10 @@ class GoogleAuthController extends Controller
         }
 
         // Create Sanctum token (personal access token)
-        $token = $user->createToken('sanctum-token-'.Str::random(10))->plainTextToken;
+        $token = $user->createToken('sanctum-token-' . Str::random(10))->plainTextToken;
 
         return response()->json([
-            'user' => $user->only(['id','name','email','avatar']),
+            'user' => $user->only(['id', 'name', 'email', 'avatar']),
             'token' => $token,
             'token_type' => 'Bearer',
         ]);

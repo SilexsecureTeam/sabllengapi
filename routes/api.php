@@ -6,6 +6,7 @@ use App\Http\Controllers\API\Admin\DeliveryFeeController;
 use App\Http\Controllers\API\Admin\LocationController;
 use App\Http\Controllers\API\Admin\TaxController;
 use App\Http\Controllers\API\Auth\AuthController;
+use App\Http\Controllers\API\Auth\GoogleAuthController;
 use App\Http\Controllers\API\BrandController;
 use App\Http\Controllers\API\CartController;
 use App\Http\Controllers\API\CategoryController;
