@@ -104,6 +104,18 @@ Route::post('/admin/otp/resend', [AdminDashController::class, 'resendOtp']);
 
 Route::get('/taxes', [TaxController::class, 'index']);
 
+// google sign in
+Route::post('auth/google', [GoogleAuthController::class, 'login']);
+
+// Protected routes using sanctum
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('auth/logout', [GoogleAuthController::class, 'logout']);
+    Route::get('user', function (Request $request) {
+        return $request->user();
+    });
+    // other protected routes
+});
+
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/staff', [StaffController::class, 'store'])->name('staff.store');
     //categories
