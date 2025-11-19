@@ -11,6 +11,7 @@ class Inventory extends Model
         'barcode',
         'brand',
         'supplier',
+        'supplier_id',
         'order_code',
         'category_name',
         'current_stock',
@@ -26,7 +27,7 @@ class Inventory extends Model
         'unit_of_sale'
     ];
 
-      protected static function boot()
+    protected static function boot()
     {
         parent::boot();
 
@@ -58,5 +59,9 @@ class Inventory extends Model
 
         return $barcode . $checksum;
     }
-    
+
+    public function supplier()
+    {
+        return $this->belongsTo(Supplier::class);
+    }
 }

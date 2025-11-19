@@ -12,7 +12,8 @@ class Tag extends Model
     protected $fillable = [
         'name',
         'slug',
-        'is_active'
+        'is_active',
+        'image'
     ];
 
     protected $casts = [
@@ -22,5 +23,12 @@ class Tag extends Model
     public function categories()
     {
         return $this->hasMany(Category::class);
+    }
+
+    protected $appends = ['image_url'];
+
+    public function getImageUrlAttribute()
+    {
+        return $this->image ? asset('storage/' . $this->image) : null;
     }
 }

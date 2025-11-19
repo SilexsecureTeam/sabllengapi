@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class TagController extends Controller
@@ -29,22 +30,29 @@ class TagController extends Controller
 
 
     public function store(Request $request)
-    {
-        $validated = $request->validate([
-            'name' => 'required|string|unique:tags,name',
-            'is_active' => 'boolean'
-        ]);
+{
+    $validated = $request->validate([
+        'name' => 'required|string|unique:tags,name',
+        'is_active' => 'boolean',
+        'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+    ]);
 
-        $tag = Tag::create([
-            'name' => $validated['name'],
-            'slug' => Str::slug($validated['name']),
-            'is_active' => $validated['is_active'] ?? true,
-        ]);
+    $imagePath = null;
 
-        return response()->json([
-            $tag
-        ], 201);
+    if ($request->hasFile('image')) {
+        $imagePath = $request->file('image')->store('tags', 'public');
     }
+
+    $tag = Tag::create([
+        'name' => $validated['name'],
+        'slug' => Str::slug($validated['name']),
+        'is_active' => $validated['is_active'] ?? true,
+        'image' => $imagePath,
+    ]);
+
+    return response()->json($tag, 201);
+}
+
 
     public function show($id)
     {
@@ -54,26 +62,40 @@ class TagController extends Controller
         ]);
     }
 
-    public function update(Request $request, $id)
-    {
-        $tag = Tag::findOrFail($id);
+   public function update(Request $request, $id)
+{
+    $tag = Tag::findOrFail($id);
 
-        $validated = $request->validate([
-            'name' => 'required|string|unique:tags,name,' . $tag->id,
-            'is_active' => 'boolean',
-        ]);
+    $validated = $request->validate([
+        'name' => 'required|string|unique:tags,name,' . $tag->id,
+        'is_active' => 'boolean',
+        'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+    ]);
 
-        $tag->update([
-            'name' => $validated['name'],
-            'slug' => Str::slug($validated['name']),
-            'is_active' => $validated['is_active'] ?? $tag->is_active,
-        ]);
+    // Upload new image if provided
+    if ($request->hasFile('image')) {
 
-        return response()->json([
-            'Message' => 'Tag updated successfully',
-            'Tag' => $tag
-        ], 200);
+        // delete old image if exists
+        if ($tag->image && Storage::disk('public')->exists($tag->image)) {
+            Storage::disk('public')->delete($tag->image);
+        }
+
+        $imagePath = $request->file('image')->store('tags', 'public');
+        $tag->image = $imagePath;
     }
+
+    $tag->name = $validated['name'];
+    $tag->slug = Str::slug($validated['name']);
+    $tag->is_active = $validated['is_active'] ?? $tag->is_active;
+
+    $tag->save();
+
+    return response()->json([
+        'message' => 'Tag updated successfully',
+        'tag' => $tag,
+    ], 200);
+}
+
 
     public function destroy($id)
     {
