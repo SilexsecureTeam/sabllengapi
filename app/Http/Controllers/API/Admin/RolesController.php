@@ -9,19 +9,17 @@ use Illuminate\Support\Facades\Auth;
 
 class RolesController extends Controller
 {
-    private function ensureSuperadmin()
-    {
-        $user = auth()->user();
-
-        if (!$user || $user->role !== 'admin') {
-            abort(403, 'Unauthorized: Only Superadmin can perform this action.');
-        }
-    }
 
     public function store(Request $request)
     {
-        // Restrict to superadmin
-        $this->ensureSuperadmin();
+
+        $user = Auth::user();
+
+        if (!$user || $user->role !== 'admin') {
+            return response()->json([
+                'message' => 'Unauthorized action.',
+            ], 401);
+        }
 
         // Validate the role
         $validated = $request->validate([
@@ -39,7 +37,11 @@ class RolesController extends Controller
 
     public function update(Request $request, $id)
     {
-        $this->ensureSuperadmin();
+        if (!Auth::check() || !in_array(Auth::user()->role, ['admin'])) {
+            return response()->json([
+                'message' => 'Unauthorized action.',
+            ], 401);
+        }
 
         $role = Role::findOrFail($id);
 
@@ -60,7 +62,11 @@ class RolesController extends Controller
      */
     public function destroy($id)
     {
-        $this->ensureSuperadmin();
+        if (!Auth::check() || !in_array(Auth::user()->role, ['admin'])) {
+            return response()->json([
+                'message' => 'Unauthorized action.',
+            ], 401);
+        }
 
         $role = Role::findOrFail($id);
         $role->delete();
@@ -75,7 +81,11 @@ class RolesController extends Controller
      */
     public function index()
     {
-        $this->ensureSuperadmin();
+        if (!Auth::check() || !in_array(Auth::user()->role, ['admin'])) {
+            return response()->json([
+                'message' => 'Unauthorized action.',
+            ], 401);
+        }
 
         return response()->json([
             'data' => Role::all()
