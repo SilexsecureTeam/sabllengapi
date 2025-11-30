@@ -20,7 +20,6 @@ return new class extends Migration
             $table->decimal('salary', 10, 2)->nullable(); // store as money, not string
             $table->time('working_hours_start')->nullable();
             $table->time('working_hours_end')->nullable();
-            $table->string('staff_role');
             $table->string('staff_address')->nullable();
             $table->text('additional_information')->nullable();
             $table->string('photo')->nullable();

@@ -25,6 +25,9 @@ class OrderController extends Controller
             'delivery_fee' => 'nullable|numeric|min:0',
             'coupon_code' => 'nullable|string|max:50',
             'tax_rate' => 'nullable|numeric|min:0|max:100',
+            'customer_name' => 'nullable|string|max:255',
+            'customer_email' => 'nullable|string|max:255',
+            'customer_phone' => 'nullable|string|max:255',
         ]);
 
         // Retrieve cart
@@ -75,7 +78,7 @@ class OrderController extends Controller
 
         // Create order
         $order_reference = 'SAB-' . strtoupper(Str::random(10));
-        
+
 
         $order = Order::create([
             'user_id' => $user?->id,
@@ -89,8 +92,11 @@ class OrderController extends Controller
             'tax_rate' => $taxRate,
             'tax_amount' => $taxAmount,
             'shipping_address' => $validated['shipping_address'],
+            'customer_name' => $validated['customer_name'] ?? ($user?->name ?? null),
+            'customer_email' => $validated['customer_email'] ?? ($user?->email ?? null),
+            'customer_phone' => $validated['customer_phone'] ?? ($user?->phone ?? null),
             'status' => 'pending',
-            
+
         ]);
 
         // Attach cart items as order items
@@ -101,6 +107,11 @@ class OrderController extends Controller
                 'color' => $item->color,
                 'quantity' => $item->quantity,
                 'price' => $item->price,
+                'user' => $user ? [
+                    'name'  => $user->name,
+                    'email' => $user->email,
+                    'phone' => $user->phone ?? null,
+                ] : null,
             ]);
         }
 
@@ -136,7 +147,7 @@ class OrderController extends Controller
             'orders' => $orders,
         ], 200);
     }
-   
+
     public function getOrder(Request $request, $orderReference)
     {
         $user = Auth::user();

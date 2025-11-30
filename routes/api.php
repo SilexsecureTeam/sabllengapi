@@ -4,6 +4,7 @@ use App\Http\Controllers\API\Admin\AdminDashController;
 use App\Http\Controllers\API\Admin\CouponController;
 use App\Http\Controllers\API\Admin\DeliveryFeeController;
 use App\Http\Controllers\API\Admin\LocationController;
+use App\Http\Controllers\API\Admin\RolesController;
 use App\Http\Controllers\API\Admin\TaxController;
 use App\Http\Controllers\API\Auth\AuthController;
 use App\Http\Controllers\API\Auth\GoogleAuthController;
@@ -11,6 +12,7 @@ use App\Http\Controllers\API\BrandController;
 use App\Http\Controllers\API\CartController;
 use App\Http\Controllers\API\CategoryController;
 use App\Http\Controllers\API\CustomizationController;
+use App\Http\Controllers\API\EposnowSyncLogController;
 use App\Http\Controllers\API\ProductController;
 use App\Http\Controllers\API\StockReportController;
 use App\Http\Controllers\API\SubCategoryController;
@@ -118,7 +120,17 @@ Route::middleware('auth:sanctum')->group(function () {
 });
 
 Route::middleware(['auth:sanctum'])->group(function () {
-    Route::post('/staff', [StaffController::class, 'store'])->name('staff.store');
+    // Route::post('/staff', [StaffController::class, 'store'])->name('staff.store');
+    // Route::get('/staff', [StaffController::class, 'index']);
+    // Route::get('/staff/{id}', [StaffController::class, 'show']);
+    // Route::patch('/staff/{id}', [StaffController::class, 'update']);
+    // Route::delete('/staff/{id}', [StaffController::class, 'destroy']);
+    Route::get('/admin/staff', [AdminDashController::class, 'staffList']);
+
+    Route::post('/roles', [RolesController::class, 'store']);
+    Route::get('/roles', [RolesController::class, 'index']);   // for dropdown
+    Route::patch('/roles/{id}', [RolesController::class, 'update']);
+    Route::delete('/roles/{id}', [RolesController::class, 'destroy']);
     //categories
     Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
     Route::patch('/categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
@@ -174,6 +186,16 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/stockInventory/{id}', [StockReportController::class, 'show']);
     Route::patch('/stockInventory/{id}', [StockReportController::class, 'update']);
     Route::delete('/stockInventory/{id}', [StockReportController::class, 'destroy']);
+
+    // EPOS
+    // fetch logs
+    Route::get('/epos/logs', [EposnowSyncLogController::class, 'index']);
+    // get single log
+    Route::get('/epos/logs/{id}', [EposnowSyncLogController::class, 'show']);
+    // retry failed sync
+    Route::post('/epos/logs/{id}/retry', [EposnowSyncLogController::class, 'retry']);
+    // logs by order
+    Route::get('/epos/orders/{orderId}/logs', [EposnowSyncLogController::class, 'logsByOrder']);
 });
 Route::get('/tags/{id}', [TagController::class, 'show']);
 Route::get('/tags', [TagController::class, 'index']);

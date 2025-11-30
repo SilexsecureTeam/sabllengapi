@@ -44,4 +44,10 @@ return [
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
     ],
 
+    'epos_now' => [
+        'api_key' => env('EPOS_NOW_API_KEY'),
+        'api_secret' => env('EPOS_NOW_API_SECRET'),
+        'base_url' => env('EPOS_NOW_BASE_URL'),
+    ],
+
 ];

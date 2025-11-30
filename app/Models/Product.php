@@ -95,6 +95,12 @@ class Product extends Model
         return $this->belongsTo(Coupon::class);
     }
 
+    public function eposnowSyncLogs()
+    {
+        return $this->hasMany(EposnowSyncLog::class);
+    }
+
+
     public function getImagesAttribute($value)
     {
         $images = json_decode($value, true) ?? [];

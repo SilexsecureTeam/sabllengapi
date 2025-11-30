@@ -58,4 +58,9 @@ class User extends Authenticatable
         $url = config('app.frontend_url') . '/reset-password?token=' . $token . '&email=' . urlencode($this->email);
         $this->notify(new ResetPasswordNotification($url));
     }
+
+    // public function isRole($roles)
+    // {
+    //     return in_array($this->role, (array) $roles);
+    // }
 }

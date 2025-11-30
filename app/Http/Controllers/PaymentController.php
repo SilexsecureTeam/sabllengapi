@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\SyncEposStockJob;
+use App\Models\EposnowSyncLog;
 use App\Models\Order;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class PaymentController extends Controller
 {
@@ -63,8 +67,25 @@ class PaymentController extends Controller
             ]
         );
 
+        // 5. Dispatch stock sync jobs for each item
+        foreach ($order->items as $item) {
+            // ensure product has eposnow_product_id
+            if (!empty($item->product->eposnow_product_id)) {
+                SyncEposStockJob::dispatch(
+                    orderId: $order->id,
+                    eposProductId: $item->product->eposnow_product_id,
+                    productId: $item->product->id,
+                    quantity: $item->quantity,
+                    orderReference: $order->order_reference
+                );
+            } else {
+                // create a failed log to inspect later (optional)
+                Log::warning('Product missing eposnow_product_id', ['product_id' => $item->product->id]);
+            }
+        }
+
         return response()->json([
-            'message' => 'Payment verified successfully',
+            'message' => 'Payment successful and stock sync queued',
             'status' => $status,
             'order' => $order->load('items.product'),
         ]);

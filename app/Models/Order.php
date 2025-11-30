@@ -23,8 +23,11 @@ class Order extends Model
         'tax_amount',
         'shipping_address',
         'payment_method',
+        'customer_name',
+        'customer_email',
+        'customer_phone',
         'status',
-        'oder_status'
+        'order_status'
     ];
 
     /**
@@ -49,5 +52,10 @@ class Order extends Model
     public function calculateTotal()
     {
         return ($this->subtotal - $this->discount_amount) + $this->delivery_fee + $this->tax_amount;
+    }
+
+    public function eposnowSyncLogs()
+    {
+        return $this->hasMany(EposnowSyncLog::class);
     }
 }

@@ -205,7 +205,6 @@ class AdminDashController extends Controller
         if (isset($validated['password'])) {
             $validated['password'] = Hash::make($validated['password']);
         }
-// dd($validated);
         $user->update($validated);
 
         return response()->json([
@@ -228,5 +227,23 @@ class AdminDashController extends Controller
         return response()->json([
             'message' => 'User deleted successfully.',
         ], 200);
+    }
+
+    public function staffList()
+    {
+        // Only admin or superadmin should access this
+        if (!Auth::check() || !in_array(Auth::user()->role, ['admin'])) {
+            return response()->json([
+                'message' => 'Unauthorized action.',
+            ], 401);
+        }
+
+        // Fetch all users whose role is NOT "user"
+        $staff = User::where('role', '!=', 'user')->get();
+
+        return response()->json([
+            'message' => 'Staff list retrieved successfully.',
+            'data' => $staff,
+        ]);
     }
 }
