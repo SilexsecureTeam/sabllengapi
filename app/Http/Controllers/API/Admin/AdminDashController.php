@@ -29,7 +29,7 @@ class AdminDashController extends Controller
         }
 
         // ✅ Restrict to admin and superadmin only
-        if ($user->role !== 'admin' && $user->role !== 'superadmin') {
+        if ($user->role !== 'admin' && $user->role !== 'stock_manager' && $user->role !== 'customer_care' && $user->role !== 'manager') {
             return response()->json(['message' => 'Access denied. Admins only.'], 403);
         }
 
