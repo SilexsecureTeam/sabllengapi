@@ -27,6 +27,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Route;
 use PhpOffice\PhpSpreadsheet\Calculation\Category;
+use App\Jobs\SyncEposStockJob;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -130,6 +131,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     // Route::middleware('manager')->group(function () {
         
     // });
+
 
     Route::post('/roles', [RolesController::class, 'store']);
     Route::get('/roles', [RolesController::class, 'index']);   // for dropdown

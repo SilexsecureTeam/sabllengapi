@@ -6,13 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class EposnowSyncLog extends Model
 {
-    protected $table = 'eposnow_sync_log';
+    protected $table = 'eposnow_sync_logs';
 
     protected $fillable = [
         'order_id',
         'product_id',
         'sync_type',
         'status',
+        'quantity',
+        'old_stock',
+        'new_stock',
         'response',
         'error_message',
         'synced_at'

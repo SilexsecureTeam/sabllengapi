@@ -17,113 +17,138 @@ class SyncEposStockJob implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     public int $orderId;
-    public int $productId;        // local product id
-    public string $eposProductId; // EPOSNOW product id (string or int depending on API)
+    public int $productId;
     public int $quantity;
+    public string $eposProductId;
     public string $orderReference;
 
     public int $tries = 3;
-    public int $backoff = 15; // seconds
+    public int $backoff = 15;
 
-    public function __construct(int $orderId, string $eposProductId, int $productId, int $quantity, string $orderReference)
-    {
-        $this->orderId = $orderId;
-        $this->eposProductId = (string) $eposProductId;
-        $this->productId = $productId;
-        $this->quantity = $quantity;
+    public function __construct(
+        int $orderId,
+        string $eposProductId,
+        int $productId,
+        int $quantity,
+        string $orderReference
+    ) {
+        $this->orderId        = $orderId;
+        $this->eposProductId  = (string) $eposProductId;
+        $this->productId      = $productId;
+        $this->quantity       = $quantity;
         $this->orderReference = $orderReference;
     }
 
-    public function handle()
+    public function handle(): void
     {
-        $eposApiUrl = rtrim(config('services.eposnow.api_url', ''), '/');
-        $eposApiKey = config('services.eposnow.api_key');
+        $baseUrl    = rtrim(config('services.eposnow.api_url'), '/');
+        $authToken  = config('services.eposnow.auth_token');
+        $locationId = config('services.eposnow.location_id');
 
-        if (empty($eposApiUrl) || empty($eposApiKey)) {
-            Log::error('EPOSNOW config missing');
-            $this->createLog('failed', null, 'EPOSNOW config missing');
+        if (empty($authToken) || empty($locationId)) {
+            $this->logFailure('Missing EPOS Now auth token or location ID');
             return;
         }
 
-        // 1) Read current local stock
-        $currentStock = DB::table('product_stocks')
+        // 1️⃣ Get local stock
+        $currentStock = DB::table('inventories')
             ->where('product_id', $this->productId)
-            ->value('CurrentStock');
+            ->value('current_stock');
 
         if ($currentStock === null) {
-            $this->createLog('failed', null, 'Local product_stock row not found');
+            $this->logFailure('No current stock in your local table');
             return;
         }
 
-        $newStock = $currentStock - $this->quantity;
-        if ($newStock < 0) {
-            $newStock = 0; // or decide to allow negative; here we clamp to 0
-        }
+        // 2️⃣ EPOS Now expects negative quantity for stock reduction
+        $adjustmentQty = -abs($this->quantity);
 
-        // 2) Prepare EPOS payload
+        // 3️⃣ Build payload
         $payload = [
-            'ProductId' => $this->eposProductId,
-            'StockLevel' => $newStock,
-            'Reason' => 'Online Sale',
-            'OrderReference' => $this->orderReference,
+            'ProductId'      => (int) $this->eposProductId,
+            'LocationId'     => (int) $locationId,
+            'AdjustmentType' => 'Sale',
+            'Quantity'       => $adjustmentQty,
+            'Reference'      => $this->orderReference,
         ];
 
-        // 3) Call EPOS API
         try {
+            // 4️⃣ Send stock adjustment to EPOS Now
             $response = Http::withHeaders([
-                'Authorization' => 'Basic ' . base64_encode($eposApiKey . ':x'),
+                'Authorization' => "Bearer {$authToken}",
+                'Accept'        => 'application/json',
                 'Content-Type'  => 'application/json',
-            ])->timeout(10)->post("{$eposApiUrl}/api/v4/product/{$this->eposProductId}/stock", $payload);
+            ])->post("{$baseUrl}/Inventory/AdjustStock", $payload);
 
-            $ok = $response->successful();
-            $body = $response->body();
+            if (! $response->successful()) {
+                $this->logFailure(
+                    'EPOS API error',
+                    $response->json() ?? $response->body()
+                );
 
-            if (!$ok) {
-                $this->createLog('failed', $body, "EPOS API returned status {$response->status()}");
-                // let job be retried
-                throw new \RuntimeException("EPOS API failed: HTTP {$response->status()}");
+                throw new \RuntimeException(
+                    "EPOS Now stock sync failed ({$response->status()})"
+                );
             }
+            // Log::info('EPOS STOCK JOB HIT', [
+            //     'order_id' => $this->orderId,
+            //     'product_id' => $this->productId,
+            //     'qty' => $this->quantity,
+            // ]);
 
-            // 4) Try to atomically update local stock using optimistic check
-            $updated = DB::table('product_stocks')
+            // 5️⃣ Update local stock safely (optimistic lock)
+            $newStock = max(0, $currentStock - $this->quantity);
+
+            $updated = DB::table('inventories')
                 ->where('product_id', $this->productId)
-                ->where('CurrentStock', $currentStock) // safe-guard against race
-                ->update(['CurrentStock' => $newStock, 'updated_at' => now()]);
+                ->where('current_stock', $currentStock)
+                ->update([
+                    'current_stock' => $newStock,
+                    'updated_at'   => now(),
+                ]);
 
             if ($updated === 0) {
-                // Optimistic lock failed: another process changed stock. Log and create a failed log so you can investigate.
-                $this->createLog('failed', $body, 'Local stock optimistic update failed (concurrent modification)');
-                throw new \RuntimeException('Local stock update conflict');
+                $this->logFailure('Stock changed concurrently, update skipped');
+                return;
             }
 
-            // 5) Success
-            $this->createLog('success', $body, null, $currentStock, $newStock);
+            // 6️⃣ Success log
+            EposnowSyncLog::create([
+                'order_id'     => $this->orderId,
+                'product_id'   => $this->productId,
+                'sync_type'    => 'stock_update',
+                'status'       => 'success',
+                'quantity'     => $this->quantity,
+                'old_stock'    => $currentStock,
+                'new_stock'    => $newStock,
+                // 'response'     => $response->json(),
+                'synced_at'    => now(),
+            ]);
         } catch (\Throwable $e) {
-            Log::error('SyncEposStockJob error', [
-                'order' => $this->orderId,
-                'product' => $this->productId,
-                'epos_product' => $this->eposProductId,
-                'error' => $e->getMessage()
+            Log::error('EPOS Now Stock Sync Exception', [
+                'order_id'   => $this->orderId,
+                'product_id' => $this->productId,
+                'message'    => $e->getMessage(),
             ]);
 
-            // rethrow to let Laravel handle the retry/backoff according to $tries
-            throw $e;
+            throw $e; // allow queue retry
         }
     }
 
-    protected function createLog(string $status, ?string $response = null, ?string $error = null, ?int $oldStock = null, ?int $newStock = null)
+    /**
+     * Log a failed sync attempt
+     */
+    protected function logFailure(string $message, $response = null): void
     {
         EposnowSyncLog::create([
-            'order_id' => $this->orderId,
-            'product_id' => $this->productId,
-            'sync_type' => 'stock_update',
-            'status' => $status,
-            'quantity' => $this->quantity,
-            'response' => $response,
-            'error_message' => $error,
-            'old_stock' => $oldStock,
-            'new_stock' => $newStock,
-            'synced_at' => now(),
+            'order_id'     => $this->orderId,
+            'product_id'   => $this->productId,
+            'sync_type'    => 'stock_update',
+            'status'       => 'failed',
+            'quantity'     => $this->quantity,
+            'error_message' => $message,
+            'response'     => $response,
+            'synced_at'    => now(),
         ]);
     }
 }
