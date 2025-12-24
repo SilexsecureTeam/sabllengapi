@@ -19,6 +19,7 @@ use App\Http\Controllers\API\SubCategoryController;
 use App\Http\Controllers\API\SupplierController;
 use App\Http\Controllers\API\TagController;
 use App\Http\Controllers\API\WishlistController;
+use App\Http\Controllers\EposnowWebhookController;
 use App\Http\Controllers\Import\ImportInventoryController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
@@ -35,6 +36,7 @@ Route::get('/user', function (Request $request) {
 
 Route::post('importInventory', [ImportInventoryController::class, 'import']);
 Route::post('importProduct', [ImportInventoryController::class, 'importProduct']);
+Route::post('/webhooks/eposnow/sale', [EposnowWebhookController::class, 'handleSale']);
 
 // authentication flow
 // routes/api.php
@@ -129,7 +131,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/admin/staff', [AdminDashController::class, 'staffList']);
 
     // Route::middleware('manager')->group(function () {
-        
+
     // });
 
 
@@ -202,6 +204,13 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/epos/logs/{id}/retry', [EposnowSyncLogController::class, 'retry']);
     // logs by order
     Route::get('/epos/orders/{orderId}/logs', [EposnowSyncLogController::class, 'logsByOrder']);
+
+    // eposnowsync
+    Route::get('/eposnow/logs', [AdminDashController::class, 'eposindex'])
+        ->name('admin.eposnow.logs.index');
+
+    Route::get('/eposnow/logs/{id}', [AdminDashController::class, 'show'])
+        ->name('admin.eposnow.logs.show');
 });
 Route::get('/tags/{id}', [TagController::class, 'show']);
 Route::get('/tags', [TagController::class, 'index']);

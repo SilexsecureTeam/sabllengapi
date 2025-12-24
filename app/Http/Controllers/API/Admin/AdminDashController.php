@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use App\Models\EposnowSyncLog;
 
 class AdminDashController extends Controller
 {
@@ -244,6 +245,40 @@ class AdminDashController extends Controller
         return response()->json([
             'message' => 'Staff list retrieved successfully.',
             'data' => $staff,
+        ]);
+    }
+
+    // view eposnowsyn
+     public function eposindex()
+    {
+        $logs = EposnowSyncLog::with('product')
+            ->latest('synced_at')
+            ->paginate(20);
+
+        return response()->json($logs);
+    }
+
+    /**
+     * View a single sync log
+     */
+    public function show($id)
+    {
+        $log = EposnowSyncLog::with('product')->findOrFail($id);
+
+        return response()->json([
+            'id'             => $log->id,
+            'sync_type'      => $log->sync_type,
+            'status'         => $log->status,
+            'payment_method' => $log->payment_method,
+            'quantity'       => $log->quantity,
+            'old_stock'      => $log->old_stock,
+            'new_stock'      => $log->new_stock,
+            'product'        => [
+                'id'   => $log->product?->id,
+                'name' => $log->product?->name,
+            ],
+            'response'       => $log->response,
+            'synced_at'      => $log->synced_at,
         ]);
     }
 }

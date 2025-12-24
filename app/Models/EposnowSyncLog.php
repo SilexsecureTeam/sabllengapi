@@ -18,6 +18,7 @@ class EposnowSyncLog extends Model
         'new_stock',
         'response',
         'error_message',
+        'payment_method',
         'synced_at'
     ];
 

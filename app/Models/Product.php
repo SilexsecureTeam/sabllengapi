@@ -75,10 +75,10 @@ class Product extends Model
         return $this->belongsTo(Brand::class);
     }
 
-    public function images()
-    {
-        return $this->hasMany(ProductImage::class);
-    }
+    // public function images()
+    // {
+    //     return $this->hasMany(ProductImage::class);
+    // }
 
     public function orderItems()
     {
@@ -103,13 +103,28 @@ class Product extends Model
 
     public function getImagesAttribute($value)
     {
-        $images = json_decode($value, true) ?? [];
+        if (!is_array($value)) {
+            return collect();
+        }
 
-        return collect($images)->map(function ($img) {
+        return collect($value)->map(function ($img) {
+
+            // If stored as string
+            if (is_string($img)) {
+                return [
+                    'id'   => null,
+                    'path' => $img,
+                    'url'  => asset('storage/' . $img),
+                ];
+            }
+
+            // If stored as array
             return [
-                'id' => $img['id'] ?? null,
-                'path' => $img['path'],
-                'url' => asset('storage/' . $img['path']),
+                'id'   => $img['id'] ?? null,
+                'path' => $img['path'] ?? null,
+                'url'  => isset($img['path'])
+                    ? asset('storage/' . $img['path'])
+                    : null,
             ];
         });
     }

@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Models\EposnowSyncLog;
+use App\Models\Transaction;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -21,6 +22,7 @@ class SyncEposStockJob implements ShouldQueue
     public int $quantity;
     public string $eposProductId;
     public string $orderReference;
+    public string $paymentMethod;
 
     public int $tries = 3;
     public int $backoff = 15;
@@ -30,13 +32,15 @@ class SyncEposStockJob implements ShouldQueue
         string $eposProductId,
         int $productId,
         int $quantity,
-        string $orderReference
+        string $orderReference,
+        string $paymentMethod = 'pos'   
     ) {
         $this->orderId        = $orderId;
         $this->eposProductId  = (string) $eposProductId;
         $this->productId      = $productId;
         $this->quantity       = $quantity;
         $this->orderReference = $orderReference;
+        $this->paymentMethod  = $paymentMethod; // ✅ now initialized
     }
 
     public function handle(): void
@@ -70,6 +74,7 @@ class SyncEposStockJob implements ShouldQueue
             'AdjustmentType' => 'Sale',
             'Quantity'       => $adjustmentQty,
             'Reference'      => $this->orderReference,
+
         ];
 
         try {
@@ -121,8 +126,9 @@ class SyncEposStockJob implements ShouldQueue
                 'quantity'     => $this->quantity,
                 'old_stock'    => $currentStock,
                 'new_stock'    => $newStock,
-                // 'response'     => $response->json(),
-                'synced_at'    => now(),
+                'response'     => $response->json(),
+                'payment_method'    => $this->paymentMethod,
+                    'synced_at'    => now(),
             ]);
         } catch (\Throwable $e) {
             Log::error('EPOS Now Stock Sync Exception', [
@@ -148,6 +154,7 @@ class SyncEposStockJob implements ShouldQueue
             'quantity'     => $this->quantity,
             'error_message' => $message,
             'response'     => $response,
+            'payment_method' => $this->paymentMethod ?? 'pos',
             'synced_at'    => now(),
         ]);
     }

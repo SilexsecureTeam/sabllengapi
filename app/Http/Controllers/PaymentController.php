@@ -76,7 +76,8 @@ class PaymentController extends Controller
                     eposProductId: $item->product->eposnow_product_id,
                     productId: $item->product->id,
                     quantity: $item->quantity,
-                    orderReference: $order->order_reference
+                    orderReference: $order->order_reference,
+                    paymentMethod: 'online'
                 );
             } else {
                 // create a failed log to inspect later (optional)
