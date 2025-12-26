@@ -44,9 +44,9 @@ return [
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
     ],
 
-    'eposnow' => [
-        'api_url'     => env('EPOSNOW_API_URL'),
-        'auth_token'  => env('EPOSNOW_AUTH_TOKEN'),
-        'location_id' => env('EPOSNOW_LOCATION_ID'),
-    ],
+    // 'eposnow' => [
+    //     'api_url'     => env('EPOSNOW_API_URL'),
+    //     'auth_token'  => env('EPOSNOW_AUTH_TOKEN'),
+    //     'location_id' => env('EPOSNOW_LOCATION_ID'),
+    // ],
 ];
