@@ -101,31 +101,20 @@ class Product extends Model
     }
 
 
-    public function getImagesAttribute($value)
-    {
-        if (!is_array($value)) {
-            return collect();
-        }
+    //  public function getImagesAttribute($value)
+    // {
+    //     if (!is_array($value)) {
+    //         return [];
+    //     }
 
-        return collect($value)->map(function ($img) {
-
-            // If stored as string
-            if (is_string($img)) {
-                return [
-                    'id'   => null,
-                    'path' => $img,
-                    'url'  => asset('storage/' . $img),
-                ];
-            }
-
-            // If stored as array
-            return [
-                'id'   => $img['id'] ?? null,
-                'path' => $img['path'] ?? null,
-                'url'  => isset($img['path'])
-                    ? asset('storage/' . $img['path'])
-                    : null,
-            ];
-        });
-    }
+    //     return collect($value)->map(function ($img) {
+    //         return [
+    //             'id'   => $img['id'] ?? null,
+    //             'path' => $img['path'] ?? null,
+    //             'url'  => isset($img['path'])
+    //                 ? asset('storage/' . $img['path'])
+    //                 : null,
+    //         ];
+    //     })->values()->toArray();
+    // }
 }

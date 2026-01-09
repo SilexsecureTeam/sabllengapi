@@ -215,7 +215,7 @@ class ProductController extends Controller
         }
 
         // 💾 Update product
-        $product->update([
+        $updateData = ([
             'category_id' => $validated['category_id'] ?? $product->category_id,
             'subcategory_id' => $validated['subcategory_id'] ?? $product->subcategory_id,
             'brand_id' => $validated['brand_id'] ?? $product->brand_id,
@@ -239,13 +239,36 @@ class ProductController extends Controller
             'product_code' => $validated['product_code'] ?? $product->product_code,
             'age_restriction' => $validated['age_restriction'] ?? $product->age_restriction,
             'customize' => $validated['customize'] ?? $product->customize,
-            'images' => $imagesData,
+            // 'images' => $imagesData,
             'coupon_id' => $validated['coupon_id'] ?? null,
         ]);
 
+        if ($request->hasFile('images')) {
+            $updateData['images'] = $imagesData;
+        }
+        // dd($updateData['images']);
+        $product->update($updateData);
+
+        $product->load(['category', 'subcategory', 'brand', 'supplier', 'coupon']);
+        $productImages = collect($product->images ?? [])->map(function ($img) {
+            return [
+                'id'   => $img['id'] ?? null,
+                'path' => $img['path'] ?? null,
+                'url'  => isset($img['path'])
+                    ? asset('storage/' . $img['path'])
+                    : null,
+            ];
+        })->values()->toArray();
+        // return response()->json([
+        //     'message' => 'Product updated successfully',
+        //     'product' => $product,
+        // ], 200);
         return response()->json([
             'message' => 'Product updated successfully',
-            'product' => $product->fresh(['category', 'subcategory', 'brand', 'supplier', 'coupon']),
+            'product' => array_merge(
+                $product->toArray(),
+                ['images' => $productImages]
+            ),
         ], 200);
     }
 
