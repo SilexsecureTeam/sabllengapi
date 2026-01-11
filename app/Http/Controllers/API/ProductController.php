@@ -182,22 +182,37 @@ class ProductController extends Controller
         ]);
 
         // 🖼️ Handle images
+        // $imagesData = $product->getRawOriginal('images') ? json_decode($product->getRawOriginal('images'), true) : [];
+
+        // if ($request->hasFile('images')) {
+        //     // Delete existing images
+        //     foreach ($imagesData as $oldImage) {
+        //         if (!empty($oldImage['path']) && Storage::disk('public')->exists($oldImage['path'])) {
+        //             Storage::disk('public')->delete($oldImage['path']);
+        //         }
+        //     }
+
+        //     // Store new images
+        //     $imagesData = [];
+        //     foreach ($request->file('images') as $index => $image) {
+        //         $path = $image->store('products', 'public');
+        //         $imagesData[] = [
+        //             'id' => $index + 1,
+        //             'path' => $path,
+        //         ];
+        //     }
+        // }
+
+        // 🖼️ Handle images
         $imagesData = $product->getRawOriginal('images') ? json_decode($product->getRawOriginal('images'), true) : [];
 
         if ($request->hasFile('images')) {
-            // Delete existing images
-            foreach ($imagesData as $oldImage) {
-                if (!empty($oldImage['path']) && Storage::disk('public')->exists($oldImage['path'])) {
-                    Storage::disk('public')->delete($oldImage['path']);
-                }
-            }
-
-            // Store new images
-            $imagesData = [];
             foreach ($request->file('images') as $index => $image) {
                 $path = $image->store('products', 'public');
+
+                // Add new image to the existing array
                 $imagesData[] = [
-                    'id' => $index + 1,
+                    'id' => count($imagesData) + 1, // continue id sequence
                     'path' => $path,
                 ];
             }
