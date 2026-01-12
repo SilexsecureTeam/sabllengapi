@@ -20,6 +20,7 @@ use App\Http\Controllers\API\SupplierController;
 use App\Http\Controllers\API\TagController;
 use App\Http\Controllers\API\WishlistController;
 use App\Http\Controllers\EposnowWebhookController;
+use App\Http\Controllers\HeroController;
 use App\Http\Controllers\Import\ImportInventoryController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
@@ -211,6 +212,12 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::get('/eposnow/logs/{id}', [AdminDashController::class, 'show'])
         ->name('admin.eposnow.logs.show');
+
+    Route::post('hero-slides', [HeroController::class, 'store']);
+    Route::get('hero-slides/{heroSlide}', [HeroController::class, 'show']);
+    Route::patch('hero-slides/{heroSlide}', [HeroController::class, 'update']);
+    Route::delete('hero-slides/{heroSlide}', [HeroController::class, 'destroy']);
+    Route::post('hero-slides/reorder', [HeroController::class, 'reorder']);
 });
 Route::get('/tags/{id}', [TagController::class, 'show']);
 Route::get('/tags', [TagController::class, 'index']);
