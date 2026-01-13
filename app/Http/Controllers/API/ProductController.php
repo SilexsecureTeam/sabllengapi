@@ -208,18 +208,22 @@ class ProductController extends Controller
             ? json_decode($product->getRawOriginal('images'), true)
             : [];
 
-        if ($request->hasFile('images')) {
-            foreach ($request->file('images') as $imageId => $image) {
+        if ($request->has('images')) {
+            foreach ($request->images as $imageInput) {
 
-                // Delete old image
+                $imageId = (int) $imageInput['id'];
+                $file    = $imageInput['file'];
+
                 foreach ($imagesData as &$img) {
-                    if ($img['id'] == $imageId) {
-                        if (Storage::disk('public')->exists($img['path'])) {
+                    if ((int) $img['id'] === $imageId) {
+
+                        // delete old file
+                        if (!empty($img['path']) && Storage::disk('public')->exists($img['path'])) {
                             Storage::disk('public')->delete($img['path']);
                         }
 
-                        // Replace path
-                        $img['path'] = $image->store('products', 'public');
+                        // replace path
+                        $img['path'] = $file->store('products', 'public');
                         break;
                     }
                 }
