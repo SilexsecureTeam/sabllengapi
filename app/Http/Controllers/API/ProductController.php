@@ -204,19 +204,28 @@ class ProductController extends Controller
         // }
 
         // 🖼️ Handle images
-        $imagesData = $product->getRawOriginal('images') ? json_decode($product->getRawOriginal('images'), true) : [];
+        $imagesData = $product->getRawOriginal('images')
+            ? json_decode($product->getRawOriginal('images'), true)
+            : [];
 
         if ($request->hasFile('images')) {
-            foreach ($request->file('images') as $index => $image) {
-                $path = $image->store('products', 'public');
+            foreach ($request->file('images') as $imageId => $image) {
 
-                // Add new image to the existing array
-                $imagesData[] = [
-                    'id' => count($imagesData) + 1, // continue id sequence
-                    'path' => $path,
-                ];
+                // Delete old image
+                foreach ($imagesData as &$img) {
+                    if ($img['id'] == $imageId) {
+                        if (Storage::disk('public')->exists($img['path'])) {
+                            Storage::disk('public')->delete($img['path']);
+                        }
+
+                        // Replace path
+                        $img['path'] = $image->store('products', 'public');
+                        break;
+                    }
+                }
             }
         }
+
 
         // 🎨 Handle colours
         $colorsData = [];

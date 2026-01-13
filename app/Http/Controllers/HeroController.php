@@ -20,7 +20,6 @@ class HeroController extends Controller
             'data' => $slides
         ], 200);
     }
-
     /**
      * Store a newly created hero slide.
      * POST /api/hero-slides
@@ -79,7 +78,6 @@ class HeroController extends Controller
         }
     }
 
-
     /**
      * Display the specified hero slide.
      * GET /api/hero-slides/{id}
@@ -98,9 +96,6 @@ class HeroController extends Controller
      */
     public function update(Request $request, HeroSlide $heroSlide)
     {
-        // Validation
-        $slide = HeroSlide::findOrFail($heroSlide);
-
         $validator = Validator::make($request->all(), [
             'title'    => 'required|string|min:3|max:255',
             'image'    => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
@@ -118,29 +113,27 @@ class HeroController extends Controller
         try {
             $data = $validator->validated();
 
-            // ✅ Replace image ONLY if a new one is uploaded
+            // ✅ Replace image ONLY if new one is uploaded
             if ($request->hasFile('image')) {
-                // Delete old image
-                if ($slide->image_path && Storage::disk('public')->exists($slide->image_path)) {
-                    Storage::disk('public')->delete($slide->image_path);
+                if ($heroSlide->image_path && Storage::disk('public')->exists($heroSlide->image_path)) {
+                    Storage::disk('public')->delete($heroSlide->image_path);
                 }
 
-                // Store new image
                 $data['image_path'] = $request->file('image')
                     ->store('hero-slides', 'public');
             }
 
-            $slide->update([
+            $heroSlide->update([
                 'title'      => $data['title'],
-                'image_path' => $data['image_path'] ?? $slide->image_path,
+                'image_path' => $data['image_path'] ?? $heroSlide->image_path,
                 'link_url'   => $data['link_url'],
-                'order'      => $data['order'] ?? $slide->order,
+                'order'      => $data['order'] ?? $heroSlide->order,
             ]);
 
             return response()->json([
                 'success' => true,
                 'message' => 'Hero slide updated successfully',
-                'data'    => $slide
+                'data'    => $heroSlide
             ]);
         } catch (\Exception $e) {
             return response()->json([

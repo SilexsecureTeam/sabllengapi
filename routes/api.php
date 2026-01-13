@@ -215,6 +215,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::post('hero-slides', [HeroController::class, 'store']);
     Route::get('hero-slides/{heroSlide}', [HeroController::class, 'show']);
+    Route::get('hero-slides', [HeroController::class, 'index']);
     Route::patch('hero-slides/{heroSlide}', [HeroController::class, 'update']);
     Route::delete('hero-slides/{heroSlide}', [HeroController::class, 'destroy']);
     Route::post('hero-slides/reorder', [HeroController::class, 'reorder']);
