@@ -181,53 +181,29 @@ class ProductController extends Controller
             'coupon_id' => 'nullable|exists:coupons,id',
         ]);
 
-        // 🖼️ Handle images
-        // $imagesData = $product->getRawOriginal('images') ? json_decode($product->getRawOriginal('images'), true) : [];
-
-        // if ($request->hasFile('images')) {
-        //     // Delete existing images
-        //     foreach ($imagesData as $oldImage) {
-        //         if (!empty($oldImage['path']) && Storage::disk('public')->exists($oldImage['path'])) {
-        //             Storage::disk('public')->delete($oldImage['path']);
-        //         }
-        //     }
-
-        //     // Store new images
-        //     $imagesData = [];
-        //     foreach ($request->file('images') as $index => $image) {
-        //         $path = $image->store('products', 'public');
-        //         $imagesData[] = [
-        //             'id' => $index + 1,
-        //             'path' => $path,
-        //         ];
-        //     }
-        // }
-
-        // 🖼️ Handle images
+        // 🖼️ Handle images - DELETE old, STORE new
         $imagesData = $product->getRawOriginal('images')
             ? json_decode($product->getRawOriginal('images'), true)
             : [];
 
         if ($request->hasFile('images')) {
-            foreach ($request->file('images') as $index => $file) {
-
-                if (!isset($imagesData[$index])) {
-                    continue; // safety check
+            // Delete ALL existing images from storage
+            foreach ($imagesData as $oldImage) {
+                if (!empty($oldImage['path']) && Storage::disk('public')->exists($oldImage['path'])) {
+                    Storage::disk('public')->delete($oldImage['path']);
                 }
+            }
 
-                // delete old image
-                if (
-                    !empty($imagesData[$index]['path']) &&
-                    Storage::disk('public')->exists($imagesData[$index]['path'])
-                ) {
-                    Storage::disk('public')->delete($imagesData[$index]['path']);
-                }
-
-                // replace image
-                $imagesData[$index]['path'] = $file->store('products', 'public');
+            // Store ALL new images
+            $imagesData = [];
+            foreach ($request->file('images') as $index => $image) {
+                $path = $image->store('products', 'public');
+                $imagesData[] = [
+                    'id' => $index + 1,
+                    'path' => $path,
+                ];
             }
         }
-
 
         // 🎨 Handle colours
         $colorsData = [];
@@ -241,7 +217,7 @@ class ProductController extends Controller
         }
 
         // 💾 Update product
-        $updateData = ([
+        $updateData = [
             'category_id' => $validated['category_id'] ?? $product->category_id,
             'subcategory_id' => $validated['subcategory_id'] ?? $product->subcategory_id,
             'brand_id' => $validated['brand_id'] ?? $product->brand_id,
@@ -265,30 +241,27 @@ class ProductController extends Controller
             'product_code' => $validated['product_code'] ?? $product->product_code,
             'age_restriction' => $validated['age_restriction'] ?? $product->age_restriction,
             'customize' => $validated['customize'] ?? $product->customize,
-            // 'images' => $imagesData,
             'coupon_id' => $validated['coupon_id'] ?? null,
-        ]);
+        ];
 
+        // Only update images if new ones were uploaded
         if ($request->hasFile('images')) {
             $updateData['images'] = $imagesData;
         }
-        // dd($updateData['images']);
+
         $product->update($updateData);
 
+        // Load relationships and format response
         $product->load(['category', 'subcategory', 'brand', 'supplier', 'coupon']);
+
         $productImages = collect($product->images ?? [])->map(function ($img) {
             return [
                 'id'   => $img['id'] ?? null,
                 'path' => $img['path'] ?? null,
-                'url'  => isset($img['path'])
-                    ? asset('storage/' . $img['path'])
-                    : null,
+                'url'  => isset($img['path']) ? asset('storage/' . $img['path']) : null,
             ];
         })->values()->toArray();
-        // return response()->json([
-        //     'message' => 'Product updated successfully',
-        //     'product' => $product,
-        // ], 200);
+
         return response()->json([
             'message' => 'Product updated successfully',
             'product' => array_merge(
