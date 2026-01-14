@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('eposnow_sync_logs', function (Blueprint $table) {
-            $table->string('payment_method')->nullable()->after('status');
+        Schema::table('categories', function (Blueprint $table) {
+            $table->dropForeign('categories_tag_id_foreign');
+            $table->dropColumn('tag_id');
         });
     }
 
@@ -21,8 +22,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('eposnow_sync_logs', function (Blueprint $table) {
-            $table->dropColumn('payment_method');
+        Schema::table('categories', function (Blueprint $table) {
+            $table->foreignId('tag_id')
+                ->constrained('tags')
+                ->cascadeOnDelete();
         });
     }
 };

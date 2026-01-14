@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\API\Admin\AdminDashController;
 use App\Http\Controllers\API\Admin\CouponController;
 use App\Http\Controllers\API\Admin\DeliveryFeeController;
@@ -25,6 +26,8 @@ use App\Http\Controllers\Import\ImportInventoryController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\StaffController;
+use App\Http\Controllers\TeamController;
+use App\Http\Controllers\TrustedOrganisationController;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Route;
@@ -218,7 +221,30 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::patch('hero-slides/{heroSlide}', [HeroController::class, 'update']);
     Route::delete('hero-slides/{heroSlide}', [HeroController::class, 'destroy']);
     Route::post('hero-slides/reorder', [HeroController::class, 'reorder']);
+
+    Route::post('/trusted-organizations', [TrustedOrganisationController::class, 'store']);
+    Route::patch('/trusted-organizations/{id}', [TrustedOrganisationController::class, 'update']);
+    Route::post('/trusted-organizations/{id}/add-logo', [TrustedOrganisationController::class, 'addLogo']);
+    Route::delete('/trusted-organizations/{id}/logo/{logoId}', [TrustedOrganisationController::class, 'deleteLogo']);
+    Route::delete('/trusted-organizations/{id}', [TrustedOrganisationController::class, 'destroy']);
+
+    Route::get('/admin/teams', [TeamController::class, 'adminIndex']);  // List all teams
+    Route::post('/teams', [TeamController::class, 'store']);      // Create team member
+    Route::get('/teams/{id}', [TeamController::class, 'show']);   // Get single team member
+    Route::patch('/teams/{id}', [TeamController::class, 'update']); // Update team member
+    Route::delete('/teams/{id}', [TeamController::class, 'destroy']); // Delete team member
+
+    Route::post('/about-us', [AboutUsController::class, 'store']);
+    Route::post('/about-us/{id}', [AboutUsController::class, 'update']);
+    Route::delete('/about-us/{id}/founder-image', [AboutUsController::class, 'deleteFounderImage']);
+    Route::delete('/about-us/{id}', [AboutUsController::class, 'destroy']);
 });
+
+// Public route (for frontend display)
+Route::get('/trusted-organizations', [TrustedOrganisationController::class, 'index']);
+Route::get('/teams', [TeamController::class, 'index']);       // List all teams
+Route::get('/about-us', [AboutUsController::class, 'index']);
+
 Route::get('hero-slides', [HeroController::class, 'index']);
 Route::get('/tags/{id}', [TagController::class, 'show']);
 Route::get('/tags', [TagController::class, 'index']);

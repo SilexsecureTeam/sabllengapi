@@ -20,9 +20,11 @@ class Tag extends Model
         'is_active' => 'boolean',
     ];
 
+    // Many-to-many relationship with categories
     public function categories()
     {
-        return $this->hasMany(Category::class);
+        return $this->belongsToMany(Category::class, 'category_tag')
+            ->withTimestamps();
     }
 
     protected $appends = ['image_url'];
