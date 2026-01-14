@@ -235,9 +235,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::delete('/teams/{id}', [TeamController::class, 'destroy']); // Delete team member
 
     Route::post('/about-us', [AboutUsController::class, 'store']);
-    Route::post('/about-us/{id}', [AboutUsController::class, 'update']);
-    Route::delete('/about-us/{id}/founder-image', [AboutUsController::class, 'deleteFounderImage']);
-    Route::delete('/about-us/{id}', [AboutUsController::class, 'destroy']);
+    // Route::post('/about-us/{id}', [AboutUsController::class, 'update']);
+    // Route::delete('/about-us/{id}/founder-image', [AboutUsController::class, 'deleteFounderImage']);
+    Route::delete('/about-us', [AboutUsController::class, 'destroy']);
 });
 
 // Public route (for frontend display)

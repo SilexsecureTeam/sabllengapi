@@ -29,12 +29,11 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
-        // Inline validation
         $request->validate([
-            'name'     => 'nullable|string|max:255',
-            'position' => 'nullable|string|max:255',
-            'photo'    => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
-            'bio'      => 'nullable|string',
+            'name'      => 'nullable|string|max:255',
+            'position'  => 'nullable|string|max:255',
+            'photo'     => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'bio'       => 'nullable|string',
             'is_active' => 'nullable|boolean',
         ]);
 
@@ -46,8 +45,10 @@ class TeamController extends Controller
         ]);
 
         if ($request->hasFile('photo')) {
-            $data['photo'] = $request->file('photo')
-                ->store('teams', 'public');
+            $path = $request->file('photo')->store('teams', 'public');
+
+            // ✅ store URL instead of path
+            $data['photo'] = Storage::disk('public')->url($path);
         }
 
         $team = Team::create($data);
@@ -57,7 +58,6 @@ class TeamController extends Controller
             'data' => $team
         ], 201);
     }
-
     /**
      * GET /api/teams/{id}
      */
@@ -76,10 +76,10 @@ class TeamController extends Controller
         $team = Team::findOrFail($id);
 
         $request->validate([
-            'name'     => 'sometimes|string|max:255',
-            'position' => 'sometimes|string|max:255',
-            'photo'    => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
-            'bio'      => 'nullable|string',
+            'name'      => 'sometimes|string|max:255',
+            'position'  => 'sometimes|string|max:255',
+            'photo'     => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'bio'       => 'nullable|string',
             'is_active' => 'nullable|boolean',
         ]);
 
@@ -91,12 +91,23 @@ class TeamController extends Controller
         ]);
 
         if ($request->hasFile('photo')) {
+
+            /** 🔥 Delete old photo safely */
             if ($team->photo) {
-                Storage::disk('public')->delete($team->photo);
+                $path = str_replace(
+                    Storage::disk('public')->url(''),
+                    '',
+                    $team->photo
+                );
+
+                if (Storage::disk('public')->exists($path)) {
+                    Storage::disk('public')->delete($path);
+                }
             }
 
-            $data['photo'] = $request->file('photo')
-                ->store('teams', 'public');
+            /** ✅ Store new photo as URL */
+            $path = $request->file('photo')->store('teams', 'public');
+            $data['photo'] = Storage::disk('public')->url($path);
         }
 
         $team->update($data);
@@ -104,7 +115,7 @@ class TeamController extends Controller
         return response()->json([
             'message' => 'Team member updated successfully',
             'data' => $team
-        ]);
+        ], 200);
     }
 
     /**

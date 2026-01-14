@@ -9,11 +9,11 @@ use Illuminate\Support\Facades\Storage;
 class AboutUsController extends Controller
 {
     /**
-     * Get the about us section (PUBLIC - for frontend)
+     * PUBLIC: Get About Us (Frontend)
      */
     public function index()
     {
-        $aboutUs = AboutUs::where('is_active', true)->first();
+        $aboutUs = AboutUs::first();
 
         if (!$aboutUs) {
             return response()->json([
@@ -24,6 +24,48 @@ class AboutUsController extends Controller
 
         return response()->json([
             'message' => 'About us section retrieved successfully',
+            'data' => $aboutUs
+        ], 200);
+    }
+
+    /**
+     * ADMIN: Create or Update About Us (Single Record)
+     */
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'heading'        => 'required|string|max:255',
+            'content'        => 'required|string',
+            'founder_name'   => 'nullable|string|max:255',
+            'founder_title'  => 'nullable|string|max:255',
+            'founder_image'  => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+        ]);
+
+        $aboutUs = AboutUs::first();
+
+        $founderImagePath = $aboutUs?->founder_image;
+
+        if ($request->hasFile('founder_image')) {
+            if ($founderImagePath && Storage::disk('public')->exists($founderImagePath)) {
+                Storage::disk('public')->delete($founderImagePath);
+            }
+
+            $founderImagePath = $request->file('founder_image')->store('about-us', 'public');
+        }
+
+        $aboutUs = AboutUs::updateOrCreate(
+            ['id' => $aboutUs?->id ?? 1],
+            [
+                'heading'        => $validated['heading'],
+                'content'        => $validated['content'],
+                'founder_name'   => $validated['founder_name'] ?? null,
+                'founder_title'  => $validated['founder_title'] ?? null,
+                'founder_image'  => $founderImagePath,
+            ]
+        );
+
+        return response()->json([
+            'message' => 'About us section saved successfully',
             'data' => [
                 'id' => $aboutUs->id,
                 'heading' => $aboutUs->heading,
@@ -34,121 +76,51 @@ class AboutUsController extends Controller
                 'founder_image_url' => $aboutUs->founder_image
                     ? asset('storage/' . $aboutUs->founder_image)
                     : null,
-                'is_active' => $aboutUs->is_active
+                'created_at' => $aboutUs->created_at,
+                'updated_at' => $aboutUs->updated_at,
             ]
         ], 200);
     }
 
-    /**
-     * Create new about us section
-     */
-    public function store(Request $request)
-    {
-        $validated = $request->validate([
-            'heading' => 'required|string|max:255',
-            'content' => 'required|string',
-            'founder_name' => 'nullable|string|max:255',
-            'founder_title' => 'nullable|string|max:255',
-            'founder_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
-            'is_active' => 'sometimes|boolean'
-        ]);
 
-        $founderImagePath = null;
-        if ($request->hasFile('founder_image')) {
-            $founderImagePath = $request->file('founder_image')->store('about-us', 'public');
+    /**
+     * ADMIN: Delete founder image only
+     */
+    // public function deleteFounderImage()
+    // {
+    //     $aboutUs = AboutUs::firstOrFail();
+
+    //     if ($aboutUs->founder_image && Storage::disk('public')->exists($aboutUs->founder_image)) {
+    //         Storage::disk('public')->delete($aboutUs->founder_image);
+    //     }
+
+    //     $aboutUs->update(['founder_image' => null]);
+
+    //     return response()->json([
+    //         'message' => 'Founder image deleted successfully',
+    //         'data' => $aboutUs
+    //     ], 200);
+    // }
+
+    /**
+     * OPTIONAL: Delete About Us entirely (usually NOT needed)
+     */
+    public function destroy()
+    {
+        $aboutUs = AboutUs::first();
+
+        if (!$aboutUs) {
+            return response()->json([
+                'message' => 'About us section already deleted',
+            ], 404);
         }
 
-        $aboutUs = AboutUs::create([
-            'heading' => $validated['heading'],
-            'content' => $validated['content'],
-            'founder_name' => $validated['founder_name'] ?? null,
-            'founder_title' => $validated['founder_title'] ?? null,
-            'founder_image' => $founderImagePath,
-            'is_active' => $validated['is_active'] ?? true
-        ]);
-
-        return response()->json([
-            'message' => 'About us section created successfully',
-            'data' => $aboutUs
-        ], 201);
-    }
-
-    /**
-     * Update about us section
-     */
-    public function update(Request $request, $id)
-    {
-        $aboutUs = AboutUs::findOrFail($id);
-
-        $validated = $request->validate([
-            'heading' => 'sometimes|string|max:255',
-            'content' => 'sometimes|string',
-            'founder_name' => 'nullable|string|max:255',
-            'founder_title' => 'nullable|string|max:255',
-            'founder_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
-            'is_active' => 'sometimes|boolean'
-        ]);
-
-        // Handle founder image update
-        $founderImagePath = $aboutUs->founder_image;
-
-        if ($request->hasFile('founder_image')) {
-            // Delete old image if exists
-            if ($aboutUs->founder_image && Storage::disk('public')->exists($aboutUs->founder_image)) {
-                Storage::disk('public')->delete($aboutUs->founder_image);
-            }
-
-            // Store new image
-            $founderImagePath = $request->file('founder_image')->store('about-us', 'public');
-        }
-
-        $aboutUs->update([
-            'heading' => $validated['heading'] ?? $aboutUs->heading,
-            'content' => $validated['content'] ?? $aboutUs->content,
-            'founder_name' => $validated['founder_name'] ?? $aboutUs->founder_name,
-            'founder_title' => $validated['founder_title'] ?? $aboutUs->founder_title,
-            'founder_image' => $request->hasFile('founder_image') ? $founderImagePath : $aboutUs->founder_image,
-            'is_active' => $validated['is_active'] ?? $aboutUs->is_active
-        ]);
-
-        return response()->json([
-            'message' => 'About us section updated successfully',
-            'data' => $aboutUs
-        ], 200);
-    }
-
-    /**
-     * Delete founder image only
-     */
-    public function deleteFounderImage($id)
-    {
-        $aboutUs = AboutUs::findOrFail($id);
-
+        // Delete founder image if it exists
         if ($aboutUs->founder_image && Storage::disk('public')->exists($aboutUs->founder_image)) {
             Storage::disk('public')->delete($aboutUs->founder_image);
         }
 
-        $aboutUs->founder_image = null;
-        $aboutUs->save();
-
-        return response()->json([
-            'message' => 'Founder image deleted successfully',
-            'data' => $aboutUs
-        ], 200);
-    }
-
-    /**
-     * Delete entire about us section
-     */
-    public function destroy($id)
-    {
-        $aboutUs = AboutUs::findOrFail($id);
-
-        // Delete founder image if exists
-        if ($aboutUs->founder_image && Storage::disk('public')->exists($aboutUs->founder_image)) {
-            Storage::disk('public')->delete($aboutUs->founder_image);
-        }
-
+        // Delete the AboutUs record
         $aboutUs->delete();
 
         return response()->json([
