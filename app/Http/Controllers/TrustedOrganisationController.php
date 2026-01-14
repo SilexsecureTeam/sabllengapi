@@ -10,34 +10,38 @@ class TrustedOrganisationController extends Controller
 {
     public function index()
     {
-        $section = TrustedOrganization::where('is_active', true)->first();
+        $sections = TrustedOrganization::where('is_active', true)->get();
 
-        if (!$section) {
+        if ($sections->isEmpty()) {
             return response()->json([
-                'message' => 'No active section found',
-                'data' => null
+                'message' => 'No active sections found',
+                'data' => []
             ], 404);
         }
 
-        $logos = collect($section->logos ?? [])->map(function ($logo) {
+        $data = $sections->map(function ($section) {
             return [
-                'id' => $logo['id'] ?? null,
-                'name' => $logo['name'] ?? null,
-                'path' => $logo['path'] ?? null,
-                'url' => isset($logo['path']) ? asset('storage/' . $logo['path']) : null,
-            ];
-        })->values()->toArray();
-
-        return response()->json([
-            'message' => 'Section retrieved successfully',
-            'data' => [
                 'id' => $section->id,
                 'heading' => $section->heading,
-                'logos' => $logos,
-                'is_active' => $section->is_active
-            ]
+                'logos' => collect($section->logos ?? [])
+                    ->map(function ($logo) {
+                        return [
+                            'id' => $logo['id'] ?? null,
+                            'name' => $logo['name'] ?? null,
+                            'url' => $logo['url'] ?? null, // ✅ already stored as URL
+                        ];
+                    })
+                    ->values(),
+                'is_active' => $section->is_active,
+            ];
+        });
+
+        return response()->json([
+            'message' => 'Sections retrieved successfully',
+            'data' => $data
         ], 200);
     }
+
 
     public function store(Request $request)
     {
@@ -51,6 +55,7 @@ class TrustedOrganisationController extends Controller
         ]);
 
         $logosData = [];
+
         if ($request->hasFile('logos')) {
             $logoNames = $request->input('logo_names', []);
 
@@ -60,7 +65,7 @@ class TrustedOrganisationController extends Controller
                 $logosData[] = [
                     'id' => $index + 1,
                     'name' => $logoNames[$index] ?? 'Organization ' . ($index + 1),
-                    'path' => $path,
+                    'url' => Storage::disk('public')->url($path),
                 ];
             }
         }
@@ -93,18 +98,27 @@ class TrustedOrganisationController extends Controller
             'is_active' => 'sometimes|boolean'
         ]);
 
-        // Handle logos - DELETE old, STORE new
         $logosData = $section->logos ?? [];
 
         if ($request->hasFile('logos')) {
-            // Delete ALL existing logos from storage
+
+            /** 🔥 Delete old images */
             foreach ($logosData as $oldLogo) {
-                if (!empty($oldLogo['path']) && Storage::disk('public')->exists($oldLogo['path'])) {
-                    Storage::disk('public')->delete($oldLogo['path']);
+                if (!empty($oldLogo['url'])) {
+                    // Convert URL back to storage path
+                    $path = str_replace(
+                        Storage::disk('public')->url(''),
+                        '',
+                        $oldLogo['url']
+                    );
+
+                    if (Storage::disk('public')->exists($path)) {
+                        Storage::disk('public')->delete($path);
+                    }
                 }
             }
 
-            // Store ALL new logos
+            /** ✅ Store new images as URLs */
             $logosData = [];
             $logoNames = $request->input('logo_names', []);
 
@@ -114,7 +128,7 @@ class TrustedOrganisationController extends Controller
                 $logosData[] = [
                     'id' => $index + 1,
                     'name' => $logoNames[$index] ?? 'Organization ' . ($index + 1),
-                    'path' => $path,
+                    'url' => Storage::disk('public')->url($path),
                 ];
             }
         }
@@ -122,7 +136,7 @@ class TrustedOrganisationController extends Controller
         $section->update([
             'heading' => $validated['heading'] ?? $section->heading,
             'logos' => $request->hasFile('logos') ? $logosData : $section->logos,
-            'is_active' => $validated['is_active'] ?? $section->is_active
+            'is_active' => $validated['is_active'] ?? $section->is_active,
         ]);
 
         return response()->json([
@@ -144,19 +158,22 @@ class TrustedOrganisationController extends Controller
         ]);
 
         $logosData = $section->logos ?? [];
-        $newId = count($logosData) + 1;
 
-        // Store new logo
+        // Generate next ID safely
+        $newId = collect($logosData)->max('id') + 1 ?? 1;
+
+        /** ✅ Store logo */
         $path = $request->file('logo')->store('trusted-organizations', 'public');
 
         $logosData[] = [
             'id' => $newId,
             'name' => $validated['name'] ?? 'Organization ' . $newId,
-            'path' => $path,
+            'url' => Storage::disk('public')->url($path),
         ];
 
-        $section->logos = $logosData;
-        $section->save();
+        $section->update([
+            'logos' => $logosData
+        ]);
 
         return response()->json([
             'message' => 'Logo added successfully',
