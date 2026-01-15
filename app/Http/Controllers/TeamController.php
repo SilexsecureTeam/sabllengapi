@@ -40,6 +40,7 @@ class TeamController extends Controller
         $data = $request->only([
             'name',
             'position',
+            // 'photo',
             'bio',
             'is_active'
         ]);
@@ -47,17 +48,19 @@ class TeamController extends Controller
         if ($request->hasFile('photo')) {
             $path = $request->file('photo')->store('teams', 'public');
 
-            // ✅ store URL instead of path
+            // ✅ Store FULL URL
             $data['photo'] = Storage::disk('public')->url($path);
         }
-
+// dd($photo);
         $team = Team::create($data);
 
         return response()->json([
             'message' => 'Team member created successfully',
-            'data' => $team
+            'data' => $team,
+            // 'image' => $data['photo']
         ], 201);
     }
+
     /**
      * GET /api/teams/{id}
      */
