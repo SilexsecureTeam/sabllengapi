@@ -23,7 +23,7 @@ class Tag extends Model
     // Many-to-many relationship with categories
     public function categories()
     {
-        return $this->belongsToMany(Category::class, 'category_tag')
+        return $this->belongsToMany(Category::class, 'category_tags')
             ->withTimestamps();
     }
 

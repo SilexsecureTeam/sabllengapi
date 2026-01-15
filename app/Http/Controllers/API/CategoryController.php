@@ -133,7 +133,7 @@ class CategoryController extends Controller
 
         // Attach tags if provided
         if (!empty($validated['tag_ids'])) {
-            $category->tags()->attach($validated['tag_ids']);
+            $category->tags()->sync($validated['tag_ids']);
         }
 
         // Load tags relationship for response
