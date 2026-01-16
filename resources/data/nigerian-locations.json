@@ -6055,6 +6055,512 @@
                     ]
                 }
             ]
+        },
+        {
+            "state_name": "Taraba",
+            "lgas": [
+                {
+                    "lga_name": "Ardo Kola",
+                    "places": [
+                        "Sunkani",
+                        "Iware",
+                        "Jauro Yinu",
+                        "Zongon Kombi"
+                    ]
+                },
+                {
+                    "lga_name": "Bali",
+                    "places": [
+                        "Bali Town",
+                        "Maihula",
+                        "Garba Chede",
+                        "Pamgri"
+                    ]
+                },
+                {
+                    "lga_name": "Donga",
+                    "places": [
+                        "Donga Town",
+                        "Akate",
+                        "Asibiti",
+                        "Nyita"
+                    ]
+                },
+                {
+                    "lga_name": "Gashaka",
+                    "places": [
+                        "Gashaka Town",
+                        "Serti",
+                        "Garbabi",
+                        "Mai-Idanu"
+                    ]
+                },
+                {
+                    "lga_name": "Gassol",
+                    "places": [
+                        "Mutum Biyu",
+                        "Sabon Gida",
+                        "Namnai",
+                        "Tutare"
+                    ]
+                },
+                {
+                    "lga_name": "Ibi",
+                    "places": [
+                        "Ibi Town",
+                        "Dampar",
+                        "Sarkin Kudu",
+                        "Rimi"
+                    ]
+                },
+                {
+                    "lga_name": "Jalingo",
+                    "places": [
+                        "Jalingo Town",
+                        "Sabon Gari",
+                        "Mayo Goi",
+                        "Kona"
+                    ]
+                },
+                {
+                    "lga_name": "Karim Lamido",
+                    "places": [
+                        "Karim Town",
+                        "Jen",
+                        "Bandawa",
+                        "Didango"
+                    ]
+                },
+                {
+                    "lga_name": "Kurmi",
+                    "places": [
+                        "Baissa",
+                        "Didan",
+                        "Abong",
+                        "Biseni"
+                    ]
+                },
+                {
+                    "lga_name": "Lau",
+                    "places": [
+                        "Lau Town",
+                        "Garagaji",
+                        "Jimlari",
+                        "Mayo Lope"
+                    ]
+                },
+                {
+                    "lga_name": "Sardauna",
+                    "places": [
+                        "Gembu",
+                        "Nguroje",
+                        "Kakara",
+                        "Mayo Ndaga"
+                    ]
+                },
+                {
+                    "lga_name": "Takum",
+                    "places": [
+                        "Takum Town",
+                        "Chanchanji",
+                        "Kashimbila",
+                        "Dutsen Kachalla"
+                    ]
+                },
+                {
+                    "lga_name": "Ussa",
+                    "places": [
+                        "Lissam",
+                        "Rufu",
+                        "Bika",
+                        "Fikyu"
+                    ]
+                },
+                {
+                    "lga_name": "Wukari",
+                    "places": [
+                        "Wukari Town",
+                        "Avyi",
+                        "Puje",
+                        "Chonku"
+                    ]
+                },
+                {
+                    "lga_name": "Yorro",
+                    "places": [
+                        "Pantisawa",
+                        "Kassa",
+                        "Nyaja",
+                        "Dila"
+                    ]
+                },
+                {
+                    "lga_name": "Zing",
+                    "places": [
+                        "Zing Town",
+                        "Bitako",
+                        "Monkin",
+                        "Bubong"
+                    ]
+                }
+            ]
+        },
+        {
+            "state_name": "Yobe",
+            "lgas": [
+                {
+                    "lga_name": "Bade",
+                    "places": [
+                        "Gashua",
+                        "Katuzu",
+                        "Gwio Kura",
+                        "Sugum"
+                    ]
+                },
+                {
+                    "lga_name": "Bursari",
+                    "places": [
+                        "Dapchi",
+                        "Bayamari",
+                        "Guji",
+                        "Yoyo"
+                    ]
+                },
+                {
+                    "lga_name": "Damaturu",
+                    "places": [
+                        "Damaturu Town",
+                        "Maisandari",
+                        "Nayinawa",
+                        "Sabon Pegi"
+                    ]
+                },
+                {
+                    "lga_name": "Fika",
+                    "places": [
+                        "Fika Town",
+                        "Gadaka",
+                        "Zangaya",
+                        "Dumbulwa"
+                    ]
+                },
+                {
+                    "lga_name": "Fune",
+                    "places": [
+                        "Damagum",
+                        "Potiskum Road",
+                        "Abakire",
+                        "Jajere"
+                    ]
+                },
+                {
+                    "lga_name": "Geidam",
+                    "places": [
+                        "Geidam Town",
+                        "Asheikri",
+                        "Kawuri",
+                        "Gumsa"
+                    ]
+                },
+                {
+                    "lga_name": "Gujba",
+                    "places": [
+                        "Buni Yadi",
+                        "Katarko",
+                        "Mutai",
+                        "Wagir"
+                    ]
+                },
+                {
+                    "lga_name": "Gulani",
+                    "places": [
+                        "Bara",
+                        "Bularafa",
+                        "Dokshi",
+                        "Kukareta"
+                    ]
+                },
+                {
+                    "lga_name": "Jakusko",
+                    "places": [
+                        "Jakusko Town",
+                        "Jaba",
+                        "Buduwa",
+                        "Gorgoram"
+                    ]
+                },
+                {
+                    "lga_name": "Karasuwa",
+                    "places": [
+                        "Karasuwa Town",
+                        "Bukarti",
+                        "Garuna",
+                        "Waro"
+                    ]
+                },
+                {
+                    "lga_name": "Machina",
+                    "places": [
+                        "Machina Town",
+                        "Taganama",
+                        "Damai",
+                        "Fala"
+                    ]
+                },
+                {
+                    "lga_name": "Nangere",
+                    "places": [
+                        "Sabon Gari",
+                        "Tikau",
+                        "Dawasa",
+                        "Chilariye"
+                    ]
+                },
+                {
+                    "lga_name": "Nguru",
+                    "places": [
+                        "Nguru Town",
+                        "Bulabulin",
+                        "Dumsai",
+                        "Garbi"
+                    ]
+                },
+                {
+                    "lga_name": "Potiskum",
+                    "places": [
+                        "Potiskum Town",
+                        "Mamudo",
+                        "Ngojin",
+                        "Bare"
+                    ]
+                },
+                {
+                    "lga_name": "Tarmuwa",
+                    "places": [
+                        "Babbangida",
+                        "Shekau",
+                        "Jumbam",
+                        "Koriyel"
+                    ]
+                },
+                {
+                    "lga_name": "Yunusari",
+                    "places": [
+                        "Kanamma",
+                        "Mozogun",
+                        "Dilawa",
+                        "Zajibiri"
+                    ]
+                },
+                {
+                    "lga_name": "Yusufari",
+                    "places": [
+                        "Yusufari Town",
+                        "Mai Malari",
+                        "Kaska",
+                        "Bulanguwa"
+                    ]
+                }
+            ]
+        },
+        {
+            "state_name": "Zamfara",
+            "lgas": [
+                {
+                    "lga_name": "Anka",
+                    "places": [
+                        "Anka Town",
+                        "Bagega",
+                        "Wuya",
+                        "Barayar Zaki"
+                    ]
+                },
+                {
+                    "lga_name": "Bakura",
+                    "places": [
+                        "Bakura Town",
+                        "Yar Kufoji",
+                        "Damri",
+                        "Birnin Tudu"
+                    ]
+                },
+                {
+                    "lga_name": "Birnin Magaji/Kiyaw",
+                    "places": [
+                        "Birnin Magaji",
+                        "Kiyaw",
+                        "Gora",
+                        "Gangara"
+                    ]
+                },
+                {
+                    "lga_name": "Bukkuyum",
+                    "places": [
+                        "Bukkuyum Town",
+                        "Gwashi",
+                        "Ruwan Jema",
+                        "Adabka"
+                    ]
+                },
+                {
+                    "lga_name": "Bungudu",
+                    "places": [
+                        "Bungudu Town",
+                        "Furfuri",
+                        "Kwatarkwashi",
+                        "Sankalawa"
+                    ]
+                },
+                {
+                    "lga_name": "Gummi",
+                    "places": [
+                        "Gummi Town",
+                        "Bardoki",
+                        "Fala",
+                        "Ubandawaki"
+                    ]
+                },
+                {
+                    "lga_name": "Gusau",
+                    "places": [
+                        "Gusau Town",
+                        "Tudun Wada",
+                        "Sabon Gari",
+                        "Damba"
+                    ]
+                },
+                {
+                    "lga_name": "Kaura Namoda",
+                    "places": [
+                        "Kaura Namoda Town",
+                        "Sakajiki",
+                        "Banga",
+                        "Gidan Dan Isa"
+                    ]
+                },
+                {
+                    "lga_name": "Maradun",
+                    "places": [
+                        "Maradun Town",
+                        "Gidan Goga",
+                        "Farun Ruwa",
+                        "Dosara"
+                    ]
+                },
+                {
+                    "lga_name": "Maru",
+                    "places": [
+                        "Maru Town",
+                        "Dansadau",
+                        "Kanoma",
+                        "Bingi"
+                    ]
+                },
+                {
+                    "lga_name": "Shinkafi",
+                    "places": [
+                        "Shinkafi Town",
+                        "Galadi",
+                        "Kurya",
+                        "Chiki"
+                    ]
+                },
+                {
+                    "lga_name": "Talata Mafara",
+                    "places": [
+                        "Talata Mafara Town",
+                        "Jangebe",
+                        "Ruwan Bore",
+                        "Garbadu"
+                    ]
+                },
+                {
+                    "lga_name": "Tsafe",
+                    "places": [
+                        "Tsafe Town",
+                        "Yan Kuzo",
+                        "Bilbis",
+                        "Kwaren Ganuwa"
+                    ]
+                },
+                {
+                    "lga_name": "Zurmi",
+                    "places": [
+                        "Zurmi Town",
+                        "Dole",
+                        "Birnin Tsaba",
+                        "Moriki"
+                    ]
+                }
+            ]
+        },
+        {
+            "state_name": "Federal Capital Territory",
+            "lgas": [
+                {
+                    "lga_name": "Abuja Municipal Area Council",
+                    "places": [
+                        "Central Area",
+                        "Garki",
+                        "Wuse",
+                        "Maitama",
+                        "Asokoro",
+                        "Jabi",
+                        "Utako",
+                        "Gwarimpa"
+                    ]
+                },
+                {
+                    "lga_name": "Bwari",
+                    "places": [
+                        "Bwari Town",
+                        "Kubwa",
+                        "Dutse",
+                        "Ushafa",
+                        "Byazhin",
+                        "Kuduru"
+                    ]
+                },
+                {
+                    "lga_name": "Gwagwalada",
+                    "places": [
+                        "Gwagwalada Town",
+                        "Zuba",
+                        "Paiko",
+                        "Kutunku",
+                        "Ikwa"
+                    ]
+                },
+                {
+                    "lga_name": "Kuje",
+                    "places": [
+                        "Kuje Town",
+                        "Rubochi",
+                        "Gudun Karya",
+                        "Chibiri",
+                        "Gwargwada"
+                    ]
+                },
+                {
+                    "lga_name": "Kwali",
+                    "places": [
+                        "Kwali Town",
+                        "Yangoji",
+                        "Dafa",
+                        "Ashara",
+                        "Wako"
+                    ]
+                },
+                {
+                    "lga_name": "Abaji",
+                    "places": [
+                        "Abaji Town",
+                        "Pandagi",
+                        "Gurdi",
+                        "Ebagi"
+                    ]
+                }
+            ]
         }
     ]
 }
