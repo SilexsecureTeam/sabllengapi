@@ -90,9 +90,9 @@ class Product extends Model
         return $this->hasMany(Customization::class);
     }
 
-    public function coupon()
+    public function coupons()
     {
-        return $this->belongsTo(Coupon::class);
+        return $this->belongsToMany(Coupon::class);
     }
 
     public function eposnowSyncLogs()
