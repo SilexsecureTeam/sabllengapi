@@ -82,7 +82,7 @@ Route::post('/wishlist/{productId}/move-to-cart', [WishlistController::class, 'm
 Route::get('/products', [ProductController::class, 'index']);
 Route::get('/products/{id}', [ProductController::class, 'show']);
 Route::get('/product/customized', [ProductController::class, 'customizableProducts']);
-Route::get('/products/{product}/customizations', [CustomizationController::class, 'show']);
+Route::get('/products/{product}/customizations', [CustomizationController::class, 'showCustomizedProduct']);
 
 // authenticated user
 Route::middleware('auth:sanctum')->group(function () {
