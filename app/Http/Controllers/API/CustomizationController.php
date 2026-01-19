@@ -39,4 +39,39 @@ class CustomizationController extends Controller
             'data'    => $customization,
         ]);
     }
+
+    public function index(Request $request)
+    {
+        $customizations = Customization::with(['product:id,name,price', 'user:id,name,email'])
+            ->when(
+                $request->product_id,
+                fn($q) =>
+                $q->where('product_id', $request->product_id)
+            )
+            ->when(
+                $request->user_id,
+                fn($q) =>
+                $q->where('user_id', $request->user_id)
+            )
+            ->latest()
+            ->paginate(20);
+
+        return response()->json([
+            'status' => true,
+            'data'   => $customizations,
+        ]);
+    }
+
+    public function show(Customization $customization)
+    {
+        $customization->load([
+            'product:id,name,price,image',
+            'user:id,name,email'
+        ]);
+
+        return response()->json([
+            'status' => true,
+            'data'   => $customization,
+        ]);
+    }
 }
