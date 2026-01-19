@@ -238,7 +238,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     // Route::post('/about-us/{id}', [AboutUsController::class, 'update']);
     // Route::delete('/about-us/{id}/founder-image', [AboutUsController::class, 'deleteFounderImage']);
     Route::delete('/about-us', [AboutUsController::class, 'destroy']);
-    Route::get('/customizations', [CustomizationController::class, 'index']);
+    // Route::get('/customizations', [CustomizationController::class, 'index']);
     Route::get('/customizations/{customization}', [CustomizationController::class, 'show']);
 });
 
