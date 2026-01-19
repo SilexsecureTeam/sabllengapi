@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\Customization;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class CustomizationController extends Controller
@@ -40,38 +41,59 @@ class CustomizationController extends Controller
         ]);
     }
 
-    public function index(Request $request)
-    {
-        $customizations = Customization::with(['product:id,name,price', 'user:id,name,email'])
-            ->when(
-                $request->product_id,
-                fn($q) =>
-                $q->where('product_id', $request->product_id)
-            )
-            ->when(
-                $request->user_id,
-                fn($q) =>
-                $q->where('user_id', $request->user_id)
-            )
-            ->latest()
-            ->paginate(20);
+    // public function index(Request $request)
+    // {
+    //     $customizations = Customization::with(['product:id,name,price', 'user:id,name,email'])
+    //         ->when(
+    //             $request->product_id,
+    //             fn($q) =>
+    //             $q->where('product_id', $request->product_id)
+    //         )
+    //         ->when(
+    //             $request->user_id,
+    //             fn($q) =>
+    //             $q->where('user_id', $request->user_id)
+    //         )
+    //         ->latest()
+    //         ->paginate(20);
 
-        return response()->json([
-            'status' => true,
-            'data'   => $customizations,
-        ]);
-    }
+    //     return response()->json([
+    //         'status' => true,
+    //         'data'   => $customizations,
+    //     ]);
+    // }
 
-    public function show(Customization $customization)
-    {
-        $customization->load([
-            'product:id,name,price,image',
-            'user:id,name,email'
-        ]);
+ public function showCustomizedProduct($id)
+{
+    $product = Product::with([
+            'category',
+            'subcategory',
+            'brand',
+            'supplier',
+            'customizations'
+        ])
+        ->whereHas('customizations')
+        ->findOrFail($id);
 
-        return response()->json([
-            'status' => true,
-            'data'   => $customization,
-        ]);
-    }
+    return response()->json([
+        'id' => $product->id,
+        'name' => $product->name,
+        'description' => $product->description,
+        'price' => number_format($product->sale_price ?? 0, 2),
+
+        'customizations' => $product->customizations->map(function ($custom) {
+            return [
+                'id' => $custom->id,
+                'text' => $custom->text,
+                'instruction' => $custom->instruction,
+                'position' => $custom->position,
+                'coordinates' => $custom->coordinates,
+                'image' => $custom->image
+                    ? asset('storage/' . $custom->image)
+                    : null,
+            ];
+        }),
+    ], 200);
+}
+
 }

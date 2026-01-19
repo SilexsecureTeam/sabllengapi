@@ -82,6 +82,7 @@ Route::post('/wishlist/{productId}/move-to-cart', [WishlistController::class, 'm
 Route::get('/products', [ProductController::class, 'index']);
 Route::get('/products/{id}', [ProductController::class, 'show']);
 Route::get('/product/customized', [ProductController::class, 'customizableProducts']);
+Route::get('/products/{product}/customizations', [CustomizationController::class, 'show']);
 
 // authenticated user
 Route::middleware('auth:sanctum')->group(function () {
@@ -239,7 +240,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     // Route::delete('/about-us/{id}/founder-image', [AboutUsController::class, 'deleteFounderImage']);
     Route::delete('/about-us', [AboutUsController::class, 'destroy']);
     // Route::get('/customizations', [CustomizationController::class, 'index']);
-    Route::get('/customizations/{customization}', [CustomizationController::class, 'show']);
+    
 });
 
 // Public route (for frontend display)
