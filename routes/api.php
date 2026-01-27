@@ -138,8 +138,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
     // Route::middleware('manager')->group(function () {
 
     // });
-
-
     Route::post('/roles', [RolesController::class, 'store']);
     Route::get('/roles', [RolesController::class, 'index']);   // for dropdown
     Route::patch('/roles/{id}', [RolesController::class, 'update']);

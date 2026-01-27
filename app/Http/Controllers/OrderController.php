@@ -263,7 +263,7 @@ class OrderController extends Controller
         }
 
         // Find the order by order_reference and include related data
-        $order = Order::with(['user:id,name,email', 'items.product'])
+        $order = Order::with(['user:id,name,email', 'items.product','items.customization'])
             ->where('order_reference', $orderReference)
             ->first();
 

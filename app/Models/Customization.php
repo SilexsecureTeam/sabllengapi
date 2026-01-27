@@ -30,8 +30,8 @@ class Customization extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function order()
+    public function orderItem()
     {
-        return $this->belongsTo(Order::class);
+        return $this->belongsTo(OrderItem::class);
     }
 }

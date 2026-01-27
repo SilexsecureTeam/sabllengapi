@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Cart;
 use App\Models\CartItem;
+use App\Models\Customization;
+use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
@@ -13,7 +15,6 @@ class CartController extends Controller
 {
     public function addToCart(Request $request)
     {
-        // dd($request);
         $validated = $request->validate([
             'product_id'       => 'required|exists:products,id',
             'quantity'         => 'required|integer|min:1',
@@ -23,26 +24,72 @@ class CartController extends Controller
         ]);
 
         $user = Auth::user();
-
         $sessionId = $request->header('X-Cart-Session');
 
+        // 🔍 Load product (needed to know if it is customizable)
+        $product = Product::findOrFail($validated['product_id']);
+
+        /**
+         * 🔐 CUSTOMIZATION RULES
+         * - Non-customizable product → ALWAYS NULL
+         * - Customizable product:
+         *      - use frontend customization_id if provided
+         *      - otherwise attach latest customization
+         */
+        $validated['customization_id'] = null;
+
+        if ($product->customize && $user) {
+            if (!empty($validated['customization_id'])) {
+                $validated['customization_id'] = (int) $validated['customization_id'];
+            } else {
+                $customization = Customization::where('user_id', $user->id)
+                    ->where('product_id', $product->id)
+                    ->latest()
+                    ->first();
+
+                $validated['customization_id'] = $customization?->id;
+            }
+        }
+
+        // 🧼 Normalize empty values
+        $validated['customization_id'] = $validated['customization_id'] ?: null;
+        $validated['color'] = $validated['color'] ?: null;
+
+        // 🆔 Guest cart session
         if (!$user && !$sessionId) {
             $sessionId = Str::uuid()->toString();
         }
 
+        // 🛒 Get or create cart
         $cart = Cart::firstOrCreate(
             $user ? ['user_id' => $user->id] : ['session_id' => $sessionId],
             ['total' => 0]
         );
 
+        // 🔎 Find matching cart item
         $item = CartItem::where('cart_id', $cart->id)
             ->where('product_id', $validated['product_id'])
-            ->where('color', $validated['color'] ?? null)
-            ->where('customization_id', $validated['customization_id'] ?? null)
+            ->when(
+                $validated['color'] !== null,
+                fn($q) => $q->where('color', $validated['color']),
+                fn($q) => $q->whereNull('color')
+            )
+            ->when(
+                $validated['customization_id'] !== null,
+                fn($q) => $q->where('customization_id', $validated['customization_id']),
+                fn($q) => $q->whereNull('customization_id')
+            )
             ->first();
 
+        // ➕ Update or create cart item
         if ($item) {
             $item->quantity += $validated['quantity'];
+
+            // 🔑 Attach customization if product is customizable and item has none
+            if ($product->customize && $item->customization_id === null) {
+                $item->customization_id = $validated['customization_id'];
+            }
+
             $item->save();
         } else {
             $item = CartItem::create([
@@ -50,8 +97,8 @@ class CartController extends Controller
                 'product_id'       => $validated['product_id'],
                 'quantity'         => $validated['quantity'],
                 'price'            => $validated['price'],
-                'color'            => $validated['color'] ?? null,
-                'customization_id' => $validated['customization_id'] ?? null,
+                'color'            => $validated['color'],
+                'customization_id' => $validated['customization_id'],
             ]);
         }
 
@@ -62,11 +109,11 @@ class CartController extends Controller
                 'product.category',
                 'product.brand',
                 'product.images',
-                'customization'
-            ])
-        ], 201)
-            ->header('X-Cart-Session', $sessionId);
+                'customization',
+            ]),
+        ], 201)->header('X-Cart-Session', $sessionId);
     }
+
     /**
      * Merge guest cart into the authenticated user's cart
      */
