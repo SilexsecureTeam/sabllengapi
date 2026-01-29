@@ -21,8 +21,8 @@ class Product extends Model
         'cost_price',
         'tax_rate',
         'cost_inc_tax',
-        'sale_price',
-        'sale_price_inc_tax',
+        'sales_price',
+        'sales_price_inc_tax',
         'is_variable_price',
         'margin_perc',
         'tax_exempt_eligible',
@@ -100,21 +100,41 @@ class Product extends Model
         return $this->hasMany(EposnowSyncLog::class);
     }
 
+    public function inventories()
+    {
+        return $this->hasMany(Inventory::class);
+    }
+    
+    protected static function boot()
+    {
+        parent::boot();
 
-    //  public function getImagesAttribute($value)
-    // {
-    //     if (!is_array($value)) {
-    //         return [];
-    //     }
+        static::creating(function ($product) {
+            if (empty($product->barcode)) {
+                $product->barcode = self::generateEAN13Barcode();
+            }
+        });
+    }
 
-    //     return collect($value)->map(function ($img) {
-    //         return [
-    //             'id'   => $img['id'] ?? null,
-    //             'path' => $img['path'] ?? null,
-    //             'url'  => isset($img['path'])
-    //                 ? asset('storage/' . $img['path'])
-    //                 : null,
-    //         ];
-    //     })->values()->toArray();
-    // }
+    /**
+     * Generate a random valid 13-digit EAN-13 barcode.
+     */
+    private static function generateEAN13Barcode()
+    {
+        // Generate first 12 random digits
+        $barcode = '';
+        for ($i = 0; $i < 12; $i++) {
+            $barcode .= mt_rand(0, 9);
+        }
+
+        // Compute checksum (13th digit)
+        $checksum = 0;
+        for ($i = 0; $i < 12; $i++) {
+            $digit = (int) $barcode[$i];
+            $checksum += ($i % 2 === 0) ? $digit : $digit * 3;
+        }
+        $checksum = (10 - ($checksum % 10)) % 10;
+
+        return $barcode . $checksum;
+    }
 }

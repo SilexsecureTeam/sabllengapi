@@ -18,6 +18,7 @@ class CustomizationController extends Controller
             'instruction'  => 'nullable|string',
             'position'     => 'nullable|in:top-left,top-right,bottom-left,bottom-right,center',
             'coordinates'  => 'nullable|array', // e.g., { "x": 50, "y": 100 }
+            'image_size'   => 'nullable|string'
         ]);
 
         $path = null;
@@ -33,6 +34,7 @@ class CustomizationController extends Controller
             'instruction' => $request->instruction,
             'position'    => $request->position ?? 'center',
             'coordinates' => $request->coordinates,
+            'image_size'  => $request->input('image_size'),
         ]);
 
         return response()->json([
@@ -63,37 +65,37 @@ class CustomizationController extends Controller
     //     ]);
     // }
 
- public function showCustomizedProduct($id)
-{
-    $product = Product::with([
+    public function showCustomizedProduct($id)
+    {
+        $product = Product::with([
             'category',
             'subcategory',
             'brand',
             'supplier',
             'customizations'
         ])
-        ->whereHas('customizations')
-        ->findOrFail($id);
+            ->whereHas('customizations')
+            ->findOrFail($id);
 
-    return response()->json([
-        'id' => $product->id,
-        'name' => $product->name,
-        'description' => $product->description,
-        'price' => number_format($product->sale_price ?? 0, 2),
+        return response()->json([
+            'id' => $product->id,
+            'name' => $product->name,
+            'description' => $product->description,
+            'price' => number_format($product->sale_price ?? 0, 2),
 
-        'customizations' => $product->customizations->map(function ($custom) {
-            return [
-                'id' => $custom->id,
-                'text' => $custom->text,
-                'instruction' => $custom->instruction,
-                'position' => $custom->position,
-                'coordinates' => $custom->coordinates,
-                'image' => $custom->image
-                    ? asset('storage/' . $custom->image)
-                    : null,
-            ];
-        }),
-    ], 200);
-}
-
+            'customizations' => $product->customizations->map(function ($custom) {
+                return [
+                    'id' => $custom->id,
+                    'text' => $custom->text,
+                    'instruction' => $custom->instruction,
+                    'position' => $custom->position,
+                    'coordinates' => $custom->coordinates,
+                    'image' => $custom->image
+                        ? asset('storage/' . $custom->image)
+                        : null,
+                    'image_size' => $custom->image_size
+                ];
+            }),
+        ], 200);
+    }
 }

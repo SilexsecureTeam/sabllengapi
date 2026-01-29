@@ -14,6 +14,7 @@ class Customization extends Model
         'instruction',
         'position',
         'coordinates',
+        'image_size',
     ];
 
     protected $casts = [

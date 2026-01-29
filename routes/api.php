@@ -42,91 +42,6 @@ Route::post('importInventory', [ImportInventoryController::class, 'import']);
 Route::post('importProduct', [ImportInventoryController::class, 'importProduct']);
 Route::post('/webhooks/eposnow/sale', [EposnowWebhookController::class, 'handleSale']);
 
-// authentication flow
-// routes/api.php
-Route::post('/register', [AuthController::class, 'register']);
-Route::post('/verify-code', [AuthController::class, 'verifyCode']);
-Route::post('/login', [AuthController::class, 'login']);
-Route::post('/password/forgot', [AuthController::class, 'sendResetLink'])
-    ->name('password.forgot');
-Route::post('/password/reset', [AuthController::class, 'resetPassword'])
-    ->name('password.reset');
-
-//show category for users
-Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
-Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
-Route::get('/subcategories', [SubCategoryController::class, 'index']);
-
-// delivery address
-Route::get('/states', [DeliveryFeeController::class, 'getStates']);
-
-// Get LGAs by state
-Route::get('/lgas/{state}', [DeliveryFeeController::class, 'getLgas']);
-
-// Get places by state and LGA
-Route::get('/places/{state}/{lga}', [DeliveryFeeController::class, 'getPlaces']);
-
-// add to cart
-Route::post('/cart/add', [CartController::class, 'addToCart']);
-Route::get('/cart', [CartController::class, 'getCart']);
-Route::delete('/cart/items/{id}', [CartController::class, 'removeItem']);
-Route::patch('/cart/items/{id}', [CartController::class, 'updateItem']);
-
-// wishlist
-Route::get('/wishlist', [WishlistController::class, 'index']);
-Route::post('/wishlist', [WishlistController::class, 'store']);
-Route::delete('/wishlist/{productId}', [WishlistController::class, 'destroy']);
-Route::post('/wishlist/{productId}/move-to-cart', [WishlistController::class, 'moveToCart']);
-
-//product
-Route::get('/products', [ProductController::class, 'index']);
-Route::get('/products/{id}', [ProductController::class, 'show']);
-Route::get('/product/customized', [ProductController::class, 'customizableProducts']);
-Route::get('/products/{product}/customizations', [CustomizationController::class, 'showCustomizedProduct']);
-
-// authenticated user
-Route::middleware('auth:sanctum')->group(function () {
-
-    // add to cart
-    Route::post('/customizations', [CustomizationController::class, 'store']);
-    Route::post('/cart/merge', [CartController::class, 'mergeCart']);
-
-    // checkout
-    Route::post('/checkout', [OrderController::class, 'checkout']);
-
-    Route::get('/user/transactions', [PaymentController::class, 'userTransactions']);
-
-    Route::get('/locations', [LocationController::class, 'nigeriaLocation']);
-
-    Route::post('/delivery-fee', [DeliveryFeeController::class, 'store']);
-    Route::patch('/delivery-fee/{id}', [DeliveryFeeController::class, 'update']);
-    Route::delete('/delivery-fee/{id}', [DeliveryFeeController::class, 'destroy']);
-
-    Route::get('/orders', [OrderController::class, 'myOrders']);
-    // Get a specific order by order_reference
-    Route::get('/orders/{orderReference}', [OrderController::class, 'getOrder']);
-});
-Route::get('/verify-payment/{reference}/{order_reference}', [PaymentController::class, 'PaystackCallback']);
-
-// admin login
-Route::post('/admin/login', [AdminDashController::class, 'login']);
-Route::post('/admin/verify-otp', [AdminDashController::class, 'verifyOtp']);
-Route::post('/admin/otp/resend', [AdminDashController::class, 'resendOtp']);
-
-Route::get('/taxes', [TaxController::class, 'index']);
-
-// google sign in
-Route::post('auth/google', [GoogleAuthController::class, 'login']);
-
-// Protected routes using sanctum
-Route::middleware('auth:sanctum')->group(function () {
-    Route::post('auth/logout', [GoogleAuthController::class, 'logout']);
-    Route::get('user', function (Request $request) {
-        return $request->user();
-    });
-    // other protected routes
-});
-
 Route::middleware(['auth:sanctum'])->group(function () {
     // Route::post('/staff', [StaffController::class, 'store'])->name('staff.store');
     // Route::get('/staff', [StaffController::class, 'index']);
@@ -151,8 +66,11 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/subcategories/{id}', [SubCategoryController::class, 'show']);
     Route::patch('/subcategories/{id}', [SubcategoryController::class, 'update']);
     Route::delete('/subcategories/{id}', [SubcategoryController::class, 'destroy']);
+
     //products
     Route::post('/products', [ProductController::class, 'store']);
+    // dropdown for adding products in inventory
+    Route::get('/products/dropdown', [ProductController::class, 'getProductsForDropdown']);
     Route::patch('/products/{id}', [ProductController::class, 'update']);
     Route::delete('/products/{id}', [ProductController::class, 'destroy']);
 
@@ -238,8 +156,95 @@ Route::middleware(['auth:sanctum'])->group(function () {
     // Route::delete('/about-us/{id}/founder-image', [AboutUsController::class, 'deleteFounderImage']);
     Route::delete('/about-us', [AboutUsController::class, 'destroy']);
     // Route::get('/customizations', [CustomizationController::class, 'index']);
-    
+
 });
+
+// authentication flow
+// routes/api.php
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/verify-code', [AuthController::class, 'verifyCode']);
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/password/forgot', [AuthController::class, 'sendResetLink'])
+    ->name('password.forgot');
+Route::post('/password/reset', [AuthController::class, 'resetPassword'])
+    ->name('password.reset');
+
+//show category for users
+Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
+Route::get('/subcategories', [SubCategoryController::class, 'index']);
+
+// delivery address
+Route::get('/states', [DeliveryFeeController::class, 'getStates']);
+
+// Get LGAs by state
+Route::get('/lgas/{state}', [DeliveryFeeController::class, 'getLgas']);
+
+// Get places by state and LGA
+Route::get('/places/{state}/{lga}', [DeliveryFeeController::class, 'getPlaces']);
+
+// add to cart
+Route::post('/cart/add', [CartController::class, 'addToCart']);
+Route::get('/cart', [CartController::class, 'getCart']);
+Route::delete('/cart/items/{id}', [CartController::class, 'removeItem']);
+Route::patch('/cart/items/{id}', [CartController::class, 'updateItem']);
+
+// wishlist
+Route::get('/wishlist', [WishlistController::class, 'index']);
+Route::post('/wishlist', [WishlistController::class, 'store']);
+Route::delete('/wishlist/{productId}', [WishlistController::class, 'destroy']);
+Route::post('/wishlist/{productId}/move-to-cart', [WishlistController::class, 'moveToCart']);
+
+//product
+Route::get('/products', [ProductController::class, 'index']);
+Route::get('/products/{id}', [ProductController::class, 'show']);
+Route::get('/product/customized', [ProductController::class, 'customizableProducts']);
+Route::get('/products/{product}/customizations', [CustomizationController::class, 'showCustomizedProduct']);
+
+// authenticated user
+Route::middleware('auth:sanctum')->group(function () {
+
+    // add to cart
+    Route::post('/customizations', [CustomizationController::class, 'store']);
+    Route::post('/cart/merge', [CartController::class, 'mergeCart']);
+
+    // checkout
+    Route::post('/checkout', [OrderController::class, 'checkout']);
+
+    Route::get('/user/transactions', [PaymentController::class, 'userTransactions']);
+
+    Route::get('/locations', [LocationController::class, 'nigeriaLocation']);
+
+    Route::post('/delivery-fee', [DeliveryFeeController::class, 'store']);
+    Route::patch('/delivery-fee/{id}', [DeliveryFeeController::class, 'update']);
+    Route::delete('/delivery-fee/{id}', [DeliveryFeeController::class, 'destroy']);
+
+    Route::get('/orders', [OrderController::class, 'myOrders']);
+    // Get a specific order by order_reference
+    Route::get('/orders/{orderReference}', [OrderController::class, 'getOrder']);
+});
+Route::get('/verify-payment/{reference}/{order_reference}', [PaymentController::class, 'PaystackCallback']);
+
+// admin login
+Route::post('/admin/login', [AdminDashController::class, 'login']);
+Route::post('/admin/verify-otp', [AdminDashController::class, 'verifyOtp']);
+Route::post('/admin/otp/resend', [AdminDashController::class, 'resendOtp']);
+
+Route::get('/taxes', [TaxController::class, 'index']);
+
+// google sign in
+Route::post('auth/google', [GoogleAuthController::class, 'login']);
+
+// Protected routes using sanctum
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('auth/logout', [GoogleAuthController::class, 'logout']);
+    Route::get('user', function (Request $request) {
+        return $request->user();
+    });
+    // other protected routes
+});
+
+
 
 // Public route (for frontend display)
 Route::get('/trusted-organizations', [TrustedOrganisationController::class, 'index']);
